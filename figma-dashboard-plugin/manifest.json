@@ -1,0 +1,15 @@
+{
+  "name": "Dusk Dashboard \u2014 Complete Named Layers",
+  "id": "dusk-dashboard-local-20260910",
+  "api": "1.0.0",
+  "main": "ask-dusk-text-response.js",
+  "editorType": [
+    "figma"
+  ],
+  "documentAccess": "dynamic-page",
+  "networkAccess": {
+    "allowedDomains": [
+      "none"
+    ]
+  }
+}

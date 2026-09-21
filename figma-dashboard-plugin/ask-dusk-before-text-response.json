@@ -1,0 +1,1838 @@
+{
+  "root": {
+    "id": "4019:2890",
+    "name": "Dusk / Ask Dusk / Marek investigation",
+    "type": "FRAME",
+    "w": 1440,
+    "h": 1040,
+    "x": 1760,
+    "y": 80,
+    "layout": "HORIZONTAL",
+    "children": [
+      {
+        "id": "4019:3153",
+        "name": "Navigation / Column",
+        "type": "FRAME",
+        "w": 88,
+        "h": 1008
+      },
+      {
+        "id": "4019:3150",
+        "name": "Ask Dusk / Workspace",
+        "type": "FRAME",
+        "w": 1304,
+        "h": 1008
+      }
+    ]
+  },
+  "nodes": [
+    {
+      "id": "4019:3153",
+      "name": "Navigation / Column",
+      "type": "FRAME",
+      "w": 88,
+      "h": 1008,
+      "x": 16,
+      "y": 16,
+      "layout": "VERTICAL",
+      "children": [
+        {
+          "id": "4019:3154",
+          "name": "Brand / Dusk mark",
+          "type": "FRAME",
+          "w": 88,
+          "h": 64
+        },
+        {
+          "id": "4019:3157",
+          "name": "Navigation / Primary",
+          "type": "FRAME",
+          "w": 88,
+          "h": 928
+        }
+      ]
+    },
+    {
+      "id": "4019:3154",
+      "name": "Brand / Dusk mark",
+      "type": "FRAME",
+      "w": 88,
+      "h": 64,
+      "x": 0,
+      "y": 0,
+      "layout": "VERTICAL",
+      "children": [
+        {
+          "id": "4019:3155",
+          "name": "Brand / Dusk horizon",
+          "type": "FRAME",
+          "w": 36,
+          "h": 36
+        }
+      ]
+    },
+    {
+      "id": "4019:3155",
+      "name": "Brand / Dusk horizon",
+      "type": "FRAME",
+      "w": 36,
+      "h": 36,
+      "x": 26,
+      "y": 14,
+      "layout": "NONE",
+      "children": [
+        {
+          "id": "4019:3156",
+          "name": "Brand / Horizon path 1",
+          "type": "VECTOR",
+          "w": 28,
+          "h": 28
+        }
+      ]
+    },
+    {
+      "id": "4019:3157",
+      "name": "Navigation / Primary",
+      "type": "FRAME",
+      "w": 88,
+      "h": 928,
+      "x": 0,
+      "y": 80,
+      "layout": "VERTICAL",
+      "children": [
+        {
+          "id": "4019:3158",
+          "name": "Navigation / Dashboard",
+          "type": "INSTANCE",
+          "w": 72,
+          "h": 64
+        },
+        {
+          "id": "4019:3159",
+          "name": "Navigation / Findings",
+          "type": "INSTANCE",
+          "w": 72,
+          "h": 64
+        },
+        {
+          "id": "4019:3160",
+          "name": "Navigation / Cases",
+          "type": "INSTANCE",
+          "w": 72,
+          "h": 64
+        },
+        {
+          "id": "4019:3161",
+          "name": "Navigation / Accounts",
+          "type": "INSTANCE",
+          "w": 72,
+          "h": 64
+        },
+        {
+          "id": "4019:3162",
+          "name": "Navigation / Actors",
+          "type": "INSTANCE",
+          "w": 72,
+          "h": 64
+        },
+        {
+          "id": "4019:3163",
+          "name": "Navigation / Automations",
+          "type": "INSTANCE",
+          "w": 72,
+          "h": 64
+        },
+        {
+          "id": "4019:3164",
+          "name": "Navigation / Flexible spacer",
+          "type": "FRAME",
+          "w": 72,
+          "h": 352
+        },
+        {
+          "id": "4019:3165",
+          "name": "Navigation / Settings",
+          "type": "FRAME",
+          "w": 72,
+          "h": 64
+        },
+        {
+          "id": "4019:3172",
+          "name": "Account / Carla Rivas",
+          "type": "FRAME",
+          "w": 72,
+          "h": 64
+        }
+      ]
+    },
+    {
+      "id": "4019:3158",
+      "name": "Navigation / Dashboard",
+      "type": "INSTANCE",
+      "w": 72,
+      "h": 64,
+      "x": 8,
+      "y": 0,
+      "layout": "VERTICAL",
+      "children": [
+        {
+          "id": "I4019:3158;4007:93",
+          "name": "Navigation / Dashboard / Lucide / layout-dashboard",
+          "type": "FRAME",
+          "w": 20,
+          "h": 20
+        },
+        {
+          "id": "I4019:3158;4007:98",
+          "name": "Navigation / Dashboard / Label",
+          "type": "TEXT",
+          "w": 62,
+          "h": 16
+        }
+      ]
+    },
+    {
+      "id": "4019:3159",
+      "name": "Navigation / Findings",
+      "type": "INSTANCE",
+      "w": 72,
+      "h": 64,
+      "x": 8,
+      "y": 72,
+      "layout": "VERTICAL",
+      "children": [
+        {
+          "id": "I4019:3159;4007:108",
+          "name": "Navigation / Findings / Lucide / shield-alert",
+          "type": "FRAME",
+          "w": 20,
+          "h": 20
+        },
+        {
+          "id": "I4019:3159;4007:112",
+          "name": "Navigation / Findings / Label",
+          "type": "TEXT",
+          "w": 48,
+          "h": 16
+        }
+      ]
+    },
+    {
+      "id": "4019:3160",
+      "name": "Navigation / Cases",
+      "type": "INSTANCE",
+      "w": 72,
+      "h": 64,
+      "x": 8,
+      "y": 144,
+      "layout": "VERTICAL",
+      "children": [
+        {
+          "id": "I4019:3160;4007:121",
+          "name": "Navigation / Cases / Lucide / folder-search",
+          "type": "FRAME",
+          "w": 20,
+          "h": 20
+        },
+        {
+          "id": "I4019:3160;4007:125",
+          "name": "Navigation / Cases / Label",
+          "type": "TEXT",
+          "w": 35,
+          "h": 16
+        }
+      ]
+    },
+    {
+      "id": "4019:3161",
+      "name": "Navigation / Accounts",
+      "type": "INSTANCE",
+      "w": 72,
+      "h": 64,
+      "x": 8,
+      "y": 216,
+      "layout": "VERTICAL",
+      "children": [
+        {
+          "id": "I4019:3161;4007:134",
+          "name": "Navigation / Accounts / Lucide / landmark",
+          "type": "FRAME",
+          "w": 20,
+          "h": 20
+        },
+        {
+          "id": "I4019:3161;4007:141",
+          "name": "Navigation / Accounts / Label",
+          "type": "TEXT",
+          "w": 54,
+          "h": 16
+        }
+      ]
+    },
+    {
+      "id": "4019:3162",
+      "name": "Navigation / Actors",
+      "type": "INSTANCE",
+      "w": 72,
+      "h": 64,
+      "x": 8,
+      "y": 288,
+      "layout": "VERTICAL",
+      "children": [
+        {
+          "id": "I4019:3162;4007:153",
+          "name": "Navigation / Actors / Lucide / users",
+          "type": "FRAME",
+          "w": 20,
+          "h": 20
+        },
+        {
+          "id": "I4019:3162;4007:158",
+          "name": "Navigation / Actors / Label",
+          "type": "TEXT",
+          "w": 37,
+          "h": 16
+        }
+      ]
+    },
+    {
+      "id": "4019:3163",
+      "name": "Navigation / Automations",
+      "type": "INSTANCE",
+      "w": 72,
+      "h": 64,
+      "x": 8,
+      "y": 360,
+      "layout": "VERTICAL",
+      "children": [
+        {
+          "id": "I4019:3163;4007:168",
+          "name": "Navigation / Automations / Lucide / bot",
+          "type": "FRAME",
+          "w": 20,
+          "h": 20
+        },
+        {
+          "id": "I4019:3163;4007:175",
+          "name": "Navigation / Automations / Label",
+          "type": "TEXT",
+          "w": 72,
+          "h": 16
+        }
+      ]
+    },
+    {
+      "id": "4019:3164",
+      "name": "Navigation / Flexible spacer",
+      "type": "FRAME",
+      "w": 72,
+      "h": 352,
+      "x": 8,
+      "y": 432,
+      "layout": "VERTICAL",
+      "children": []
+    },
+    {
+      "id": "4019:3165",
+      "name": "Navigation / Settings",
+      "type": "FRAME",
+      "w": 72,
+      "h": 64,
+      "x": 8,
+      "y": 792,
+      "layout": "VERTICAL",
+      "children": [
+        {
+          "id": "4019:3166",
+          "name": "Navigation / Settings / Lucide / settings-2",
+          "type": "FRAME",
+          "w": 20,
+          "h": 20
+        },
+        {
+          "id": "4019:3171",
+          "name": "Navigation / Settings / Label",
+          "type": "TEXT",
+          "w": 48,
+          "h": 16
+        }
+      ]
+    },
+    {
+      "id": "4019:3166",
+      "name": "Navigation / Settings / Lucide / settings-2",
+      "type": "FRAME",
+      "w": 20,
+      "h": 20,
+      "x": 26,
+      "y": 12,
+      "layout": "NONE",
+      "children": [
+        {
+          "id": "4019:3167",
+          "name": "Navigation / Settings / settings-2 / Path 1",
+          "type": "VECTOR",
+          "w": 7.5,
+          "h": 0
+        },
+        {
+          "id": "4019:3168",
+          "name": "Navigation / Settings / settings-2 / Path 2",
+          "type": "VECTOR",
+          "w": 7.5,
+          "h": 0
+        },
+        {
+          "id": "4019:3169",
+          "name": "Navigation / Settings / settings-2 / Path 3",
+          "type": "VECTOR",
+          "w": 5,
+          "h": 5
+        },
+        {
+          "id": "4019:3170",
+          "name": "Navigation / Settings / settings-2 / Path 4",
+          "type": "VECTOR",
+          "w": 5,
+          "h": 5
+        }
+      ]
+    },
+    {
+      "id": "4019:3171",
+      "name": "Navigation / Settings / Label",
+      "type": "TEXT",
+      "w": 48,
+      "h": 16,
+      "x": 12,
+      "y": 36,
+      "text": "Settings"
+    },
+    {
+      "id": "4019:3172",
+      "name": "Account / Carla Rivas",
+      "type": "FRAME",
+      "w": 72,
+      "h": 64,
+      "x": 8,
+      "y": 864,
+      "layout": "VERTICAL",
+      "children": [
+        {
+          "id": "4019:3173",
+          "name": "Account / Profile photo",
+          "type": "ELLIPSE",
+          "w": 32,
+          "h": 32
+        },
+        {
+          "id": "4019:3174",
+          "name": "Account / Profile / Label",
+          "type": "TEXT",
+          "w": 30,
+          "h": 16
+        }
+      ]
+    },
+    {
+      "id": "4019:3174",
+      "name": "Account / Profile / Label",
+      "type": "TEXT",
+      "w": 30,
+      "h": 16,
+      "x": 21,
+      "y": 42,
+      "text": "Carla"
+    },
+    {
+      "id": "4019:3150",
+      "name": "Ask Dusk / Workspace",
+      "type": "FRAME",
+      "w": 1304,
+      "h": 1008,
+      "x": 120,
+      "y": 16,
+      "layout": "VERTICAL",
+      "children": [
+        {
+          "id": "4019:3151",
+          "name": "Ask Dusk / Workspace actions",
+          "type": "FRAME",
+          "w": 1304,
+          "h": 48
+        },
+        {
+          "id": "4019:3152",
+          "name": "MessageScroller / Viewport",
+          "type": "FRAME",
+          "w": 1304,
+          "h": 816
+        },
+        {
+          "id": "4019:3088",
+          "name": "InputGroup / Composer dock",
+          "type": "FRAME",
+          "w": 1120,
+          "h": 144
+        }
+      ]
+    },
+    {
+      "id": "4019:3151",
+      "name": "Ask Dusk / Workspace actions",
+      "type": "FRAME",
+      "w": 1304,
+      "h": 48,
+      "x": 0,
+      "y": 0,
+      "layout": "HORIZONTAL",
+      "children": [
+        {
+          "id": "4025:1863",
+          "name": "Button / Back to dashboard",
+          "type": "INSTANCE",
+          "w": 176,
+          "h": 32
+        }
+      ]
+    },
+    {
+      "id": "4025:1863",
+      "name": "Button / Back to dashboard",
+      "type": "INSTANCE",
+      "w": 176,
+      "h": 32,
+      "x": 0,
+      "y": 8,
+      "layout": "HORIZONTAL",
+      "children": [
+        {
+          "id": "I4025:1863;4025:1860",
+          "name": "Lucide / arrow-left",
+          "type": "FRAME",
+          "w": 16,
+          "h": 16
+        },
+        {
+          "id": "I4025:1863;4025:1862",
+          "name": "Label",
+          "type": "TEXT",
+          "w": 128,
+          "h": 20
+        }
+      ]
+    },
+    {
+      "id": "4019:3152",
+      "name": "MessageScroller / Viewport",
+      "type": "FRAME",
+      "w": 1304,
+      "h": 816,
+      "x": 0,
+      "y": 48,
+      "layout": "VERTICAL",
+      "children": [
+        {
+          "id": "4019:2917",
+          "name": "MessageScroller / Content",
+          "type": "FRAME",
+          "w": 1120,
+          "h": 780
+        }
+      ]
+    },
+    {
+      "id": "4019:2917",
+      "name": "MessageScroller / Content",
+      "type": "FRAME",
+      "w": 1120,
+      "h": 780,
+      "x": 92,
+      "y": 0,
+      "layout": "VERTICAL",
+      "children": [
+        {
+          "id": "4019:2918",
+          "name": "Message / align=end",
+          "type": "FRAME",
+          "w": 1120,
+          "h": 36
+        },
+        {
+          "id": "4019:2921",
+          "name": "Message / align=start / MessageContent",
+          "type": "FRAME",
+          "w": 1120,
+          "h": 696
+        }
+      ]
+    },
+    {
+      "id": "4019:2918",
+      "name": "Message / align=end",
+      "type": "FRAME",
+      "w": 1120,
+      "h": 36,
+      "x": 0,
+      "y": 8,
+      "layout": "VERTICAL",
+      "children": [
+        {
+          "id": "4019:3215",
+          "name": "Bubble / secondary",
+          "type": "INSTANCE",
+          "w": 380,
+          "h": 36
+        }
+      ]
+    },
+    {
+      "id": "4019:3215",
+      "name": "Bubble / secondary",
+      "type": "INSTANCE",
+      "w": 380,
+      "h": 36,
+      "x": 740,
+      "y": 0,
+      "layout": "VERTICAL",
+      "children": [
+        {
+          "id": "I4019:3215;4019:2920",
+          "name": "Question",
+          "type": "TEXT",
+          "w": 356,
+          "h": 20
+        }
+      ]
+    },
+    {
+      "id": "4019:2921",
+      "name": "Message / align=start / MessageContent",
+      "type": "FRAME",
+      "w": 1120,
+      "h": 696,
+      "x": 0,
+      "y": 68,
+      "layout": "VERTICAL",
+      "children": [
+        {
+          "id": "4025:1780",
+          "name": "MessageContent / Payment-chain answer",
+          "type": "INSTANCE",
+          "w": 1120,
+          "h": 696
+        }
+      ]
+    },
+    {
+      "id": "4025:1780",
+      "name": "MessageContent / Payment-chain answer",
+      "type": "INSTANCE",
+      "w": 1120,
+      "h": 696,
+      "x": 0,
+      "y": 0,
+      "layout": "VERTICAL",
+      "children": [
+        {
+          "id": "I4025:1780;4025:1621",
+          "name": "Bubble / ghost / Direct answer",
+          "type": "INSTANCE",
+          "w": 1120,
+          "h": 92
+        },
+        {
+          "id": "I4025:1780;4025:1646",
+          "name": "Linked actors and accounts",
+          "type": "INSTANCE",
+          "w": 1120,
+          "h": 74
+        },
+        {
+          "id": "I4025:1780;4025:1706",
+          "name": "Recorded event chain",
+          "type": "INSTANCE",
+          "w": 1120,
+          "h": 254
+        },
+        {
+          "id": "I4025:1780;4025:1756",
+          "name": "Interpretation and uncertainty",
+          "type": "INSTANCE",
+          "w": 1120,
+          "h": 102
+        },
+        {
+          "id": "I4025:1780;4025:1772",
+          "name": "Suggested safeguard",
+          "type": "INSTANCE",
+          "w": 1122,
+          "h": 78
+        }
+      ]
+    },
+    {
+      "id": "4019:3088",
+      "name": "InputGroup / Composer dock",
+      "type": "FRAME",
+      "w": 1120,
+      "h": 144,
+      "x": 92,
+      "y": 864,
+      "layout": "VERTICAL",
+      "children": [
+        {
+          "id": "4025:1887",
+          "name": "Composer / Blank with suggested questions",
+          "type": "INSTANCE",
+          "w": 1120,
+          "h": 118
+        }
+      ]
+    },
+    {
+      "id": "4025:1887",
+      "name": "Composer / Blank with suggested questions",
+      "type": "INSTANCE",
+      "w": 1120,
+      "h": 118,
+      "x": 0,
+      "y": 16,
+      "layout": "VERTICAL",
+      "children": [
+        {
+          "id": "I4025:1887;4025:1869",
+          "name": "Suggested questions",
+          "type": "FRAME",
+          "w": 508,
+          "h": 32
+        },
+        {
+          "id": "I4025:1887;4025:1880",
+          "name": "InputGroup / Empty composer",
+          "type": "INSTANCE",
+          "w": 1062,
+          "h": 74
+        }
+      ]
+    }
+  ],
+  "components": [
+    {
+      "id": "4007:78",
+      "name": "Dusk / Button / outline / Icon and label",
+      "properties": {
+        "Label#4007:0": {
+          "type": "TEXT",
+          "defaultValue": "Last 7 days"
+        }
+      }
+    },
+    {
+      "id": "4007:99",
+      "name": "Dusk / Nav item / Dashboard",
+      "properties": {}
+    },
+    {
+      "id": "4007:113",
+      "name": "Dusk / Nav item / Findings",
+      "properties": {}
+    },
+    {
+      "id": "4007:126",
+      "name": "Dusk / Nav item / Cases",
+      "properties": {}
+    },
+    {
+      "id": "4007:142",
+      "name": "Dusk / Nav item / Accounts",
+      "properties": {}
+    },
+    {
+      "id": "4007:159",
+      "name": "Dusk / Nav item / Actors",
+      "properties": {}
+    },
+    {
+      "id": "4007:176",
+      "name": "Dusk / Nav item / Automations",
+      "properties": {}
+    },
+    {
+      "id": "4008:205",
+      "name": "Dusk / CardHeader",
+      "properties": {
+        "Title#4008:1": {
+          "type": "TEXT",
+          "defaultValue": "Widget title"
+        }
+      }
+    },
+    {
+      "id": "4008:268",
+      "name": "Dusk / Badge / fraud",
+      "properties": {
+        "Label#4008:2": {
+          "type": "TEXT",
+          "defaultValue": "High risk"
+        }
+      }
+    },
+    {
+      "id": "4008:289",
+      "name": "Dusk / Widget content / Risk posture / Card",
+      "properties": {}
+    },
+    {
+      "id": "4008:370",
+      "name": "Dusk / Card",
+      "properties": {}
+    },
+    {
+      "id": "4008:483",
+      "name": "Dusk / TableRow / Findings",
+      "properties": {
+        "Cell 0 Primary#4008:3": {
+          "type": "TEXT",
+          "defaultValue": "Transfers to an unregistered personal account"
+        },
+        "Cell 0 Secondary#4008:4": {
+          "type": "TEXT",
+          "defaultValue": "FND-1042 · 3 linked events · Tue 09:12"
+        },
+        "Cell 1 Primary#4008:5": {
+          "type": "TEXT",
+          "defaultValue": "D. Marek"
+        },
+        "Cell 1 Secondary#4008:6": {
+          "type": "TEXT",
+          "defaultValue": "Employee · Finance"
+        },
+        "Cell 3 Primary#4008:7": {
+          "type": "TEXT",
+          "defaultValue": "91%"
+        },
+        "Cell 4 Primary#4008:8": {
+          "type": "TEXT",
+          "defaultValue": ""
+        }
+      }
+    },
+    {
+      "id": "4008:527",
+      "name": "Dusk / Badge / warning",
+      "properties": {
+        "Label#4008:9": {
+          "type": "TEXT",
+          "defaultValue": "Suspicious"
+        }
+      }
+    },
+    {
+      "id": "4008:603",
+      "name": "Dusk / Badge / legitimate",
+      "properties": {
+        "Label#4008:10": {
+          "type": "TEXT",
+          "defaultValue": "Legitimate"
+        }
+      }
+    },
+    {
+      "id": "4008:617",
+      "name": "Dusk / Widget content / Priority findings / Card",
+      "properties": {}
+    },
+    {
+      "id": "4008:843",
+      "name": "Dusk / Widget content / Value tiers / Card",
+      "properties": {}
+    },
+    {
+      "id": "4008:995",
+      "name": "Dusk / TableRow / Accounts",
+      "properties": {
+        "Cell 0 Primary#4008:12": {
+          "type": "TEXT",
+          "defaultValue": "Settlement API Credentials"
+        },
+        "Cell 0 Secondary#4008:13": {
+          "type": "TEXT",
+          "defaultValue": "Secrets and API keys · 000"
+        },
+        "Cell 2 Primary#4008:14": {
+          "type": "TEXT",
+          "defaultValue": "Exposed credential"
+        },
+        "Cell 2 Secondary#4008:15": {
+          "type": "TEXT",
+          "defaultValue": "Service account access"
+        },
+        "Cell 4 Primary#4008:16": {
+          "type": "TEXT",
+          "defaultValue": ""
+        }
+      }
+    },
+    {
+      "id": "4008:980",
+      "name": "Dusk / Badge / muted",
+      "properties": {
+        "Label#4008:11": {
+          "type": "TEXT",
+          "defaultValue": "Critical"
+        }
+      }
+    },
+    {
+      "id": "4008:1147",
+      "name": "Dusk / Widget content / Critical accounts / Card",
+      "properties": {}
+    },
+    {
+      "id": "4008:1381",
+      "name": "Dusk / TableRow / Activity paths",
+      "properties": {
+        "Cell 0 Primary#4008:17": {
+          "type": "TEXT",
+          "defaultValue": "Employees"
+        },
+        "Cell 0 Secondary#4008:18": {
+          "type": "TEXT",
+          "defaultValue": "D. Marek · C. Rivas"
+        },
+        "Cell 1 Primary#4008:19": {
+          "type": "TEXT",
+          "defaultValue": "Critical payroll"
+        },
+        "Cell 1 Secondary#4008:20": {
+          "type": "TEXT",
+          "defaultValue": "Comp & Equity · Payroll Master EU"
+        },
+        "Cell 2 Primary#4008:21": {
+          "type": "TEXT",
+          "defaultValue": "3 events"
+        },
+        "Cell 2 Secondary#4008:22": {
+          "type": "TEXT",
+          "defaultValue": "Access, transfer and approval"
+        },
+        "Cell 3 Secondary#4008:23": {
+          "type": "TEXT",
+          "defaultValue": "1 legitimate"
+        },
+        "Cell 4 Primary#4008:24": {
+          "type": "TEXT",
+          "defaultValue": ""
+        }
+      }
+    },
+    {
+      "id": "4008:1515",
+      "name": "Dusk / Widget content / Flow intelligence / Card",
+      "properties": {}
+    },
+    {
+      "id": "4008:1738",
+      "name": "Dusk / TableRow / Actors",
+      "properties": {
+        "Cell 0 Primary#4008:25": {
+          "type": "TEXT",
+          "defaultValue": "D. Marek"
+        },
+        "Cell 0 Secondary#4008:26": {
+          "type": "TEXT",
+          "defaultValue": "Employee · Finance"
+        },
+        "Cell 1 Primary#4008:27": {
+          "type": "TEXT",
+          "defaultValue": "Dormant privileges activated"
+        },
+        "Cell 1 Secondary#4008:28": {
+          "type": "TEXT",
+          "defaultValue": "Notice period · 12× normal volume"
+        },
+        "Cell 3 Primary#4008:29": {
+          "type": "TEXT",
+          "defaultValue": ""
+        }
+      }
+    },
+    {
+      "id": "4008:1850",
+      "name": "Dusk / Widget content / Anomalous actors / Card",
+      "properties": {}
+    },
+    {
+      "id": "4008:2076",
+      "name": "Dusk / Widget content / Automation exposure / Card",
+      "properties": {}
+    },
+    {
+      "id": "4008:2230",
+      "name": "Dusk / TableRow / Signals",
+      "properties": {
+        "Cell 0 Primary#4008:30": {
+          "type": "TEXT",
+          "defaultValue": "Wed"
+        },
+        "Cell 0 Secondary#4008:31": {
+          "type": "TEXT",
+          "defaultValue": "03:20"
+        },
+        "Cell 1 Primary#4008:32": {
+          "type": "TEXT",
+          "defaultValue": "Treasury activity flagged"
+        },
+        "Cell 1 Secondary#4008:33": {
+          "type": "TEXT",
+          "defaultValue": "FND-1043 · agent-treasury"
+        },
+        "Cell 3 Primary#4008:34": {
+          "type": "TEXT",
+          "defaultValue": ""
+        }
+      }
+    },
+    {
+      "id": "4008:2342",
+      "name": "Dusk / Widget content / Recent activity / Card",
+      "properties": {}
+    },
+    {
+      "id": "4008:2544",
+      "name": "Dusk / TableRow / Investigations",
+      "properties": {
+        "Cell 0 Primary#4008:35": {
+          "type": "TEXT",
+          "defaultValue": "Marek payment chain"
+        },
+        "Cell 0 Secondary#4008:36": {
+          "type": "TEXT",
+          "defaultValue": "INV-204 · 3 events · Critical"
+        },
+        "Cell 1 Primary#4008:37": {
+          "type": "TEXT",
+          "defaultValue": "Carla Rivas"
+        },
+        "Cell 1 Secondary#4008:38": {
+          "type": "TEXT",
+          "defaultValue": "Updated 22:12"
+        },
+        "Cell 3 Primary#4008:39": {
+          "type": "TEXT",
+          "defaultValue": ""
+        }
+      }
+    },
+    {
+      "id": "4008:2658",
+      "name": "Dusk / Widget content / Investigations / Card",
+      "properties": {}
+    },
+    {
+      "id": "4019:3214",
+      "name": "Dusk / Bubble / secondary",
+      "properties": {
+        "Message#4019:40": {
+          "type": "TEXT",
+          "defaultValue": "What happened in the D. Marek payment chain?"
+        }
+      }
+    },
+    {
+      "id": "4025:1454",
+      "name": "Dusk / Button / outline / Ask Dusk",
+      "properties": {
+        "Label#4025:0": {
+          "type": "TEXT",
+          "defaultValue": "View details"
+        }
+      }
+    },
+    {
+      "id": "4025:1458",
+      "name": "Dusk / Button / ghost / Ask Dusk",
+      "properties": {
+        "Label#4025:1": {
+          "type": "TEXT",
+          "defaultValue": "View details"
+        }
+      }
+    },
+    {
+      "id": "4025:1462",
+      "name": "Dusk / CardHeader / Event",
+      "properties": {
+        "Time#4025:2": {
+          "type": "TEXT",
+          "defaultValue": "Tuesday · 09:12"
+        },
+        "Title#4025:3": {
+          "type": "TEXT",
+          "defaultValue": "Dormant authority used"
+        }
+      }
+    },
+    {
+      "id": "4025:1465",
+      "name": "Dusk / CardContent / Event",
+      "properties": {
+        "Entity#4025:4": {
+          "type": "TEXT",
+          "defaultValue": "D. Marek → 14 Critical accounts"
+        },
+        "Fact#4025:5": {
+          "type": "TEXT",
+          "defaultValue": "Dormant approval authority accessed 14 finance accounts in 20 minutes, at 12× normal activity."
+        }
+      }
+    },
+    {
+      "id": "4025:1468",
+      "name": "Dusk / CardFooter / Event",
+      "properties": {}
+    },
+    {
+      "id": "4025:1473",
+      "name": "Dusk / Card / Recorded event",
+      "properties": {}
+    },
+    {
+      "id": "4025:1485",
+      "name": "Dusk / Card / Linked entity",
+      "properties": {
+        "Title#4025:6": {
+          "type": "TEXT",
+          "defaultValue": "D. Marek"
+        },
+        "Description#4025:7": {
+          "type": "TEXT",
+          "defaultValue": "Finance analyst · Day 9 of 30-day notice"
+        }
+      }
+    },
+    {
+      "id": "4025:1490",
+      "name": "Dusk / Card / Assessment context",
+      "properties": {
+        "Title#4025:8": {
+          "type": "TEXT",
+          "defaultValue": "What remains unverified"
+        },
+        "Description#4025:9": {
+          "type": "TEXT",
+          "defaultValue": "The person behind the sessions and the beneficiary’s relationship to Marek are not established."
+        }
+      }
+    },
+    {
+      "id": "4025:1493",
+      "name": "Dusk / Dialog / Investigation detail",
+      "properties": {
+        "Category#4025:10": {
+          "type": "TEXT",
+          "defaultValue": "Recorded event"
+        },
+        "Title#4025:11": {
+          "type": "TEXT",
+          "defaultValue": "Dormant authority used"
+        },
+        "Record#4025:12": {
+          "type": "TEXT",
+          "defaultValue": "Tuesday · 09:12"
+        },
+        "Detail#4025:13": {
+          "type": "TEXT",
+          "defaultValue": "Recorded activity"
+        },
+        "Context#4025:14": {
+          "type": "TEXT",
+          "defaultValue": "Supporting context"
+        },
+        "Limits#4025:15": {
+          "type": "TEXT",
+          "defaultValue": "What this does not establish"
+        }
+      }
+    },
+    {
+      "id": "4025:1505",
+      "name": "Dusk / Textarea / Empty",
+      "properties": {
+        "Placeholder#4025:16": {
+          "type": "TEXT",
+          "defaultValue": "Ask a follow-up…"
+        }
+      }
+    },
+    {
+      "id": "4025:1507",
+      "name": "Dusk / InputGroupButton / Send / Disabled",
+      "properties": {}
+    },
+    {
+      "id": "4025:1511",
+      "name": "Dusk / InputGroup / Empty composer",
+      "properties": {}
+    },
+    {
+      "id": "4025:1614",
+      "name": "Dusk / MessageContent / Payment-chain answer",
+      "properties": {}
+    },
+    {
+      "id": "4025:1615",
+      "name": "Dusk / Bubble / ghost / Factual answer",
+      "properties": {
+        "Answer#4025:17": {
+          "type": "TEXT",
+          "defaultValue": "Dormant approval access was used to reach payroll accounts, route two transfers to an unregistered personal account, and withdraw the funds later that day."
+        }
+      }
+    },
+    {
+      "id": "4025:1627",
+      "name": "Dusk / MessageContent / Linked actors and accounts",
+      "properties": {}
+    },
+    {
+      "id": "4025:1662",
+      "name": "Dusk / MessageContent / Recorded event chain",
+      "properties": {}
+    },
+    {
+      "id": "4025:1747",
+      "name": "Dusk / MessageContent / Interpretation and uncertainty",
+      "properties": {}
+    },
+    {
+      "id": "4025:1763",
+      "name": "Dusk / Card / Suggested safeguard",
+      "properties": {}
+    },
+    {
+      "id": "4025:1859",
+      "name": "Dusk / Button / ghost / Back to dashboard",
+      "properties": {}
+    },
+    {
+      "id": "4025:1868",
+      "name": "Dusk / MessageContent / Composer dock",
+      "properties": {}
+    }
+  ],
+  "vars": [
+    {
+      "id": "VariableID:4003:184",
+      "name": "color/background",
+      "value": {
+        "4003:0": {
+          "r": 0.0470588244497776,
+          "g": 0.05882352963089943,
+          "b": 0.054901961237192154,
+          "a": 1
+        }
+      }
+    },
+    {
+      "id": "VariableID:4003:185",
+      "name": "color/surface",
+      "value": {
+        "4003:0": {
+          "r": 0.0784313753247261,
+          "g": 0.09803921729326248,
+          "b": 0.09019608050584793,
+          "a": 1
+        }
+      }
+    },
+    {
+      "id": "VariableID:4003:186",
+      "name": "color/text",
+      "value": {
+        "4003:0": {
+          "r": 0.9450980424880981,
+          "g": 0.9607843160629272,
+          "b": 0.9490196108818054,
+          "a": 1
+        }
+      }
+    },
+    {
+      "id": "VariableID:4003:187",
+      "name": "color/muted",
+      "value": {
+        "4003:0": {
+          "r": 0.6392157077789307,
+          "g": 0.6823529601097107,
+          "b": 0.6549019813537598,
+          "a": 1
+        }
+      }
+    },
+    {
+      "id": "VariableID:4003:188",
+      "name": "color/border",
+      "value": {
+        "4003:0": {
+          "r": 0.1725490242242813,
+          "g": 0.21960784494876862,
+          "b": 0.1921568661928177,
+          "a": 1
+        }
+      }
+    },
+    {
+      "id": "VariableID:4003:189",
+      "name": "color/accent",
+      "value": {
+        "4003:0": {
+          "r": 0.7176470756530762,
+          "g": 0.9686274528503418,
+          "b": 0.41960784792900085,
+          "a": 1
+        }
+      }
+    },
+    {
+      "id": "VariableID:4003:190",
+      "name": "color/fraud",
+      "value": {
+        "4003:0": {
+          "r": 1,
+          "g": 0.545098066329956,
+          "b": 0.529411792755127,
+          "a": 1
+        }
+      }
+    },
+    {
+      "id": "VariableID:4003:191",
+      "name": "color/warning",
+      "value": {
+        "4003:0": {
+          "r": 0.9137254953384399,
+          "g": 0.7333333492279053,
+          "b": 0.45098039507865906,
+          "a": 1
+        }
+      }
+    },
+    {
+      "id": "VariableID:4004:2",
+      "name": "space/4",
+      "value": {
+        "4003:0": 4
+      }
+    },
+    {
+      "id": "VariableID:4004:3",
+      "name": "space/8",
+      "value": {
+        "4003:0": 8
+      }
+    },
+    {
+      "id": "VariableID:4004:4",
+      "name": "space/12",
+      "value": {
+        "4003:0": 12
+      }
+    },
+    {
+      "id": "VariableID:4004:5",
+      "name": "space/16",
+      "value": {
+        "4003:0": 16
+      }
+    },
+    {
+      "id": "VariableID:4004:6",
+      "name": "space/24",
+      "value": {
+        "4003:0": 24
+      }
+    },
+    {
+      "id": "VariableID:4004:7",
+      "name": "space/28",
+      "value": {
+        "4003:0": 28
+      }
+    },
+    {
+      "id": "VariableID:4004:8",
+      "name": "space/32",
+      "value": {
+        "4003:0": 32
+      }
+    },
+    {
+      "id": "VariableID:4004:9",
+      "name": "radius/8",
+      "value": {
+        "4003:0": 8
+      }
+    },
+    {
+      "id": "VariableID:4004:10",
+      "name": "radius/12",
+      "value": {
+        "4003:0": 12
+      }
+    },
+    {
+      "id": "VariableID:4004:11",
+      "name": "color/legitimate",
+      "value": {
+        "4003:0": {
+          "r": 0.45490196347236633,
+          "g": 0.8039215803146362,
+          "b": 0.6627451181411743,
+          "a": 1
+        }
+      }
+    },
+    {
+      "id": "VariableID:4001:60",
+      "name": "color/accent-soft",
+      "value": {
+        "4003:0": {
+          "r": 0.14509804546833038,
+          "g": 0.21176470816135406,
+          "b": 0.13333334028720856,
+          "a": 1
+        }
+      }
+    },
+    {
+      "id": "VariableID:4001:61",
+      "name": "color/chart-strong",
+      "value": {
+        "4003:0": {
+          "r": 0.5529412031173706,
+          "g": 0.6549019813537598,
+          "b": 0.5960784554481506,
+          "a": 1
+        }
+      }
+    },
+    {
+      "id": "VariableID:4001:62",
+      "name": "color/chart-quiet",
+      "value": {
+        "4003:0": {
+          "r": 0.32549020648002625,
+          "g": 0.41960784792900085,
+          "b": 0.3686274588108063,
+          "a": 1
+        }
+      }
+    },
+    {
+      "id": "VariableID:4007:26",
+      "name": "color/inset",
+      "value": {
+        "4003:0": {
+          "r": 0.062745101749897,
+          "g": 0.0784313753247261,
+          "b": 0.06666667014360428,
+          "a": 1
+        }
+      }
+    },
+    {
+      "id": "VariableID:4007:27",
+      "name": "color/raised",
+      "value": {
+        "4003:0": {
+          "r": 0.11372549086809158,
+          "g": 0.14509804546833038,
+          "b": 0.125490203499794,
+          "a": 1
+        }
+      }
+    },
+    {
+      "id": "VariableID:4007:28",
+      "name": "color/quiet",
+      "value": {
+        "4003:0": {
+          "r": 0.4431372582912445,
+          "g": 0.501960813999176,
+          "b": 0.47058823704719543,
+          "a": 1
+        }
+      }
+    },
+    {
+      "id": "VariableID:4007:29",
+      "name": "color/fraud-soft",
+      "value": {
+        "4003:0": {
+          "r": 0.21960784494876862,
+          "g": 0.13725490868091583,
+          "b": 0.13333334028720856,
+          "a": 1
+        }
+      }
+    },
+    {
+      "id": "VariableID:4007:30",
+      "name": "color/warning-soft",
+      "value": {
+        "4003:0": {
+          "r": 0.2078431397676468,
+          "g": 0.1764705926179886,
+          "b": 0.125490203499794,
+          "a": 1
+        }
+      }
+    },
+    {
+      "id": "VariableID:4007:31",
+      "name": "color/legitimate-soft",
+      "value": {
+        "4003:0": {
+          "r": 0.11372549086809158,
+          "g": 0.20000000298023224,
+          "b": 0.16470588743686676,
+          "a": 1
+        }
+      }
+    },
+    {
+      "id": "VariableID:4007:32",
+      "name": "color/chart",
+      "value": {
+        "4003:0": {
+          "r": 0.7176470756530762,
+          "g": 0.9686274528503418,
+          "b": 0.41960784792900085,
+          "a": 1
+        }
+      }
+    },
+    {
+      "id": "VariableID:4007:33",
+      "name": "space/0",
+      "value": {
+        "4003:0": 0
+      }
+    },
+    {
+      "id": "VariableID:4007:34",
+      "name": "space/40",
+      "value": {
+        "4003:0": 40
+      }
+    },
+    {
+      "id": "VariableID:4007:35",
+      "name": "space/48",
+      "value": {
+        "4003:0": 48
+      }
+    },
+    {
+      "id": "VariableID:4007:36",
+      "name": "space/64",
+      "value": {
+        "4003:0": 64
+      }
+    },
+    {
+      "id": "VariableID:4007:37",
+      "name": "radius/16",
+      "value": {
+        "4003:0": 16
+      }
+    }
+  ],
+  "styles": [
+    {
+      "id": "S:ba2b747e66d254662b133cc03be1941b44072a62,",
+      "name": "Dusk / Section",
+      "font": {
+        "family": "Inter",
+        "style": "Semi Bold",
+        "variationSettings": {
+          "slnt": 0,
+          "wght": 600
+        }
+      },
+      "size": 18
+    },
+    {
+      "id": "S:8f8e4b197e6cb235c13ed502506d7691924b0d38,",
+      "name": "Dusk / Body",
+      "font": {
+        "family": "Inter",
+        "style": "Regular",
+        "variationSettings": {
+          "slnt": 0,
+          "wght": 400
+        }
+      },
+      "size": 14
+    },
+    {
+      "id": "S:36d1a28378a5e3d97b5a75f325240f94a08f9718,",
+      "name": "Dusk / Label",
+      "font": {
+        "family": "Inter",
+        "style": "Medium",
+        "variationSettings": {
+          "slnt": 0,
+          "wght": 500
+        }
+      },
+      "size": 14
+    },
+    {
+      "id": "S:433ac9a27a5dde9c78e85ef8ee8e28fa6bb2eeb3,",
+      "name": "Dusk / Metadata",
+      "font": {
+        "family": "Inter",
+        "style": "Regular",
+        "variationSettings": {
+          "slnt": 0,
+          "wght": 400
+        }
+      },
+      "size": 12
+    },
+    {
+      "id": "S:7f8a336b5bf3a15668248c3a5da6eff6da7876f7,",
+      "name": "Dusk / Caption",
+      "font": {
+        "family": "Inter",
+        "style": "Regular",
+        "variationSettings": {
+          "slnt": 0,
+          "wght": 400
+        }
+      },
+      "size": 11
+    },
+    {
+      "id": "S:3115538617fdb6306948a75d52d6ffd19f8f0586,",
+      "name": "Dusk / 14 / Regular",
+      "font": {
+        "family": "Geist",
+        "style": "Regular",
+        "variationSettings": {
+          "wght": 400
+        }
+      },
+      "size": 14
+    },
+    {
+      "id": "S:71a76378186aab09d8bc029d729fffc9f9aec8b1,",
+      "name": "Dusk / 14 / Medium",
+      "font": {
+        "family": "Geist",
+        "style": "Medium",
+        "variationSettings": {
+          "wght": 500
+        }
+      },
+      "size": 14
+    },
+    {
+      "id": "S:5f9199eff4b40c2686d8ee077b8ddd2d5fcdbfb7,",
+      "name": "Dusk / 12 / Regular",
+      "font": {
+        "family": "Geist",
+        "style": "Regular",
+        "variationSettings": {
+          "wght": 400
+        }
+      },
+      "size": 12
+    },
+    {
+      "id": "S:0f4431e7bc92faf94678b8cf1515b7128abedbe0,",
+      "name": "Dusk / 12 / Medium",
+      "font": {
+        "family": "Geist",
+        "style": "Medium",
+        "variationSettings": {
+          "wght": 500
+        }
+      },
+      "size": 12
+    },
+    {
+      "id": "S:ba0f0f22b1e256fbb87cf81b024ea1385fa4b81e,",
+      "name": "Dusk / 16 / Medium",
+      "font": {
+        "family": "Geist",
+        "style": "Medium",
+        "variationSettings": {
+          "wght": 500
+        }
+      },
+      "size": 16
+    },
+    {
+      "id": "S:e6202e0a69cc01bf32e83a2e4dab00d29e3ea28f,",
+      "name": "Dusk / 60 / Medium",
+      "font": {
+        "family": "Geist",
+        "style": "Medium",
+        "variationSettings": {
+          "wght": 500
+        }
+      },
+      "size": 60
+    },
+    {
+      "id": "S:d4d55feeaa2854355f408ecde1c468b4d8f13867,",
+      "name": "Dusk / 24 / Medium",
+      "font": {
+        "family": "Geist",
+        "style": "Medium",
+        "variationSettings": {
+          "wght": 500
+        }
+      },
+      "size": 24
+    },
+    {
+      "id": "S:6f2a06499a6d62cf187b58ad37b7f879135456db,",
+      "name": "Dusk / 36 / Medium",
+      "font": {
+        "family": "Geist",
+        "style": "Medium",
+        "variationSettings": {
+          "wght": 500
+        }
+      },
+      "size": 36
+    }
+  ],
+  "sources": [
+    {
+      "id": "4008:1148",
+      "name": "Critical accounts / Card",
+      "text": [
+        "Accounts at risk",
+        "Account",
+        "Value",
+        "Access exposure",
+        "Risk score",
+        "",
+        "Settlement API Credentials",
+        "Secrets and API keys · 000",
+        "Critical",
+        "Exposed credential",
+        "Service account access",
+        "93 · High",
+        "FY24 Comp & Equity Payroll",
+        "PII, financial and HR · 641",
+        "Critical",
+        "2 external collaborators",
+        "Payroll and compensation",
+        "87 · High",
+        "Payroll Master — EU",
+        "PII and financial · 642",
+        "Critical",
+        "Internal access",
+        "External transfer detected",
+        "72 · High",
+        "Board Reserve — Q3",
+        "Financial and strategy · 658",
+        "High value",
+        "6 actors",
+        "Includes treasury agent",
+        "61 · Elevated",
+        "Vendor Payments 2024",
+        "PII and legal · 646",
+        "High value",
+        "3 external collaborators",
+        "Vendor payment access",
+        "55 · Elevated",
+        "Showing 5 of 7 accounts · Highest risk first",
+        "View all accounts"
+      ]
+    },
+    {
+      "id": "4008:1851",
+      "name": "Anomalous actors / Card",
+      "text": [
+        "Actors to review",
+        "Actor",
+        "Risk signal",
+        "Risk",
+        "",
+        "D. Marek",
+        "Employee · Finance",
+        "Dormant privileges activated",
+        "Notice period · 12× normal volume",
+        "88",
+        "j.doe.personal@gmail",
+        "External beneficiary",
+        "Unregistered personal account",
+        "New device and geography",
+        "81",
+        "L. Chen",
+        "External collaborator",
+        "Vendor bank details changed",
+        "New beneficiary before payout",
+        "76",
+        "svc-settle-03",
+        "Service account",
+        "Settlement scope expanded",
+        "Credential used outside policy",
+        "64",
+        "agent-treasury",
+        "AI agent",
+        "Counterparty outside baseline",
+        "Activity outside normal hours",
+        "58",
+        "5 actors require review",
+        "View all actors"
+      ]
+    },
+    {
+      "id": "4008:2659",
+      "name": "Investigations / Card",
+      "text": [
+        "Investigations",
+        "Investigation",
+        "Owner",
+        "Status",
+        "",
+        "Marek payment chain",
+        "INV-204 · 3 events · Critical",
+        "Carla Rivas",
+        "Updated 22:12",
+        "Investigating",
+        "Treasury counterparty review",
+        "INV-205 · 1 event · High",
+        "Noam Levi",
+        "Updated 03:34",
+        "Triage",
+        "Settlement credential exposure",
+        "INV-203 · 1 event · High",
+        "Carla Rivas",
+        "Updated Mon",
+        "Investigating",
+        "Vendor beneficiary change",
+        "INV-202 · 1 event · High",
+        "Maya Cohen",
+        "Updated Mon",
+        "In review",
+        "Payroll approval verification",
+        "INV-201 · 1 event · Normal",
+        "Noam Levi",
+        "Closed Mon",
+        "Closed",
+        "4 active · 1 closed",
+        "View all cases"
+      ]
+    }
+  ]
+}

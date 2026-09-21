@@ -1,0 +1,24 @@
+{
+  "date": "2026-09-10",
+  "rootId": "4003:182",
+  "size": [1440, 2525],
+  "font": "Geist",
+  "visibleLayers": 896,
+  "componentCount": 28,
+  "badNames": [],
+  "overflow": [],
+  "exerciseCopyInUI": [],
+  "wrongFonts": [],
+  "widgetIds": {
+    "posture": "4008:371",
+    "findings": "4008:618",
+    "accountValue": "4008:844",
+    "accounts": "4008:1148",
+    "activityPaths": "4008:1516",
+    "actors": "4008:1851",
+    "automation": "4008:2077",
+    "signals": "4008:2343",
+    "investigations": "4008:2659"
+  },
+  "verifiedThrough": "Native Figma plugin audit, read through Figma editor accessibility output"
+}

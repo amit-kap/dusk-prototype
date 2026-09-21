@@ -1,0 +1,1957 @@
+{
+  "status": "Ask Dusk text response audit",
+  "root": {
+    "id": "4019:2890",
+    "name": "Dusk / Ask Dusk / Marek investigation",
+    "bounds": {
+      "x": 1760,
+      "y": 80,
+      "width": 1440,
+      "height": 1040
+    }
+  },
+  "preserved": {
+    "dashboard": true,
+    "navigation": true,
+    "workspaceActionsAndBack": true,
+    "userMessage": true
+  },
+  "requiredGeometry": {
+    "root": {
+      "width": 1440,
+      "height": 1040
+    },
+    "workspace": {
+      "width": 1304,
+      "height": 1008
+    },
+    "viewport": {
+      "width": 1304,
+      "height": 816,
+      "overflowDirection": "VERTICAL",
+      "clipsContent": true
+    },
+    "body": {
+      "width": 1120,
+      "height": 1338
+    },
+    "response": {
+      "width": 1120,
+      "height": 1246
+    },
+    "composerDock": {
+      "width": 1120,
+      "height": 144,
+      "y": 864,
+      "bottom": 1008
+    }
+  },
+  "response": {
+    "singleAnswerInstance": true,
+    "answerInstanceId": "4026:2363",
+    "answerMainComponentId": "4026:2199",
+    "expectedAnswerMainComponentId": "4026:2199",
+    "answerMainMatches": true,
+    "answerHeight": 1246,
+    "viewportHeight": 816,
+    "scrollRequired": true,
+    "textCharacters": 3024
+  },
+  "fonts": {
+    "expectedFamily": "Geist",
+    "mismatches": []
+  },
+  "componentMap": [
+    {
+      "role": "Dusk / Ask Dusk text / Button / link",
+      "id": "4026:1904",
+      "name": "Dusk / Ask Dusk text / Button / link",
+      "description": "shadcn button.tsx: Button variant=link, size=default; nested Lucide arrow-right.",
+      "source": "shadcn button.tsx: Button variant=link, size=default; nested Lucide arrow-right.",
+      "properties": {
+        "Label#4026:18": {
+          "type": "TEXT",
+          "defaultValue": "View source event"
+        }
+      },
+      "width": 248,
+      "height": 24
+    },
+    {
+      "role": "Dusk / Ask Dusk text / MessageHeader / attribution",
+      "id": "4026:1909",
+      "name": "Dusk / Ask Dusk text / MessageHeader / attribution",
+      "description": "shadcn message.tsx: MessageHeader inside Message align=start.",
+      "source": "shadcn message.tsx: MessageHeader inside Message align=start.",
+      "properties": {
+        "Name#4026:19": {
+          "type": "TEXT",
+          "defaultValue": "Dusk"
+        }
+      },
+      "width": 1120,
+      "height": 20
+    },
+    {
+      "role": "Dusk / Ask Dusk text / Bubble / ghost / prose",
+      "id": "4026:1913",
+      "name": "Dusk / Ask Dusk text / Bubble / ghost / prose",
+      "description": "shadcn message.tsx MessageContent plus bubble.tsx Bubble variant=ghost and BubbleContent.",
+      "source": "shadcn message.tsx MessageContent plus bubble.tsx Bubble variant=ghost and BubbleContent.",
+      "properties": {
+        "Body#4026:20": {
+          "type": "TEXT",
+          "defaultValue": "Response text"
+        }
+      },
+      "width": 1120,
+      "height": 24
+    },
+    {
+      "role": "Dusk / Ask Dusk text / MessageContent / linked background",
+      "id": "4026:1963",
+      "name": "Dusk / Ask Dusk text / MessageContent / linked background",
+      "description": "shadcn MessageContent containing ghost prose and compact Button link instances.",
+      "source": "shadcn MessageContent containing ghost prose and compact Button link instances.",
+      "properties": {},
+      "width": 1120,
+      "height": 84
+    },
+    {
+      "role": "Dusk / Ask Dusk text / FlowStep / source event",
+      "id": "4026:1991",
+      "name": "Dusk / Ask Dusk text / FlowStep / source event",
+      "description": "Reusable source-event step with editable time, event, entity, and source label.",
+      "source": "Reusable source-event step with editable time, event, entity, and source label.",
+      "properties": {
+        "Time#4026:21": {
+          "type": "TEXT",
+          "defaultValue": "09:12"
+        },
+        "Event#4026:22": {
+          "type": "TEXT",
+          "defaultValue": "Access and queue"
+        },
+        "Entity#4026:23": {
+          "type": "TEXT",
+          "defaultValue": "D. Marek authority → FY24 Comp & Equity Payroll"
+        }
+      },
+      "width": 250,
+      "height": 104
+    },
+    {
+      "role": "Dusk / Ask Dusk text / MessageContent / compact event flow",
+      "id": "4026:2000",
+      "name": "Dusk / Ask Dusk text / MessageContent / compact event flow",
+      "description": "shadcn MessageContent containing four compact FlowStep instances; evidence is chronological, not a card grid.",
+      "source": "shadcn MessageContent containing four compact FlowStep instances; evidence is chronological, not a card grid.",
+      "properties": {},
+      "width": 1120,
+      "height": 136
+    },
+    {
+      "role": "Dusk / Ask Dusk text / EventParagraph / recorded event",
+      "id": "4026:2058",
+      "name": "Dusk / Ask Dusk text / EventParagraph / recorded event",
+      "description": "Reusable MessageContent event paragraph with explicit fact, entity/account, causal meaning, and detail links.",
+      "source": "Reusable MessageContent event paragraph with explicit fact, entity/account, causal meaning, and detail links.",
+      "properties": {
+        "Time#4026:24": {
+          "type": "TEXT",
+          "defaultValue": "09:12"
+        },
+        "Title#4026:25": {
+          "type": "TEXT",
+          "defaultValue": "Event title"
+        },
+        "Fact#4026:26": {
+          "type": "TEXT",
+          "defaultValue": "Recorded event fact."
+        },
+        "Why#4026:27": {
+          "type": "TEXT",
+          "defaultValue": "Why it matters: causal meaning."
+        }
+      },
+      "width": 1120,
+      "height": 104
+    },
+    {
+      "role": "Dusk / Ask Dusk text / MessageContent / event chronology",
+      "id": "4026:2075",
+      "name": "Dusk / Ask Dusk text / MessageContent / event chronology",
+      "description": "shadcn MessageContent containing three EventParagraph instances.",
+      "source": "shadcn MessageContent containing three EventParagraph instances.",
+      "properties": {
+        "Heading#4026:28": {
+          "type": "TEXT",
+          "defaultValue": "Recorded events"
+        }
+      },
+      "width": 1120,
+      "height": 490
+    },
+    {
+      "role": "Dusk / Ask Dusk text / MessageContent / Dusk interpretation",
+      "id": "4026:2136",
+      "name": "Dusk / Ask Dusk text / MessageContent / Dusk interpretation",
+      "description": "shadcn MessageContent with existing Dusk Badge instance; interpretation and uncertainty remain separate from events.",
+      "source": "shadcn MessageContent with existing Dusk Badge instance; interpretation and uncertainty remain separate from events.",
+      "properties": {
+        "Heading#4026:29": {
+          "type": "TEXT",
+          "defaultValue": "Dusk interpretation"
+        },
+        "Confidence#4026:30": {
+          "type": "TEXT",
+          "defaultValue": "91% confidence"
+        },
+        "Assessment#4026:31": {
+          "type": "TEXT",
+          "defaultValue": "The unused approval grant, unusual payroll activity, unregistered beneficiary and same-day withdrawal support a payment diversion finding. The 91% confidence applies to that activity pattern."
+        },
+        "Uncertainty#4026:32": {
+          "type": "TEXT",
+          "defaultValue": "The records do not establish that Marek personally controlled the sessions or intended the transfers. Session control, beneficiary ownership and the complete list of 14 affected accounts remain unverified."
+        }
+      },
+      "width": 1120,
+      "height": 184
+    },
+    {
+      "role": "Dusk / Ask Dusk text / MessageContent / next action",
+      "id": "4026:2151",
+      "name": "Dusk / Ask Dusk text / MessageContent / next action",
+      "description": "shadcn MessageContent with existing Button outline instance; proposes a scoped investigation action.",
+      "source": "shadcn MessageContent with existing Button outline instance; proposes a scoped investigation action.",
+      "properties": {
+        "Heading#4026:33": {
+          "type": "TEXT",
+          "defaultValue": "What to do next"
+        },
+        "Action#4026:34": {
+          "type": "TEXT",
+          "defaultValue": "Continue in INV-204. Verify the affected accounts, active approval scope, session control and beneficiary ownership. Consider temporarily restricting the reactivated authority, with legitimate payroll routed to a verified approver."
+        },
+        "Scope#4026:35": {
+          "type": "TEXT",
+          "defaultValue": "Because these funds have already been withdrawn, the proposed restriction is meant to prevent further activity."
+        }
+      },
+      "width": 1120,
+      "height": 140
+    },
+    {
+      "role": "Dusk / Ask Dusk text / InputGroup / blank composer",
+      "id": "4026:2167",
+      "name": "Dusk / Ask Dusk text / InputGroup / blank composer",
+      "description": "shadcn InputGroup containing existing Textarea and disabled InputGroupButton component instances.",
+      "source": "shadcn InputGroup containing existing Textarea and disabled InputGroupButton component instances.",
+      "properties": {},
+      "width": 1120,
+      "height": 56
+    },
+    {
+      "role": "Dusk / Ask Dusk text / MessageContent / composer dock",
+      "id": "4026:2174",
+      "name": "Dusk / Ask Dusk text / MessageContent / composer dock",
+      "description": "shadcn MessageContent with suggested-question Button instances above a blank InputGroup.",
+      "source": "shadcn MessageContent with suggested-question Button instances above a blank InputGroup.",
+      "properties": {
+        "Helper#4026:36": {
+          "type": "TEXT",
+          "defaultValue": "Suggested questions"
+        }
+      },
+      "width": 1120,
+      "height": 128
+    },
+    {
+      "role": "Dusk / Ask Dusk text / Message / align=start / answer",
+      "id": "4026:2199",
+      "name": "Dusk / Ask Dusk text / Message / align=start / answer",
+      "description": "shadcn Message align=start and MessageContent composed entirely from response-block component instances.",
+      "source": "shadcn Message align=start and MessageContent composed entirely from response-block component instances.",
+      "properties": {},
+      "width": 1120,
+      "height": 1246
+    }
+  ],
+  "renderedInstanceMap": [
+    {
+      "id": "I4026:2363;4026:2200",
+      "name": "MessageHeader / Dusk",
+      "mainComponentId": "4026:1909",
+      "mainComponentName": "Dusk / Ask Dusk text / MessageHeader / attribution"
+    },
+    {
+      "id": "I4026:2363;4026:2204",
+      "name": "Bubble / ghost / Direct answer",
+      "mainComponentId": "4026:1913",
+      "mainComponentName": "Dusk / Ask Dusk text / Bubble / ghost / prose"
+    },
+    {
+      "id": "I4026:2363;4026:2206",
+      "name": "MessageContent / Linked background",
+      "mainComponentId": "4026:1963",
+      "mainComponentName": "Dusk / Ask Dusk text / MessageContent / linked background"
+    },
+    {
+      "id": "I4026:2363;4026:2206;4026:1964",
+      "name": "Bubble / ghost / Background",
+      "mainComponentId": "4026:1913",
+      "mainComponentName": "Dusk / Ask Dusk text / Bubble / ghost / prose"
+    },
+    {
+      "id": "I4026:2363;4026:2206;4026:1967",
+      "name": "Button / link / Prior authority",
+      "mainComponentId": "4026:1904",
+      "mainComponentName": "Dusk / Ask Dusk text / Button / link"
+    },
+    {
+      "id": "I4026:2363;4026:2206;4026:1973",
+      "name": "Button / link / D. Marek",
+      "mainComponentId": "4026:1904",
+      "mainComponentName": "Dusk / Ask Dusk text / Button / link"
+    },
+    {
+      "id": "I4026:2363;4026:2206;4026:1979",
+      "name": "Button / link / FY24 Comp & Equity Payroll",
+      "mainComponentId": "4026:1904",
+      "mainComponentName": "Dusk / Ask Dusk text / Button / link"
+    },
+    {
+      "id": "I4026:2363;4026:2206;4026:1985",
+      "name": "Button / link / Payroll Master — EU",
+      "mainComponentId": "4026:1904",
+      "mainComponentName": "Dusk / Ask Dusk text / Button / link"
+    },
+    {
+      "id": "I4026:2363;4026:2230",
+      "name": "MessageContent / Compact event flow",
+      "mainComponentId": "4026:2000",
+      "mainComponentName": "Dusk / Ask Dusk text / MessageContent / compact event flow"
+    },
+    {
+      "id": "I4026:2363;4026:2230;4026:2005",
+      "name": "FlowStep / Broad rights remained active",
+      "mainComponentId": "4026:1991",
+      "mainComponentName": "Dusk / Ask Dusk text / FlowStep / source event"
+    },
+    {
+      "id": "I4026:2363;4026:2230;4026:2005;4026:1995",
+      "name": "Button / link / Source",
+      "mainComponentId": "4026:1904",
+      "mainComponentName": "Dusk / Ask Dusk text / Button / link"
+    },
+    {
+      "id": "I4026:2363;4026:2230;4026:2019",
+      "name": "FlowStep / Access and queue",
+      "mainComponentId": "4026:1991",
+      "mainComponentName": "Dusk / Ask Dusk text / FlowStep / source event"
+    },
+    {
+      "id": "I4026:2363;4026:2230;4026:2019;4026:1995",
+      "name": "Button / link / Source",
+      "mainComponentId": "4026:1904",
+      "mainComponentName": "Dusk / Ask Dusk text / Button / link"
+    },
+    {
+      "id": "I4026:2363;4026:2230;4026:2033",
+      "name": "FlowStep / Two external transfers",
+      "mainComponentId": "4026:1991",
+      "mainComponentName": "Dusk / Ask Dusk text / FlowStep / source event"
+    },
+    {
+      "id": "I4026:2363;4026:2230;4026:2033;4026:1995",
+      "name": "Button / link / Source",
+      "mainComponentId": "4026:1904",
+      "mainComponentName": "Dusk / Ask Dusk text / Button / link"
+    },
+    {
+      "id": "I4026:2363;4026:2230;4026:2047",
+      "name": "FlowStep / Funds withdrawn",
+      "mainComponentId": "4026:1991",
+      "mainComponentName": "Dusk / Ask Dusk text / FlowStep / source event"
+    },
+    {
+      "id": "I4026:2363;4026:2230;4026:2047;4026:1995",
+      "name": "Button / link / Source",
+      "mainComponentId": "4026:1904",
+      "mainComponentName": "Dusk / Ask Dusk text / Button / link"
+    },
+    {
+      "id": "I4026:2363;4026:2280",
+      "name": "MessageContent / Recorded events",
+      "mainComponentId": "4026:2075",
+      "mainComponentName": "Dusk / Ask Dusk text / MessageContent / event chronology"
+    },
+    {
+      "id": "I4026:2363;4026:2280;4026:2077",
+      "name": "EventParagraph / 09:12",
+      "mainComponentId": "4026:2058",
+      "mainComponentName": "Dusk / Ask Dusk text / EventParagraph / recorded event"
+    },
+    {
+      "id": "I4026:2363;4026:2280;4026:2077;4026:2065",
+      "name": "Button / link / Source event",
+      "mainComponentId": "4026:1904",
+      "mainComponentName": "Dusk / Ask Dusk text / Button / link"
+    },
+    {
+      "id": "I4026:2363;4026:2280;4026:2077;4026:2070",
+      "name": "Button / link / Account detail",
+      "mainComponentId": "4026:1904",
+      "mainComponentName": "Dusk / Ask Dusk text / Button / link"
+    },
+    {
+      "id": "I4026:2363;4026:2280;4026:2097",
+      "name": "EventParagraph / 09:40",
+      "mainComponentId": "4026:2058",
+      "mainComponentName": "Dusk / Ask Dusk text / EventParagraph / recorded event"
+    },
+    {
+      "id": "I4026:2363;4026:2280;4026:2097;4026:2065",
+      "name": "Button / link / Source event",
+      "mainComponentId": "4026:1904",
+      "mainComponentName": "Dusk / Ask Dusk text / Button / link"
+    },
+    {
+      "id": "I4026:2363;4026:2280;4026:2097;4026:2070",
+      "name": "Button / link / Account detail",
+      "mainComponentId": "4026:1904",
+      "mainComponentName": "Dusk / Ask Dusk text / Button / link"
+    },
+    {
+      "id": "I4026:2363;4026:2280;4026:2117",
+      "name": "EventParagraph / 22:07",
+      "mainComponentId": "4026:2058",
+      "mainComponentName": "Dusk / Ask Dusk text / EventParagraph / recorded event"
+    },
+    {
+      "id": "I4026:2363;4026:2280;4026:2117;4026:2065",
+      "name": "Button / link / Source event",
+      "mainComponentId": "4026:1904",
+      "mainComponentName": "Dusk / Ask Dusk text / Button / link"
+    },
+    {
+      "id": "I4026:2363;4026:2280;4026:2117;4026:2070",
+      "name": "Button / link / Account detail",
+      "mainComponentId": "4026:1904",
+      "mainComponentName": "Dusk / Ask Dusk text / Button / link"
+    },
+    {
+      "id": "I4026:2363;4026:2335",
+      "name": "MessageContent / Dusk interpretation",
+      "mainComponentId": "4026:2136",
+      "mainComponentName": "Dusk / Ask Dusk text / MessageContent / Dusk interpretation"
+    },
+    {
+      "id": "I4026:2363;4026:2335;4026:2139",
+      "name": "Badge / Fraudulent",
+      "mainComponentId": "4008:268",
+      "mainComponentName": "Dusk / Badge / fraud"
+    },
+    {
+      "id": "I4026:2363;4026:2335;4026:2145",
+      "name": "Button / link / Open finding detail",
+      "mainComponentId": "4026:1904",
+      "mainComponentName": "Dusk / Ask Dusk text / Button / link"
+    },
+    {
+      "id": "I4026:2363;4026:2349",
+      "name": "MessageContent / What to do next",
+      "mainComponentId": "4026:2151",
+      "mainComponentName": "Dusk / Ask Dusk text / MessageContent / next action"
+    },
+    {
+      "id": "I4026:2363;4026:2349;4026:2156",
+      "name": "Button / Open INV-204",
+      "mainComponentId": "4025:1454",
+      "mainComponentName": "Dusk / Button / outline / Ask Dusk"
+    },
+    {
+      "id": "I4026:2363;4026:2349;4026:2161",
+      "name": "Button / link / Review safeguard scope",
+      "mainComponentId": "4026:1904",
+      "mainComponentName": "Dusk / Ask Dusk text / Button / link"
+    }
+  ],
+  "destinations": {
+    "access": "4025:1518",
+    "transfer": "4025:1530",
+    "withdrawal": "4025:1542",
+    "marek": "4025:1554",
+    "accounts": "4025:1566",
+    "beneficiary": "4025:1578",
+    "assessment": "4025:1590",
+    "safeguard": "4025:1602",
+    "priorAuthority": "4026:1915",
+    "compAccount": "4026:1927",
+    "payrollAccount": "4026:1939",
+    "investigation": "4026:1951"
+  },
+  "linkLedger": [],
+  "renderedLinks": [
+    {
+      "id": "4025:1863",
+      "name": "Button / Back to dashboard",
+      "reactions": [
+        {
+          "action": {
+            "type": "NODE",
+            "destinationId": "4003:182",
+            "navigation": "NAVIGATE",
+            "transition": null,
+            "resetVideoPosition": false,
+            "resetScrollPosition": false
+          },
+          "actions": [
+            {
+              "type": "NODE",
+              "destinationId": "4003:182",
+              "navigation": "NAVIGATE",
+              "transition": null,
+              "resetVideoPosition": false,
+              "resetScrollPosition": false
+            }
+          ],
+          "trigger": {
+            "type": "ON_CLICK"
+          }
+        }
+      ]
+    },
+    {
+      "id": "I4026:2363;4026:2206;4026:1967",
+      "name": "Button / link / Prior authority",
+      "reactions": [
+        {
+          "action": {
+            "type": "NODE",
+            "destinationId": "4026:1915",
+            "navigation": "OVERLAY",
+            "transition": null,
+            "resetVideoPosition": false,
+            "resetScrollPosition": false
+          },
+          "actions": [
+            {
+              "type": "NODE",
+              "destinationId": "4026:1915",
+              "navigation": "OVERLAY",
+              "transition": null,
+              "resetVideoPosition": false,
+              "resetScrollPosition": false
+            }
+          ],
+          "trigger": {
+            "type": "ON_CLICK"
+          }
+        }
+      ]
+    },
+    {
+      "id": "I4026:2363;4026:2206;4026:1973",
+      "name": "Button / link / D. Marek",
+      "reactions": [
+        {
+          "action": {
+            "type": "NODE",
+            "destinationId": "4025:1554",
+            "navigation": "OVERLAY",
+            "transition": null,
+            "resetVideoPosition": false,
+            "resetScrollPosition": false
+          },
+          "actions": [
+            {
+              "type": "NODE",
+              "destinationId": "4025:1554",
+              "navigation": "OVERLAY",
+              "transition": null,
+              "resetVideoPosition": false,
+              "resetScrollPosition": false
+            }
+          ],
+          "trigger": {
+            "type": "ON_CLICK"
+          }
+        }
+      ]
+    },
+    {
+      "id": "I4026:2363;4026:2206;4026:1979",
+      "name": "Button / link / FY24 Comp & Equity Payroll",
+      "reactions": [
+        {
+          "action": {
+            "type": "NODE",
+            "destinationId": "4026:1927",
+            "navigation": "OVERLAY",
+            "transition": null,
+            "resetVideoPosition": false,
+            "resetScrollPosition": false
+          },
+          "actions": [
+            {
+              "type": "NODE",
+              "destinationId": "4026:1927",
+              "navigation": "OVERLAY",
+              "transition": null,
+              "resetVideoPosition": false,
+              "resetScrollPosition": false
+            }
+          ],
+          "trigger": {
+            "type": "ON_CLICK"
+          }
+        }
+      ]
+    },
+    {
+      "id": "I4026:2363;4026:2206;4026:1985",
+      "name": "Button / link / Payroll Master — EU",
+      "reactions": [
+        {
+          "action": {
+            "type": "NODE",
+            "destinationId": "4026:1939",
+            "navigation": "OVERLAY",
+            "transition": null,
+            "resetVideoPosition": false,
+            "resetScrollPosition": false
+          },
+          "actions": [
+            {
+              "type": "NODE",
+              "destinationId": "4026:1939",
+              "navigation": "OVERLAY",
+              "transition": null,
+              "resetVideoPosition": false,
+              "resetScrollPosition": false
+            }
+          ],
+          "trigger": {
+            "type": "ON_CLICK"
+          }
+        }
+      ]
+    },
+    {
+      "id": "I4026:2363;4026:2230;4026:2005",
+      "name": "FlowStep / Broad rights remained active",
+      "reactions": [
+        {
+          "action": {
+            "type": "NODE",
+            "destinationId": "4026:1915",
+            "navigation": "OVERLAY",
+            "transition": null,
+            "resetVideoPosition": false,
+            "resetScrollPosition": false
+          },
+          "actions": [
+            {
+              "type": "NODE",
+              "destinationId": "4026:1915",
+              "navigation": "OVERLAY",
+              "transition": null,
+              "resetVideoPosition": false,
+              "resetScrollPosition": false
+            }
+          ],
+          "trigger": {
+            "type": "ON_CLICK"
+          }
+        }
+      ]
+    },
+    {
+      "id": "I4026:2363;4026:2230;4026:2005;4026:1995",
+      "name": "Button / link / Source",
+      "reactions": [
+        {
+          "action": {
+            "type": "NODE",
+            "destinationId": "4026:1915",
+            "navigation": "OVERLAY",
+            "transition": null,
+            "resetVideoPosition": false,
+            "resetScrollPosition": false
+          },
+          "actions": [
+            {
+              "type": "NODE",
+              "destinationId": "4026:1915",
+              "navigation": "OVERLAY",
+              "transition": null,
+              "resetVideoPosition": false,
+              "resetScrollPosition": false
+            }
+          ],
+          "trigger": {
+            "type": "ON_CLICK"
+          }
+        }
+      ]
+    },
+    {
+      "id": "I4026:2363;4026:2230;4026:2019",
+      "name": "FlowStep / Access and queue",
+      "reactions": [
+        {
+          "action": {
+            "type": "NODE",
+            "destinationId": "4025:1518",
+            "navigation": "OVERLAY",
+            "transition": null,
+            "resetVideoPosition": false,
+            "resetScrollPosition": false
+          },
+          "actions": [
+            {
+              "type": "NODE",
+              "destinationId": "4025:1518",
+              "navigation": "OVERLAY",
+              "transition": null,
+              "resetVideoPosition": false,
+              "resetScrollPosition": false
+            }
+          ],
+          "trigger": {
+            "type": "ON_CLICK"
+          }
+        }
+      ]
+    },
+    {
+      "id": "I4026:2363;4026:2230;4026:2019;4026:1995",
+      "name": "Button / link / Source",
+      "reactions": [
+        {
+          "action": {
+            "type": "NODE",
+            "destinationId": "4025:1518",
+            "navigation": "OVERLAY",
+            "transition": null,
+            "resetVideoPosition": false,
+            "resetScrollPosition": false
+          },
+          "actions": [
+            {
+              "type": "NODE",
+              "destinationId": "4025:1518",
+              "navigation": "OVERLAY",
+              "transition": null,
+              "resetVideoPosition": false,
+              "resetScrollPosition": false
+            }
+          ],
+          "trigger": {
+            "type": "ON_CLICK"
+          }
+        }
+      ]
+    },
+    {
+      "id": "I4026:2363;4026:2230;4026:2033",
+      "name": "FlowStep / Two external transfers",
+      "reactions": [
+        {
+          "action": {
+            "type": "NODE",
+            "destinationId": "4025:1530",
+            "navigation": "OVERLAY",
+            "transition": null,
+            "resetVideoPosition": false,
+            "resetScrollPosition": false
+          },
+          "actions": [
+            {
+              "type": "NODE",
+              "destinationId": "4025:1530",
+              "navigation": "OVERLAY",
+              "transition": null,
+              "resetVideoPosition": false,
+              "resetScrollPosition": false
+            }
+          ],
+          "trigger": {
+            "type": "ON_CLICK"
+          }
+        }
+      ]
+    },
+    {
+      "id": "I4026:2363;4026:2230;4026:2033;4026:1995",
+      "name": "Button / link / Source",
+      "reactions": [
+        {
+          "action": {
+            "type": "NODE",
+            "destinationId": "4025:1530",
+            "navigation": "OVERLAY",
+            "transition": null,
+            "resetVideoPosition": false,
+            "resetScrollPosition": false
+          },
+          "actions": [
+            {
+              "type": "NODE",
+              "destinationId": "4025:1530",
+              "navigation": "OVERLAY",
+              "transition": null,
+              "resetVideoPosition": false,
+              "resetScrollPosition": false
+            }
+          ],
+          "trigger": {
+            "type": "ON_CLICK"
+          }
+        }
+      ]
+    },
+    {
+      "id": "I4026:2363;4026:2230;4026:2047",
+      "name": "FlowStep / Funds withdrawn",
+      "reactions": [
+        {
+          "action": {
+            "type": "NODE",
+            "destinationId": "4025:1542",
+            "navigation": "OVERLAY",
+            "transition": null,
+            "resetVideoPosition": false,
+            "resetScrollPosition": false
+          },
+          "actions": [
+            {
+              "type": "NODE",
+              "destinationId": "4025:1542",
+              "navigation": "OVERLAY",
+              "transition": null,
+              "resetVideoPosition": false,
+              "resetScrollPosition": false
+            }
+          ],
+          "trigger": {
+            "type": "ON_CLICK"
+          }
+        }
+      ]
+    },
+    {
+      "id": "I4026:2363;4026:2230;4026:2047;4026:1995",
+      "name": "Button / link / Source",
+      "reactions": [
+        {
+          "action": {
+            "type": "NODE",
+            "destinationId": "4025:1542",
+            "navigation": "OVERLAY",
+            "transition": null,
+            "resetVideoPosition": false,
+            "resetScrollPosition": false
+          },
+          "actions": [
+            {
+              "type": "NODE",
+              "destinationId": "4025:1542",
+              "navigation": "OVERLAY",
+              "transition": null,
+              "resetVideoPosition": false,
+              "resetScrollPosition": false
+            }
+          ],
+          "trigger": {
+            "type": "ON_CLICK"
+          }
+        }
+      ]
+    },
+    {
+      "id": "I4026:2363;4026:2280;4026:2077;4026:2065",
+      "name": "Button / link / Source event",
+      "reactions": [
+        {
+          "action": {
+            "type": "NODE",
+            "destinationId": "4025:1518",
+            "navigation": "OVERLAY",
+            "transition": null,
+            "resetVideoPosition": false,
+            "resetScrollPosition": false
+          },
+          "actions": [
+            {
+              "type": "NODE",
+              "destinationId": "4025:1518",
+              "navigation": "OVERLAY",
+              "transition": null,
+              "resetVideoPosition": false,
+              "resetScrollPosition": false
+            }
+          ],
+          "trigger": {
+            "type": "ON_CLICK"
+          }
+        }
+      ]
+    },
+    {
+      "id": "I4026:2363;4026:2280;4026:2077;4026:2070",
+      "name": "Button / link / Account detail",
+      "reactions": [
+        {
+          "action": {
+            "type": "NODE",
+            "destinationId": "4026:1927",
+            "navigation": "OVERLAY",
+            "transition": null,
+            "resetVideoPosition": false,
+            "resetScrollPosition": false
+          },
+          "actions": [
+            {
+              "type": "NODE",
+              "destinationId": "4026:1927",
+              "navigation": "OVERLAY",
+              "transition": null,
+              "resetVideoPosition": false,
+              "resetScrollPosition": false
+            }
+          ],
+          "trigger": {
+            "type": "ON_CLICK"
+          }
+        }
+      ]
+    },
+    {
+      "id": "I4026:2363;4026:2280;4026:2097;4026:2065",
+      "name": "Button / link / Source event",
+      "reactions": [
+        {
+          "action": {
+            "type": "NODE",
+            "destinationId": "4025:1530",
+            "navigation": "OVERLAY",
+            "transition": null,
+            "resetVideoPosition": false,
+            "resetScrollPosition": false
+          },
+          "actions": [
+            {
+              "type": "NODE",
+              "destinationId": "4025:1530",
+              "navigation": "OVERLAY",
+              "transition": null,
+              "resetVideoPosition": false,
+              "resetScrollPosition": false
+            }
+          ],
+          "trigger": {
+            "type": "ON_CLICK"
+          }
+        }
+      ]
+    },
+    {
+      "id": "I4026:2363;4026:2280;4026:2097;4026:2070",
+      "name": "Button / link / Account detail",
+      "reactions": [
+        {
+          "action": {
+            "type": "NODE",
+            "destinationId": "4026:1939",
+            "navigation": "OVERLAY",
+            "transition": null,
+            "resetVideoPosition": false,
+            "resetScrollPosition": false
+          },
+          "actions": [
+            {
+              "type": "NODE",
+              "destinationId": "4026:1939",
+              "navigation": "OVERLAY",
+              "transition": null,
+              "resetVideoPosition": false,
+              "resetScrollPosition": false
+            }
+          ],
+          "trigger": {
+            "type": "ON_CLICK"
+          }
+        }
+      ]
+    },
+    {
+      "id": "I4026:2363;4026:2280;4026:2117;4026:2065",
+      "name": "Button / link / Source event",
+      "reactions": [
+        {
+          "action": {
+            "type": "NODE",
+            "destinationId": "4025:1542",
+            "navigation": "OVERLAY",
+            "transition": null,
+            "resetVideoPosition": false,
+            "resetScrollPosition": false
+          },
+          "actions": [
+            {
+              "type": "NODE",
+              "destinationId": "4025:1542",
+              "navigation": "OVERLAY",
+              "transition": null,
+              "resetVideoPosition": false,
+              "resetScrollPosition": false
+            }
+          ],
+          "trigger": {
+            "type": "ON_CLICK"
+          }
+        }
+      ]
+    },
+    {
+      "id": "I4026:2363;4026:2280;4026:2117;4026:2070",
+      "name": "Button / link / Account detail",
+      "reactions": [
+        {
+          "action": {
+            "type": "NODE",
+            "destinationId": "4026:1939",
+            "navigation": "OVERLAY",
+            "transition": null,
+            "resetVideoPosition": false,
+            "resetScrollPosition": false
+          },
+          "actions": [
+            {
+              "type": "NODE",
+              "destinationId": "4026:1939",
+              "navigation": "OVERLAY",
+              "transition": null,
+              "resetVideoPosition": false,
+              "resetScrollPosition": false
+            }
+          ],
+          "trigger": {
+            "type": "ON_CLICK"
+          }
+        }
+      ]
+    },
+    {
+      "id": "I4026:2363;4026:2335;4026:2145",
+      "name": "Button / link / Open finding detail",
+      "reactions": [
+        {
+          "action": {
+            "type": "NODE",
+            "destinationId": "4025:1590",
+            "navigation": "OVERLAY",
+            "transition": null,
+            "resetVideoPosition": false,
+            "resetScrollPosition": false
+          },
+          "actions": [
+            {
+              "type": "NODE",
+              "destinationId": "4025:1590",
+              "navigation": "OVERLAY",
+              "transition": null,
+              "resetVideoPosition": false,
+              "resetScrollPosition": false
+            }
+          ],
+          "trigger": {
+            "type": "ON_CLICK"
+          }
+        }
+      ]
+    },
+    {
+      "id": "I4026:2363;4026:2349;4026:2156",
+      "name": "Button / Open INV-204",
+      "reactions": [
+        {
+          "action": {
+            "type": "NODE",
+            "destinationId": "4026:1951",
+            "navigation": "OVERLAY",
+            "transition": null,
+            "resetVideoPosition": false,
+            "resetScrollPosition": false
+          },
+          "actions": [
+            {
+              "type": "NODE",
+              "destinationId": "4026:1951",
+              "navigation": "OVERLAY",
+              "transition": null,
+              "resetVideoPosition": false,
+              "resetScrollPosition": false
+            }
+          ],
+          "trigger": {
+            "type": "ON_CLICK"
+          }
+        }
+      ]
+    },
+    {
+      "id": "I4026:2363;4026:2349;4026:2161",
+      "name": "Button / link / Review safeguard scope",
+      "reactions": [
+        {
+          "action": {
+            "type": "NODE",
+            "destinationId": "4025:1602",
+            "navigation": "OVERLAY",
+            "transition": null,
+            "resetVideoPosition": false,
+            "resetScrollPosition": false
+          },
+          "actions": [
+            {
+              "type": "NODE",
+              "destinationId": "4025:1602",
+              "navigation": "OVERLAY",
+              "transition": null,
+              "resetVideoPosition": false,
+              "resetScrollPosition": false
+            }
+          ],
+          "trigger": {
+            "type": "ON_CLICK"
+          }
+        }
+      ]
+    },
+    {
+      "id": "I4026:2527;4026:2177",
+      "name": "Button / Suggested question / Which accounts were affected?",
+      "reactions": [
+        {
+          "action": {
+            "type": "NODE",
+            "destinationId": "4025:1566",
+            "navigation": "OVERLAY",
+            "transition": null,
+            "resetVideoPosition": false,
+            "resetScrollPosition": false
+          },
+          "actions": [
+            {
+              "type": "NODE",
+              "destinationId": "4025:1566",
+              "navigation": "OVERLAY",
+              "transition": null,
+              "resetVideoPosition": false,
+              "resetScrollPosition": false
+            }
+          ],
+          "trigger": {
+            "type": "ON_CLICK"
+          }
+        }
+      ]
+    },
+    {
+      "id": "I4026:2527;4026:2182",
+      "name": "Button / Suggested question / Who controlled the session?",
+      "reactions": [
+        {
+          "action": {
+            "type": "NODE",
+            "destinationId": "4025:1590",
+            "navigation": "OVERLAY",
+            "transition": null,
+            "resetVideoPosition": false,
+            "resetScrollPosition": false
+          },
+          "actions": [
+            {
+              "type": "NODE",
+              "destinationId": "4025:1590",
+              "navigation": "OVERLAY",
+              "transition": null,
+              "resetVideoPosition": false,
+              "resetScrollPosition": false
+            }
+          ],
+          "trigger": {
+            "type": "ON_CLICK"
+          }
+        }
+      ]
+    },
+    {
+      "id": "I4026:2527;4026:2187",
+      "name": "Button / Suggested question / Who owns the beneficiary?",
+      "reactions": [
+        {
+          "action": {
+            "type": "NODE",
+            "destinationId": "4025:1578",
+            "navigation": "OVERLAY",
+            "transition": null,
+            "resetVideoPosition": false,
+            "resetScrollPosition": false
+          },
+          "actions": [
+            {
+              "type": "NODE",
+              "destinationId": "4025:1578",
+              "navigation": "OVERLAY",
+              "transition": null,
+              "resetVideoPosition": false,
+              "resetScrollPosition": false
+            }
+          ],
+          "trigger": {
+            "type": "ON_CLICK"
+          }
+        }
+      ]
+    }
+  ],
+  "missingDestinations": [],
+  "geometryIssues": [],
+  "bannedCopy": [],
+  "createdNodeIds": [
+    "4026:1904",
+    "4026:1905",
+    "4026:1906",
+    "4026:1907",
+    "4026:1908",
+    "4026:1909",
+    "4026:1910",
+    "4026:1911",
+    "4026:1912",
+    "4026:1913",
+    "4026:1914",
+    "4026:1963",
+    "4026:1964",
+    "I4026:1964;4026:1914",
+    "4026:1966",
+    "4026:1967",
+    "I4026:1967;4026:1905",
+    "I4026:1967;4026:1906",
+    "I4026:1967;4026:1907",
+    "I4026:1967;4026:1908",
+    "4026:1973",
+    "I4026:1973;4026:1905",
+    "I4026:1973;4026:1906",
+    "I4026:1973;4026:1907",
+    "I4026:1973;4026:1908",
+    "4026:1979",
+    "I4026:1979;4026:1905",
+    "I4026:1979;4026:1906",
+    "I4026:1979;4026:1907",
+    "I4026:1979;4026:1908",
+    "4026:1985",
+    "I4026:1985;4026:1905",
+    "I4026:1985;4026:1906",
+    "I4026:1985;4026:1907",
+    "I4026:1985;4026:1908",
+    "4026:1991",
+    "4026:1992",
+    "4026:1993",
+    "4026:1994",
+    "4026:1995",
+    "I4026:1995;4026:1905",
+    "I4026:1995;4026:1906",
+    "I4026:1995;4026:1907",
+    "I4026:1995;4026:1908",
+    "4026:2000",
+    "4026:2001",
+    "4026:2002",
+    "4026:2003",
+    "4026:2004",
+    "4026:2005",
+    "I4026:2005;4026:1992",
+    "I4026:2005;4026:1993",
+    "I4026:2005;4026:1994",
+    "I4026:2005;4026:1995",
+    "I4026:2005;4026:1995;4026:1905",
+    "I4026:2005;4026:1995;4026:1906",
+    "I4026:2005;4026:1995;4026:1907",
+    "I4026:2005;4026:1995;4026:1908",
+    "4026:2016",
+    "4026:2017",
+    "4026:2018",
+    "4026:2019",
+    "I4026:2019;4026:1992",
+    "I4026:2019;4026:1993",
+    "I4026:2019;4026:1994",
+    "I4026:2019;4026:1995",
+    "I4026:2019;4026:1995;4026:1905",
+    "I4026:2019;4026:1995;4026:1906",
+    "I4026:2019;4026:1995;4026:1907",
+    "I4026:2019;4026:1995;4026:1908",
+    "4026:2030",
+    "4026:2031",
+    "4026:2032",
+    "4026:2033",
+    "I4026:2033;4026:1992",
+    "I4026:2033;4026:1993",
+    "I4026:2033;4026:1994",
+    "I4026:2033;4026:1995",
+    "I4026:2033;4026:1995;4026:1905",
+    "I4026:2033;4026:1995;4026:1906",
+    "I4026:2033;4026:1995;4026:1907",
+    "I4026:2033;4026:1995;4026:1908",
+    "4026:2044",
+    "4026:2045",
+    "4026:2046",
+    "4026:2047",
+    "I4026:2047;4026:1992",
+    "I4026:2047;4026:1993",
+    "I4026:2047;4026:1994",
+    "I4026:2047;4026:1995",
+    "I4026:2047;4026:1995;4026:1905",
+    "I4026:2047;4026:1995;4026:1906",
+    "I4026:2047;4026:1995;4026:1907",
+    "I4026:2047;4026:1995;4026:1908",
+    "4026:2058",
+    "4026:2059",
+    "4026:2060",
+    "4026:2061",
+    "4026:2062",
+    "4026:2063",
+    "4026:2064",
+    "4026:2065",
+    "I4026:2065;4026:1905",
+    "I4026:2065;4026:1906",
+    "I4026:2065;4026:1907",
+    "I4026:2065;4026:1908",
+    "4026:2070",
+    "I4026:2070;4026:1905",
+    "I4026:2070;4026:1906",
+    "I4026:2070;4026:1907",
+    "I4026:2070;4026:1908",
+    "4026:2075",
+    "4026:2076",
+    "4026:2077",
+    "I4026:2077;4026:2059",
+    "I4026:2077;4026:2060",
+    "I4026:2077;4026:2061",
+    "I4026:2077;4026:2062",
+    "I4026:2077;4026:2063",
+    "I4026:2077;4026:2064",
+    "I4026:2077;4026:2065",
+    "I4026:2077;4026:2065;4026:1905",
+    "I4026:2077;4026:2065;4026:1906",
+    "I4026:2077;4026:2065;4026:1907",
+    "I4026:2077;4026:2065;4026:1908",
+    "I4026:2077;4026:2070",
+    "I4026:2077;4026:2070;4026:1905",
+    "I4026:2077;4026:2070;4026:1906",
+    "I4026:2077;4026:2070;4026:1907",
+    "I4026:2077;4026:2070;4026:1908",
+    "4026:2096",
+    "4026:2097",
+    "I4026:2097;4026:2059",
+    "I4026:2097;4026:2060",
+    "I4026:2097;4026:2061",
+    "I4026:2097;4026:2062",
+    "I4026:2097;4026:2063",
+    "I4026:2097;4026:2064",
+    "I4026:2097;4026:2065",
+    "I4026:2097;4026:2065;4026:1905",
+    "I4026:2097;4026:2065;4026:1906",
+    "I4026:2097;4026:2065;4026:1907",
+    "I4026:2097;4026:2065;4026:1908",
+    "I4026:2097;4026:2070",
+    "I4026:2097;4026:2070;4026:1905",
+    "I4026:2097;4026:2070;4026:1906",
+    "I4026:2097;4026:2070;4026:1907",
+    "I4026:2097;4026:2070;4026:1908",
+    "4026:2116",
+    "4026:2117",
+    "I4026:2117;4026:2059",
+    "I4026:2117;4026:2060",
+    "I4026:2117;4026:2061",
+    "I4026:2117;4026:2062",
+    "I4026:2117;4026:2063",
+    "I4026:2117;4026:2064",
+    "I4026:2117;4026:2065",
+    "I4026:2117;4026:2065;4026:1905",
+    "I4026:2117;4026:2065;4026:1906",
+    "I4026:2117;4026:2065;4026:1907",
+    "I4026:2117;4026:2065;4026:1908",
+    "I4026:2117;4026:2070",
+    "I4026:2117;4026:2070;4026:1905",
+    "I4026:2117;4026:2070;4026:1906",
+    "I4026:2117;4026:2070;4026:1907",
+    "I4026:2117;4026:2070;4026:1908",
+    "4026:2136",
+    "4026:2137",
+    "4026:2138",
+    "4026:2139",
+    "I4026:2139;4008:266",
+    "I4026:2139;4008:267",
+    "4026:2142",
+    "4026:2143",
+    "4026:2144",
+    "4026:2145",
+    "I4026:2145;4026:1905",
+    "I4026:2145;4026:1906",
+    "I4026:2145;4026:1907",
+    "I4026:2145;4026:1908",
+    "4026:2151",
+    "4026:2152",
+    "4026:2153",
+    "4026:2154",
+    "4026:2155",
+    "4026:2156",
+    "I4026:2156;4025:1455",
+    "I4026:2156;4025:1456",
+    "I4026:2156;4025:1457",
+    "4026:2161",
+    "I4026:2161;4026:1905",
+    "I4026:2161;4026:1906",
+    "I4026:2161;4026:1907",
+    "I4026:2161;4026:1908",
+    "4026:2167",
+    "4026:2168",
+    "I4026:2168;4025:1506",
+    "4026:2170",
+    "I4026:2170;4025:1508",
+    "I4026:2170;4025:1509",
+    "I4026:2170;4025:1510",
+    "4026:2174",
+    "4026:2175",
+    "4026:2176",
+    "4026:2177",
+    "I4026:2177;4025:1455",
+    "I4026:2177;4025:1456",
+    "I4026:2177;4025:1457",
+    "4026:2182",
+    "I4026:2182;4025:1455",
+    "I4026:2182;4025:1456",
+    "I4026:2182;4025:1457",
+    "4026:2187",
+    "I4026:2187;4025:1455",
+    "I4026:2187;4025:1456",
+    "I4026:2187;4025:1457",
+    "4026:2192",
+    "I4026:2192;4026:2168",
+    "I4026:2192;4026:2168;4025:1506",
+    "I4026:2192;4026:2170",
+    "I4026:2192;4026:2170;4025:1508",
+    "I4026:2192;4026:2170;4025:1509",
+    "I4026:2192;4026:2170;4025:1510",
+    "4026:2199",
+    "4026:2200",
+    "I4026:2200;4026:1910",
+    "I4026:2200;4026:1911",
+    "I4026:2200;4026:1912",
+    "4026:2204",
+    "I4026:2204;4026:1914",
+    "4026:2206",
+    "I4026:2206;4026:1964",
+    "I4026:2206;4026:1964;4026:1914",
+    "I4026:2206;4026:1966",
+    "I4026:2206;4026:1967",
+    "I4026:2206;4026:1967;4026:1905",
+    "I4026:2206;4026:1967;4026:1906",
+    "I4026:2206;4026:1967;4026:1907",
+    "I4026:2206;4026:1967;4026:1908",
+    "I4026:2206;4026:1973",
+    "I4026:2206;4026:1973;4026:1905",
+    "I4026:2206;4026:1973;4026:1906",
+    "I4026:2206;4026:1973;4026:1907",
+    "I4026:2206;4026:1973;4026:1908",
+    "I4026:2206;4026:1979",
+    "I4026:2206;4026:1979;4026:1905",
+    "I4026:2206;4026:1979;4026:1906",
+    "I4026:2206;4026:1979;4026:1907",
+    "I4026:2206;4026:1979;4026:1908",
+    "I4026:2206;4026:1985",
+    "I4026:2206;4026:1985;4026:1905",
+    "I4026:2206;4026:1985;4026:1906",
+    "I4026:2206;4026:1985;4026:1907",
+    "I4026:2206;4026:1985;4026:1908",
+    "4026:2230",
+    "I4026:2230;4026:2001",
+    "I4026:2230;4026:2002",
+    "I4026:2230;4026:2003",
+    "I4026:2230;4026:2004",
+    "I4026:2230;4026:2005",
+    "I4026:2230;4026:2005;4026:1992",
+    "I4026:2230;4026:2005;4026:1993",
+    "I4026:2230;4026:2005;4026:1994",
+    "I4026:2230;4026:2005;4026:1995",
+    "I4026:2230;4026:2005;4026:1995;4026:1905",
+    "I4026:2230;4026:2005;4026:1995;4026:1906",
+    "I4026:2230;4026:2005;4026:1995;4026:1907",
+    "I4026:2230;4026:2005;4026:1995;4026:1908",
+    "I4026:2230;4026:2016",
+    "I4026:2230;4026:2017",
+    "I4026:2230;4026:2018",
+    "I4026:2230;4026:2019",
+    "I4026:2230;4026:2019;4026:1992",
+    "I4026:2230;4026:2019;4026:1993",
+    "I4026:2230;4026:2019;4026:1994",
+    "I4026:2230;4026:2019;4026:1995",
+    "I4026:2230;4026:2019;4026:1995;4026:1905",
+    "I4026:2230;4026:2019;4026:1995;4026:1906",
+    "I4026:2230;4026:2019;4026:1995;4026:1907",
+    "I4026:2230;4026:2019;4026:1995;4026:1908",
+    "I4026:2230;4026:2030",
+    "I4026:2230;4026:2031",
+    "I4026:2230;4026:2032",
+    "I4026:2230;4026:2033",
+    "I4026:2230;4026:2033;4026:1992",
+    "I4026:2230;4026:2033;4026:1993",
+    "I4026:2230;4026:2033;4026:1994",
+    "I4026:2230;4026:2033;4026:1995",
+    "I4026:2230;4026:2033;4026:1995;4026:1905",
+    "I4026:2230;4026:2033;4026:1995;4026:1906",
+    "I4026:2230;4026:2033;4026:1995;4026:1907",
+    "I4026:2230;4026:2033;4026:1995;4026:1908",
+    "I4026:2230;4026:2044",
+    "I4026:2230;4026:2045",
+    "I4026:2230;4026:2046",
+    "I4026:2230;4026:2047",
+    "I4026:2230;4026:2047;4026:1992",
+    "I4026:2230;4026:2047;4026:1993",
+    "I4026:2230;4026:2047;4026:1994",
+    "I4026:2230;4026:2047;4026:1995",
+    "I4026:2230;4026:2047;4026:1995;4026:1905",
+    "I4026:2230;4026:2047;4026:1995;4026:1906",
+    "I4026:2230;4026:2047;4026:1995;4026:1907",
+    "I4026:2230;4026:2047;4026:1995;4026:1908",
+    "4026:2280",
+    "I4026:2280;4026:2076",
+    "I4026:2280;4026:2077",
+    "I4026:2280;4026:2077;4026:2059",
+    "I4026:2280;4026:2077;4026:2060",
+    "I4026:2280;4026:2077;4026:2061",
+    "I4026:2280;4026:2077;4026:2062",
+    "I4026:2280;4026:2077;4026:2063",
+    "I4026:2280;4026:2077;4026:2064",
+    "I4026:2280;4026:2077;4026:2065",
+    "I4026:2280;4026:2077;4026:2065;4026:1905",
+    "I4026:2280;4026:2077;4026:2065;4026:1906",
+    "I4026:2280;4026:2077;4026:2065;4026:1907",
+    "I4026:2280;4026:2077;4026:2065;4026:1908",
+    "I4026:2280;4026:2077;4026:2070",
+    "I4026:2280;4026:2077;4026:2070;4026:1905",
+    "I4026:2280;4026:2077;4026:2070;4026:1906",
+    "I4026:2280;4026:2077;4026:2070;4026:1907",
+    "I4026:2280;4026:2077;4026:2070;4026:1908",
+    "I4026:2280;4026:2096",
+    "I4026:2280;4026:2097",
+    "I4026:2280;4026:2097;4026:2059",
+    "I4026:2280;4026:2097;4026:2060",
+    "I4026:2280;4026:2097;4026:2061",
+    "I4026:2280;4026:2097;4026:2062",
+    "I4026:2280;4026:2097;4026:2063",
+    "I4026:2280;4026:2097;4026:2064",
+    "I4026:2280;4026:2097;4026:2065",
+    "I4026:2280;4026:2097;4026:2065;4026:1905",
+    "I4026:2280;4026:2097;4026:2065;4026:1906",
+    "I4026:2280;4026:2097;4026:2065;4026:1907",
+    "I4026:2280;4026:2097;4026:2065;4026:1908",
+    "I4026:2280;4026:2097;4026:2070",
+    "I4026:2280;4026:2097;4026:2070;4026:1905",
+    "I4026:2280;4026:2097;4026:2070;4026:1906",
+    "I4026:2280;4026:2097;4026:2070;4026:1907",
+    "I4026:2280;4026:2097;4026:2070;4026:1908",
+    "I4026:2280;4026:2116",
+    "I4026:2280;4026:2117",
+    "I4026:2280;4026:2117;4026:2059",
+    "I4026:2280;4026:2117;4026:2060",
+    "I4026:2280;4026:2117;4026:2061",
+    "I4026:2280;4026:2117;4026:2062",
+    "I4026:2280;4026:2117;4026:2063",
+    "I4026:2280;4026:2117;4026:2064",
+    "I4026:2280;4026:2117;4026:2065",
+    "I4026:2280;4026:2117;4026:2065;4026:1905",
+    "I4026:2280;4026:2117;4026:2065;4026:1906",
+    "I4026:2280;4026:2117;4026:2065;4026:1907",
+    "I4026:2280;4026:2117;4026:2065;4026:1908",
+    "I4026:2280;4026:2117;4026:2070",
+    "I4026:2280;4026:2117;4026:2070;4026:1905",
+    "I4026:2280;4026:2117;4026:2070;4026:1906",
+    "I4026:2280;4026:2117;4026:2070;4026:1907",
+    "I4026:2280;4026:2117;4026:2070;4026:1908",
+    "4026:2335",
+    "I4026:2335;4026:2137",
+    "I4026:2335;4026:2138",
+    "I4026:2335;4026:2139",
+    "I4026:2335;4026:2139;4008:266",
+    "I4026:2335;4026:2139;4008:267",
+    "I4026:2335;4026:2142",
+    "I4026:2335;4026:2143",
+    "I4026:2335;4026:2144",
+    "I4026:2335;4026:2145",
+    "I4026:2335;4026:2145;4026:1905",
+    "I4026:2335;4026:2145;4026:1906",
+    "I4026:2335;4026:2145;4026:1907",
+    "I4026:2335;4026:2145;4026:1908",
+    "4026:2349",
+    "I4026:2349;4026:2152",
+    "I4026:2349;4026:2153",
+    "I4026:2349;4026:2154",
+    "I4026:2349;4026:2155",
+    "I4026:2349;4026:2156",
+    "I4026:2349;4026:2156;4025:1455",
+    "I4026:2349;4026:2156;4025:1456",
+    "I4026:2349;4026:2156;4025:1457",
+    "I4026:2349;4026:2161",
+    "I4026:2349;4026:2161;4026:1905",
+    "I4026:2349;4026:2161;4026:1906",
+    "I4026:2349;4026:2161;4026:1907",
+    "I4026:2349;4026:2161;4026:1908",
+    "4026:1915",
+    "4026:1916",
+    "I4026:1916;4025:1494",
+    "I4026:1916;4025:1495",
+    "I4026:1916;4025:1496",
+    "I4026:1916;4025:1497",
+    "I4026:1916;4025:1498",
+    "I4026:1916;4025:1499",
+    "I4026:1916;4025:1500",
+    "I4026:1916;4025:1500;4025:1455",
+    "I4026:1916;4025:1500;4025:1456",
+    "I4026:1916;4025:1500;4025:1457",
+    "4026:1927",
+    "4026:1928",
+    "I4026:1928;4025:1494",
+    "I4026:1928;4025:1495",
+    "I4026:1928;4025:1496",
+    "I4026:1928;4025:1497",
+    "I4026:1928;4025:1498",
+    "I4026:1928;4025:1499",
+    "I4026:1928;4025:1500",
+    "I4026:1928;4025:1500;4025:1455",
+    "I4026:1928;4025:1500;4025:1456",
+    "I4026:1928;4025:1500;4025:1457",
+    "4026:1939",
+    "4026:1940",
+    "I4026:1940;4025:1494",
+    "I4026:1940;4025:1495",
+    "I4026:1940;4025:1496",
+    "I4026:1940;4025:1497",
+    "I4026:1940;4025:1498",
+    "I4026:1940;4025:1499",
+    "I4026:1940;4025:1500",
+    "I4026:1940;4025:1500;4025:1455",
+    "I4026:1940;4025:1500;4025:1456",
+    "I4026:1940;4025:1500;4025:1457",
+    "4026:1951",
+    "4026:1952",
+    "I4026:1952;4025:1494",
+    "I4026:1952;4025:1495",
+    "I4026:1952;4025:1496",
+    "I4026:1952;4025:1497",
+    "I4026:1952;4025:1498",
+    "I4026:1952;4025:1499",
+    "I4026:1952;4025:1500",
+    "I4026:1952;4025:1500;4025:1455",
+    "I4026:1952;4025:1500;4025:1456",
+    "I4026:1952;4025:1500;4025:1457",
+    "4026:2363",
+    "I4026:2363;4026:2200",
+    "I4026:2363;4026:2200;4026:1910",
+    "I4026:2363;4026:2200;4026:1911",
+    "I4026:2363;4026:2200;4026:1912",
+    "I4026:2363;4026:2204",
+    "I4026:2363;4026:2204;4026:1914",
+    "I4026:2363;4026:2206",
+    "I4026:2363;4026:2206;4026:1964",
+    "I4026:2363;4026:2206;4026:1964;4026:1914",
+    "I4026:2363;4026:2206;4026:1966",
+    "I4026:2363;4026:2206;4026:1967",
+    "I4026:2363;4026:2206;4026:1967;4026:1905",
+    "I4026:2363;4026:2206;4026:1967;4026:1906",
+    "I4026:2363;4026:2206;4026:1967;4026:1907",
+    "I4026:2363;4026:2206;4026:1967;4026:1908",
+    "I4026:2363;4026:2206;4026:1973",
+    "I4026:2363;4026:2206;4026:1973;4026:1905",
+    "I4026:2363;4026:2206;4026:1973;4026:1906",
+    "I4026:2363;4026:2206;4026:1973;4026:1907",
+    "I4026:2363;4026:2206;4026:1973;4026:1908",
+    "I4026:2363;4026:2206;4026:1979",
+    "I4026:2363;4026:2206;4026:1979;4026:1905",
+    "I4026:2363;4026:2206;4026:1979;4026:1906",
+    "I4026:2363;4026:2206;4026:1979;4026:1907",
+    "I4026:2363;4026:2206;4026:1979;4026:1908",
+    "I4026:2363;4026:2206;4026:1985",
+    "I4026:2363;4026:2206;4026:1985;4026:1905",
+    "I4026:2363;4026:2206;4026:1985;4026:1906",
+    "I4026:2363;4026:2206;4026:1985;4026:1907",
+    "I4026:2363;4026:2206;4026:1985;4026:1908",
+    "I4026:2363;4026:2230",
+    "I4026:2363;4026:2230;4026:2001",
+    "I4026:2363;4026:2230;4026:2002",
+    "I4026:2363;4026:2230;4026:2003",
+    "I4026:2363;4026:2230;4026:2004",
+    "I4026:2363;4026:2230;4026:2005",
+    "I4026:2363;4026:2230;4026:2005;4026:1992",
+    "I4026:2363;4026:2230;4026:2005;4026:1993",
+    "I4026:2363;4026:2230;4026:2005;4026:1994",
+    "I4026:2363;4026:2230;4026:2005;4026:1995",
+    "I4026:2363;4026:2230;4026:2005;4026:1995;4026:1905",
+    "I4026:2363;4026:2230;4026:2005;4026:1995;4026:1906",
+    "I4026:2363;4026:2230;4026:2005;4026:1995;4026:1907",
+    "I4026:2363;4026:2230;4026:2005;4026:1995;4026:1908",
+    "I4026:2363;4026:2230;4026:2016",
+    "I4026:2363;4026:2230;4026:2017",
+    "I4026:2363;4026:2230;4026:2018",
+    "I4026:2363;4026:2230;4026:2019",
+    "I4026:2363;4026:2230;4026:2019;4026:1992",
+    "I4026:2363;4026:2230;4026:2019;4026:1993",
+    "I4026:2363;4026:2230;4026:2019;4026:1994",
+    "I4026:2363;4026:2230;4026:2019;4026:1995",
+    "I4026:2363;4026:2230;4026:2019;4026:1995;4026:1905",
+    "I4026:2363;4026:2230;4026:2019;4026:1995;4026:1906",
+    "I4026:2363;4026:2230;4026:2019;4026:1995;4026:1907",
+    "I4026:2363;4026:2230;4026:2019;4026:1995;4026:1908",
+    "I4026:2363;4026:2230;4026:2030",
+    "I4026:2363;4026:2230;4026:2031",
+    "I4026:2363;4026:2230;4026:2032",
+    "I4026:2363;4026:2230;4026:2033",
+    "I4026:2363;4026:2230;4026:2033;4026:1992",
+    "I4026:2363;4026:2230;4026:2033;4026:1993",
+    "I4026:2363;4026:2230;4026:2033;4026:1994",
+    "I4026:2363;4026:2230;4026:2033;4026:1995",
+    "I4026:2363;4026:2230;4026:2033;4026:1995;4026:1905",
+    "I4026:2363;4026:2230;4026:2033;4026:1995;4026:1906",
+    "I4026:2363;4026:2230;4026:2033;4026:1995;4026:1907",
+    "I4026:2363;4026:2230;4026:2033;4026:1995;4026:1908",
+    "I4026:2363;4026:2230;4026:2044",
+    "I4026:2363;4026:2230;4026:2045",
+    "I4026:2363;4026:2230;4026:2046",
+    "I4026:2363;4026:2230;4026:2047",
+    "I4026:2363;4026:2230;4026:2047;4026:1992",
+    "I4026:2363;4026:2230;4026:2047;4026:1993",
+    "I4026:2363;4026:2230;4026:2047;4026:1994",
+    "I4026:2363;4026:2230;4026:2047;4026:1995",
+    "I4026:2363;4026:2230;4026:2047;4026:1995;4026:1905",
+    "I4026:2363;4026:2230;4026:2047;4026:1995;4026:1906",
+    "I4026:2363;4026:2230;4026:2047;4026:1995;4026:1907",
+    "I4026:2363;4026:2230;4026:2047;4026:1995;4026:1908",
+    "I4026:2363;4026:2280",
+    "I4026:2363;4026:2280;4026:2076",
+    "I4026:2363;4026:2280;4026:2077",
+    "I4026:2363;4026:2280;4026:2077;4026:2059",
+    "I4026:2363;4026:2280;4026:2077;4026:2060",
+    "I4026:2363;4026:2280;4026:2077;4026:2061",
+    "I4026:2363;4026:2280;4026:2077;4026:2062",
+    "I4026:2363;4026:2280;4026:2077;4026:2063",
+    "I4026:2363;4026:2280;4026:2077;4026:2064",
+    "I4026:2363;4026:2280;4026:2077;4026:2065",
+    "I4026:2363;4026:2280;4026:2077;4026:2065;4026:1905",
+    "I4026:2363;4026:2280;4026:2077;4026:2065;4026:1906",
+    "I4026:2363;4026:2280;4026:2077;4026:2065;4026:1907",
+    "I4026:2363;4026:2280;4026:2077;4026:2065;4026:1908",
+    "I4026:2363;4026:2280;4026:2077;4026:2070",
+    "I4026:2363;4026:2280;4026:2077;4026:2070;4026:1905",
+    "I4026:2363;4026:2280;4026:2077;4026:2070;4026:1906",
+    "I4026:2363;4026:2280;4026:2077;4026:2070;4026:1907",
+    "I4026:2363;4026:2280;4026:2077;4026:2070;4026:1908",
+    "I4026:2363;4026:2280;4026:2096",
+    "I4026:2363;4026:2280;4026:2097",
+    "I4026:2363;4026:2280;4026:2097;4026:2059",
+    "I4026:2363;4026:2280;4026:2097;4026:2060",
+    "I4026:2363;4026:2280;4026:2097;4026:2061",
+    "I4026:2363;4026:2280;4026:2097;4026:2062",
+    "I4026:2363;4026:2280;4026:2097;4026:2063",
+    "I4026:2363;4026:2280;4026:2097;4026:2064",
+    "I4026:2363;4026:2280;4026:2097;4026:2065",
+    "I4026:2363;4026:2280;4026:2097;4026:2065;4026:1905",
+    "I4026:2363;4026:2280;4026:2097;4026:2065;4026:1906",
+    "I4026:2363;4026:2280;4026:2097;4026:2065;4026:1907",
+    "I4026:2363;4026:2280;4026:2097;4026:2065;4026:1908",
+    "I4026:2363;4026:2280;4026:2097;4026:2070",
+    "I4026:2363;4026:2280;4026:2097;4026:2070;4026:1905",
+    "I4026:2363;4026:2280;4026:2097;4026:2070;4026:1906",
+    "I4026:2363;4026:2280;4026:2097;4026:2070;4026:1907",
+    "I4026:2363;4026:2280;4026:2097;4026:2070;4026:1908",
+    "I4026:2363;4026:2280;4026:2116",
+    "I4026:2363;4026:2280;4026:2117",
+    "I4026:2363;4026:2280;4026:2117;4026:2059",
+    "I4026:2363;4026:2280;4026:2117;4026:2060",
+    "I4026:2363;4026:2280;4026:2117;4026:2061",
+    "I4026:2363;4026:2280;4026:2117;4026:2062",
+    "I4026:2363;4026:2280;4026:2117;4026:2063",
+    "I4026:2363;4026:2280;4026:2117;4026:2064",
+    "I4026:2363;4026:2280;4026:2117;4026:2065",
+    "I4026:2363;4026:2280;4026:2117;4026:2065;4026:1905",
+    "I4026:2363;4026:2280;4026:2117;4026:2065;4026:1906",
+    "I4026:2363;4026:2280;4026:2117;4026:2065;4026:1907",
+    "I4026:2363;4026:2280;4026:2117;4026:2065;4026:1908",
+    "I4026:2363;4026:2280;4026:2117;4026:2070",
+    "I4026:2363;4026:2280;4026:2117;4026:2070;4026:1905",
+    "I4026:2363;4026:2280;4026:2117;4026:2070;4026:1906",
+    "I4026:2363;4026:2280;4026:2117;4026:2070;4026:1907",
+    "I4026:2363;4026:2280;4026:2117;4026:2070;4026:1908",
+    "I4026:2363;4026:2335",
+    "I4026:2363;4026:2335;4026:2137",
+    "I4026:2363;4026:2335;4026:2138",
+    "I4026:2363;4026:2335;4026:2139",
+    "I4026:2363;4026:2335;4026:2139;4008:266",
+    "I4026:2363;4026:2335;4026:2139;4008:267",
+    "I4026:2363;4026:2335;4026:2142",
+    "I4026:2363;4026:2335;4026:2143",
+    "I4026:2363;4026:2335;4026:2144",
+    "I4026:2363;4026:2335;4026:2145",
+    "I4026:2363;4026:2335;4026:2145;4026:1905",
+    "I4026:2363;4026:2335;4026:2145;4026:1906",
+    "I4026:2363;4026:2335;4026:2145;4026:1907",
+    "I4026:2363;4026:2335;4026:2145;4026:1908",
+    "I4026:2363;4026:2349",
+    "I4026:2363;4026:2349;4026:2152",
+    "I4026:2363;4026:2349;4026:2153",
+    "I4026:2363;4026:2349;4026:2154",
+    "I4026:2363;4026:2349;4026:2155",
+    "I4026:2363;4026:2349;4026:2156",
+    "I4026:2363;4026:2349;4026:2156;4025:1455",
+    "I4026:2363;4026:2349;4026:2156;4025:1456",
+    "I4026:2363;4026:2349;4026:2156;4025:1457",
+    "I4026:2363;4026:2349;4026:2161",
+    "I4026:2363;4026:2349;4026:2161;4026:1905",
+    "I4026:2363;4026:2349;4026:2161;4026:1906",
+    "I4026:2363;4026:2349;4026:2161;4026:1907",
+    "I4026:2363;4026:2349;4026:2161;4026:1908",
+    "4026:2527",
+    "I4026:2527;4026:2175",
+    "I4026:2527;4026:2176",
+    "I4026:2527;4026:2177",
+    "I4026:2527;4026:2177;4025:1455",
+    "I4026:2527;4026:2177;4025:1456",
+    "I4026:2527;4026:2177;4025:1457",
+    "I4026:2527;4026:2182",
+    "I4026:2527;4026:2182;4025:1455",
+    "I4026:2527;4026:2182;4025:1456",
+    "I4026:2527;4026:2182;4025:1457",
+    "I4026:2527;4026:2187",
+    "I4026:2527;4026:2187;4025:1455",
+    "I4026:2527;4026:2187;4025:1456",
+    "I4026:2527;4026:2187;4025:1457",
+    "I4026:2527;4026:2192",
+    "I4026:2527;4026:2192;4026:2168",
+    "I4026:2527;4026:2192;4026:2168;4025:1506",
+    "I4026:2527;4026:2192;4026:2170",
+    "I4026:2527;4026:2192;4026:2170;4025:1508",
+    "I4026:2527;4026:2192;4026:2170;4025:1509",
+    "I4026:2527;4026:2192;4026:2170;4025:1510"
+  ],
+  "mutatedNodeIds": [
+    "4026:1967",
+    "I4026:1967;4026:1905",
+    "4026:1973",
+    "I4026:1973;4026:1905",
+    "4026:1979",
+    "I4026:1979;4026:1905",
+    "4026:1985",
+    "I4026:1985;4026:1905",
+    "4026:1995",
+    "I4026:1995;4026:1905",
+    "I4026:2005;4026:1995",
+    "I4026:2005;4026:1995;4026:1905",
+    "I4026:2019;4026:1995",
+    "I4026:2019;4026:1995;4026:1905",
+    "I4026:2033;4026:1995",
+    "I4026:2033;4026:1995;4026:1905",
+    "I4026:2047;4026:1995",
+    "I4026:2047;4026:1995;4026:1905",
+    "4026:2065",
+    "I4026:2065;4026:1905",
+    "4026:2070",
+    "I4026:2070;4026:1905",
+    "I4026:2077;4026:2065",
+    "I4026:2077;4026:2065;4026:1905",
+    "I4026:2077;4026:2070",
+    "I4026:2077;4026:2070;4026:1905",
+    "I4026:2097;4026:2065",
+    "I4026:2097;4026:2065;4026:1905",
+    "I4026:2097;4026:2070",
+    "I4026:2097;4026:2070;4026:1905",
+    "I4026:2117;4026:2065",
+    "I4026:2117;4026:2065;4026:1905",
+    "I4026:2117;4026:2070",
+    "I4026:2117;4026:2070;4026:1905",
+    "4026:2145",
+    "I4026:2145;4026:1905",
+    "4026:2161",
+    "I4026:2161;4026:1905",
+    "I4026:2206;4026:1967",
+    "I4026:2206;4026:1967;4026:1905",
+    "I4026:2206;4026:1973",
+    "I4026:2206;4026:1973;4026:1905",
+    "I4026:2206;4026:1979",
+    "I4026:2206;4026:1979;4026:1905",
+    "I4026:2206;4026:1985",
+    "I4026:2206;4026:1985;4026:1905",
+    "I4026:2230;4026:2005;4026:1995",
+    "I4026:2230;4026:2005;4026:1995;4026:1905",
+    "I4026:2230;4026:2019;4026:1995",
+    "I4026:2230;4026:2019;4026:1995;4026:1905",
+    "I4026:2230;4026:2033;4026:1995",
+    "I4026:2230;4026:2033;4026:1995;4026:1905",
+    "I4026:2230;4026:2047;4026:1995",
+    "I4026:2230;4026:2047;4026:1995;4026:1905",
+    "I4026:2280;4026:2077;4026:2065",
+    "I4026:2280;4026:2077;4026:2065;4026:1905",
+    "I4026:2280;4026:2077;4026:2070",
+    "I4026:2280;4026:2077;4026:2070;4026:1905",
+    "I4026:2280;4026:2097;4026:2065",
+    "I4026:2280;4026:2097;4026:2065;4026:1905",
+    "I4026:2280;4026:2097;4026:2070",
+    "I4026:2280;4026:2097;4026:2070;4026:1905",
+    "I4026:2280;4026:2117;4026:2065",
+    "I4026:2280;4026:2117;4026:2065;4026:1905",
+    "I4026:2280;4026:2117;4026:2070",
+    "I4026:2280;4026:2117;4026:2070;4026:1905",
+    "I4026:2335;4026:2145",
+    "I4026:2335;4026:2145;4026:1905",
+    "I4026:2349;4026:2161",
+    "I4026:2349;4026:2161;4026:1905",
+    "4026:2139",
+    "4026:2199",
+    "4025:1519",
+    "4025:1518",
+    "4025:1531",
+    "4025:1530",
+    "4025:1543",
+    "4025:1542",
+    "4025:1555",
+    "4025:1554",
+    "4025:1567",
+    "4025:1566",
+    "4025:1579",
+    "4025:1578",
+    "4025:1591",
+    "4025:1590",
+    "4025:1603",
+    "4025:1602",
+    "4019:2921",
+    "4019:3088",
+    "4019:2917",
+    "4019:3152",
+    "4019:3150",
+    "4019:2890",
+    "4007:38"
+  ],
+  "removedNodeIds": [],
+  "verificationChecks": {
+    "shellDimensions": true,
+    "viewportAndDock": true,
+    "responseComponent": true,
+    "preservedSnapshots": true,
+    "specificDestinations": true,
+    "geistOnly": true,
+    "noBannedCopy": true,
+    "noTextGeometryIssues": true
+  }
+}

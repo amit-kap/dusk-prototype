@@ -1,0 +1,94 @@
+import { useMemo, useState } from "react";
+import { Avatar } from "@astryxdesign/core/Avatar";
+import { ToggleButton } from "@astryxdesign/core/ToggleButton";
+import { Dashboard } from "./Dashboard";
+import { FindingMasterItem, type FindingMasterItemData } from "./FindingMasterItem";
+import duskIcon from "./assets/dusk-icon.svg";
+import navDashboardIcon from "./assets/nav-dashboard.svg";
+import navFindingsIcon from "./assets/nav-findings.svg";
+import navCasesIcon from "./assets/nav-cases.svg";
+import navAccountsIcon from "./assets/nav-accounts.svg";
+import navActorsIcon from "./assets/nav-actors.svg";
+import navAutomationsIcon from "./assets/nav-automations.svg";
+import navSettingsIcon from "./assets/nav-settings.svg";
+import { CalendarDays } from "lucide-react";
+
+type View = "overview" | "finding";
+
+const findingItems: FindingMasterItemData[] = [
+  { id: "F-204", entity: "D. Marek", timestamp: "Tue 09:12", title: "Payroll transfers to an unregistered personal beneficiary", verdict: "Fraudulent", confidence: "91% confidence", status: "Open" },
+  { id: "F-203", entity: "agent-treasury", timestamp: "Wed 03:20", title: "Treasury activity outside its baseline", verdict: "Suspicious", confidence: "Not scored", status: "Open" },
+  { id: "F-202", entity: "svc-settle-03", timestamp: "Mon 21:14", title: "Settlement credential used beyond scope", verdict: "Suspicious", confidence: "88% confidence", status: "Open" },
+  { id: "F-201", entity: "L. Chen", timestamp: "Mon 11:36", title: "Vendor bank details changed before payout", verdict: "Suspicious", confidence: "84% confidence", status: "Open" },
+  { id: "F-200", entity: "C. Rivas", timestamp: "Mon 14:02", title: "Payroll approval matches established activity", verdict: "Legitimate", confidence: "98% confidence", status: "Cleared" },
+];
+
+function App() {
+  const [view, setView] = useState<View>("overview");
+
+  return (
+    <div className="dusk-app">
+      <aside className="dusk-rail" aria-label="Primary navigation">
+        <div className="dusk-mark" aria-label="Dusk home"><img src={duskIcon} alt="" /></div>
+        <nav className="dusk-nav">
+          <NavItem icon={<img src={navDashboardIcon} alt="" />} label="Dashboard" active={view === "overview"} onClick={() => setView("overview")} />
+          <NavItem icon={<img src={navFindingsIcon} alt="" />} label="Findings" active={view === "finding"} onClick={() => setView("finding")} />
+          <NavItem icon={<img src={navCasesIcon} alt="" />} label="Cases" />
+          <NavItem icon={<img src={navAccountsIcon} alt="" />} label="Accounts" />
+          <NavItem icon={<img src={navActorsIcon} alt="" />} label="Actors" />
+          <NavItem icon={<img src={navAutomationsIcon} alt="" />} label="Automations" />
+        </nav>
+        <div className="dusk-rail-bottom">
+          <NavItem icon={<img src={navSettingsIcon} alt="" />} label="Settings" />
+          <div className="dusk-avatar-slot">
+            <Avatar name="C. Rivas" size={40} />
+          </div>
+        </div>
+      </aside>
+
+      <main className={`dusk-main ${view === "overview" ? "dusk-main-dashboard" : ""}`}>
+        {view === "overview" ? (
+          <Dashboard onOpenFinding={() => setView("finding")} />
+        ) : (
+          <Finding />
+        )}
+      </main>
+    </div>
+  );
+}
+
+function NavItem({ icon, label, active, count, onClick }: { icon: React.ReactNode; label: string; active?: boolean; count?: string; onClick?: () => void }) {
+  return <button className={`nav-item ${active ? "is-active" : ""}`} onClick={onClick} aria-current={active ? "page" : undefined}><span className="nav-icon-container">{icon}</span><span>{label}</span>{count && <small>{count}</small>}</button>;
+}
+
+function Finding() {
+  const [filter, setFilter] = useState<"All" | "Open" | "Cleared">("All");
+  const visibleItems = useMemo(() => filter === "All" ? findingItems : findingItems.filter((item) => item.status === filter), [filter]);
+
+  return <section className="finding-page">
+    <header className="findings-page-header">
+      <div>
+        <h1>Findings</h1>
+        <p>4 require review · 1 cleared</p>
+      </div>
+      <button className="findings-range-button" type="button"><CalendarDays size={14} /> Last 7 days</button>
+    </header>
+    <div className="findings-master-detail" aria-label="Findings master-detail workspace">
+      <div className="findings-pane findings-inbox" aria-label="Findings inbox">
+        <div className="findings-filters">
+          <div className="findings-filters-control" role="group" aria-label="Finding status filters">
+            <ToggleButton label="All · 5" size="sm" isPressed={filter === "All"} onPressedChange={() => setFilter("All")} />
+            <ToggleButton label="Open · 4" size="sm" isPressed={filter === "Open"} onPressedChange={() => setFilter("Open")} />
+            <ToggleButton label="Cleared · 1" size="sm" isPressed={filter === "Cleared"} onPressedChange={() => setFilter("Cleared")} />
+          </div>
+        </div>
+        <div className="finding-master-list" role="tabpanel" aria-label={`${filter} findings`}>
+          {visibleItems.map((item) => <FindingMasterItem key={item.id} {...item} selected={item.id === "F-204"} />)}
+        </div>
+      </div>
+      <div className="findings-pane" aria-label="Finding detail" />
+    </div>
+  </section>;
+}
+
+export default App;

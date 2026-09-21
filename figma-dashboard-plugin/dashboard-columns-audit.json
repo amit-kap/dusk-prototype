@@ -1,0 +1,13 @@
+{
+  "status": "PASS",
+  "root": {"id": "4003:182", "name": "Dusk / Payment intelligence / Dashboard", "layout": "HORIZONTAL", "bounds": {"x": 160, "y": 80, "width": 1440, "height": 2525}, "children": ["4004:12", "4004:13"]},
+  "left": {"id": "4004:12", "name": "Navigation / Column", "layout": "VERTICAL", "bounds": {"x": 176, "y": 96, "width": 88, "height": 912}, "children": [{"id": "4007:39", "name": "Brand / Dusk mark"}, {"id": "4004:14", "name": "Navigation / Primary"}]},
+  "right": {"id": "4004:13", "name": "Dashboard / Workspace", "layout": "VERTICAL", "bounds": {"x": 280, "y": 96, "width": 1304, "height": 2493}, "children": [{"id": "4007:42", "name": "Dashboard / Actions"}, {"id": "4004:15", "name": "Dashboard / Main content"}]},
+  "createdNodeIds": [],
+  "removedNodeIds": [],
+  "mutatedNodeIds": ["4003:182", "4004:12", "4004:13", "4007:39", "4004:14", "4007:42", "4004:15", "4007:43", "4009:2831"],
+  "unexpectedGeometryChanges": [],
+  "badNames": [],
+  "visibleLayerCountIncludingRoot": 897,
+  "navAppearance": {"fills": 0, "strokes": 0, "effects": 0}
+}

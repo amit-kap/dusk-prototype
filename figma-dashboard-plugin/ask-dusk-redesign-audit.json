@@ -1,0 +1,1413 @@
+{
+  "rootId": "4019:2890",
+  "frame": {
+    "x": 1760,
+    "y": 80,
+    "width": 1440,
+    "height": 1040
+  },
+  "dashboardPreserved": true,
+  "columns": [
+    {
+      "id": "4019:3153",
+      "name": "Navigation / Column",
+      "w": 88,
+      "h": 1008
+    },
+    {
+      "id": "4019:3150",
+      "name": "Ask Dusk / Workspace",
+      "w": 1304,
+      "h": 1008
+    }
+  ],
+  "answerIsComponentInstance": true,
+  "fontMismatches": [],
+  "prohibitedCopy": [],
+  "answerHeight": 696,
+  "scrollContentHeight": 780,
+  "viewportHeight": 816,
+  "composerY": 864,
+  "composerBottom": 1008,
+  "workspaceHeight": 1008,
+  "componentMap": [
+    {
+      "id": "4025:1454",
+      "name": "Dusk / Button / outline / Ask Dusk",
+      "properties": {
+        "Label#4025:0": {
+          "type": "TEXT",
+          "defaultValue": "View details"
+        }
+      },
+      "source": "shadcn button.tsx · variant=outline, size=default; label TEXT property; Geist and Dusk variables."
+    },
+    {
+      "id": "4025:1458",
+      "name": "Dusk / Button / ghost / Ask Dusk",
+      "properties": {
+        "Label#4025:1": {
+          "type": "TEXT",
+          "defaultValue": "View details"
+        }
+      },
+      "source": "shadcn button.tsx · variant=ghost, size=default; label TEXT property; Geist and Dusk variables."
+    },
+    {
+      "id": "4025:1462",
+      "name": "Dusk / CardHeader / Event",
+      "properties": {
+        "Time#4025:2": {
+          "type": "TEXT",
+          "defaultValue": "Tuesday · 09:12"
+        },
+        "Title#4025:3": {
+          "type": "TEXT",
+          "defaultValue": "Dormant authority used"
+        }
+      },
+      "source": "shadcn card.tsx · CardHeader, CardTitle. Editable Time and Title."
+    },
+    {
+      "id": "4025:1465",
+      "name": "Dusk / CardContent / Event",
+      "properties": {
+        "Entity#4025:4": {
+          "type": "TEXT",
+          "defaultValue": "D. Marek → 14 Critical accounts"
+        },
+        "Fact#4025:5": {
+          "type": "TEXT",
+          "defaultValue": "Dormant approval authority accessed 14 finance accounts in 20 minutes, at 12× normal activity."
+        }
+      },
+      "source": "shadcn card.tsx · CardContent. Editable Entity and recorded Fact."
+    },
+    {
+      "id": "4025:1468",
+      "name": "Dusk / CardFooter / Event",
+      "properties": {},
+      "source": "shadcn CardFooter with nested Button; opens a dedicated source event detail."
+    },
+    {
+      "id": "4025:1473",
+      "name": "Dusk / Card / Recorded event",
+      "properties": {},
+      "source": "shadcn Card composed of CardHeader, CardContent and CardFooter instances. Each event contains source facts only."
+    },
+    {
+      "id": "4025:1485",
+      "name": "Dusk / Card / Linked entity",
+      "properties": {
+        "Title#4025:6": {
+          "type": "TEXT",
+          "defaultValue": "D. Marek"
+        },
+        "Description#4025:7": {
+          "type": "TEXT",
+          "defaultValue": "Finance analyst · Day 9 of 30-day notice"
+        }
+      },
+      "source": "shadcn Card size=sm · linked actor or account context; editable title and description; entire card opens details."
+    },
+    {
+      "id": "4025:1490",
+      "name": "Dusk / Card / Assessment context",
+      "properties": {
+        "Title#4025:8": {
+          "type": "TEXT",
+          "defaultValue": "What remains unverified"
+        },
+        "Description#4025:9": {
+          "type": "TEXT",
+          "defaultValue": "The person behind the sessions and the beneficiary’s relationship to Marek are not established."
+        }
+      },
+      "source": "shadcn Card size=sm · interpretation or uncertainty; separate from recorded facts."
+    },
+    {
+      "id": "4025:1493",
+      "name": "Dusk / Dialog / Investigation detail",
+      "properties": {
+        "Category#4025:10": {
+          "type": "TEXT",
+          "defaultValue": "Recorded event"
+        },
+        "Title#4025:11": {
+          "type": "TEXT",
+          "defaultValue": "Dormant authority used"
+        },
+        "Record#4025:12": {
+          "type": "TEXT",
+          "defaultValue": "Tuesday · 09:12"
+        },
+        "Detail#4025:13": {
+          "type": "TEXT",
+          "defaultValue": "Recorded activity"
+        },
+        "Context#4025:14": {
+          "type": "TEXT",
+          "defaultValue": "Supporting context"
+        },
+        "Limits#4025:15": {
+          "type": "TEXT",
+          "defaultValue": "What this does not establish"
+        }
+      },
+      "source": "shadcn dialog.tsx · DialogContent, DialogHeader, DialogTitle, DialogDescription, DialogFooter. Source-backed record fields, no invented amounts or identifiers."
+    },
+    {
+      "id": "4025:1505",
+      "name": "Dusk / Textarea / Empty",
+      "properties": {
+        "Placeholder#4025:16": {
+          "type": "TEXT",
+          "defaultValue": "Ask a follow-up…"
+        }
+      },
+      "source": "shadcn textarea.tsx inside InputGroup; blank value, placeholder only."
+    },
+    {
+      "id": "4025:1507",
+      "name": "Dusk / InputGroupButton / Send / Disabled",
+      "properties": {},
+      "source": "shadcn InputGroupButton size=icon-sm, disabled because textarea is empty."
+    },
+    {
+      "id": "4025:1511",
+      "name": "Dusk / InputGroup / Empty composer",
+      "properties": {},
+      "source": "shadcn InputGroup + Textarea + inline-end InputGroupAddon + InputGroupButton; persistent outside MessageScroller."
+    },
+    {
+      "id": "4025:1614",
+      "name": "Dusk / MessageContent / Payment-chain answer",
+      "properties": {},
+      "source": "shadcn Message align=start + MessageContent + Bubble variant=ghost. Composes factual answer, linked context, events, interpretation and a secondary safeguard."
+    },
+    {
+      "id": "4025:1615",
+      "name": "Dusk / Bubble / ghost / Factual answer",
+      "properties": {
+        "Answer#4025:17": {
+          "type": "TEXT",
+          "defaultValue": "Dormant approval access was used to reach payroll accounts, route two transfers to an unregistered personal account, and withdraw the funds later that day."
+        }
+      },
+      "source": "shadcn Bubble variant=ghost with BubbleContent; direct factual prose, no report title or recommendation."
+    },
+    {
+      "id": "4025:1627",
+      "name": "Dusk / MessageContent / Linked actors and accounts",
+      "properties": {},
+      "source": "Three shadcn Card size=sm instances. Opens actor and account context relevant to this chain."
+    },
+    {
+      "id": "4025:1662",
+      "name": "Dusk / MessageContent / Recorded event chain",
+      "properties": {},
+      "source": "shadcn MessageContent containing a chronological row of three Card instances. Events are factual; interpretation is below."
+    },
+    {
+      "id": "4025:1747",
+      "name": "Dusk / MessageContent / Interpretation and uncertainty",
+      "properties": {},
+      "source": "shadcn Card instances distinguish Dusk interpretation from unknown attribution."
+    },
+    {
+      "id": "4025:1763",
+      "name": "Dusk / Card / Suggested safeguard",
+      "properties": {},
+      "source": "shadcn Card size=sm with CardContent and CardAction. Secondary safeguard with a scope review; no financial or access action is executed."
+    },
+    {
+      "id": "4025:1859",
+      "name": "Dusk / Button / ghost / Back to dashboard",
+      "properties": {},
+      "source": "shadcn Button variant=ghost, size=default; back control within right workspace."
+    },
+    {
+      "id": "4025:1868",
+      "name": "Dusk / MessageContent / Composer dock",
+      "properties": {},
+      "source": "Persistent shadcn InputGroup, Textarea and Button helpers, outside the MessageScroller viewport."
+    }
+  ],
+  "sourceDestinations": {
+    "Access event": "4025:1518",
+    "Transfer event": "4025:1530",
+    "Withdrawal event": "4025:1542",
+    "D. Marek": "4025:1554",
+    "Critical accounts": "4025:1566",
+    "Personal beneficiary": "4025:1578",
+    "Finding and uncertainty": "4025:1590",
+    "Access safeguard": "4025:1602"
+  },
+  "links": [],
+  "createdNodeIds": [],
+  "mutatedNodeIds": [
+    "4025:1454",
+    "4025:1458",
+    "4025:1462",
+    "4025:1465",
+    "4025:1468",
+    "4025:1473",
+    "4025:1485",
+    "4025:1490",
+    "4025:1493",
+    "4025:1505",
+    "4025:1507",
+    "4025:1511",
+    "4025:1614",
+    "I4025:1621;4025:1616",
+    "I4025:1706;4025:1663",
+    "I4025:1706;4025:1666",
+    "I4025:1772;4025:1764",
+    "4025:1615",
+    "4025:1616",
+    "4025:1627",
+    "4025:1662",
+    "4025:1663",
+    "4025:1666",
+    "4025:1747",
+    "4025:1763",
+    "4025:1764",
+    "4025:1859",
+    "4025:1868",
+    "4025:1869",
+    "4025:1469",
+    "4025:1474",
+    "4025:1477",
+    "4025:1480",
+    "I4025:1480;4025:1469",
+    "4025:1500",
+    "4025:1512",
+    "4025:1514",
+    "4025:1621",
+    "4025:1646",
+    "I4025:1646;4025:1628",
+    "I4025:1646;4025:1634",
+    "I4025:1646;4025:1640",
+    "4025:1706",
+    "I4025:1706;4025:1667",
+    "I4025:1706;4025:1667;4025:1474",
+    "I4025:1706;4025:1667;4025:1477",
+    "I4025:1706;4025:1667;4025:1480",
+    "I4025:1706;4025:1667;4025:1480;4025:1469",
+    "I4025:1706;4025:1680",
+    "I4025:1706;4025:1680;4025:1474",
+    "I4025:1706;4025:1680;4025:1477",
+    "I4025:1706;4025:1680;4025:1480",
+    "I4025:1706;4025:1680;4025:1480;4025:1469",
+    "I4025:1706;4025:1693",
+    "I4025:1706;4025:1693;4025:1474",
+    "I4025:1706;4025:1693;4025:1477",
+    "I4025:1706;4025:1693;4025:1480",
+    "I4025:1706;4025:1693;4025:1480;4025:1469",
+    "4025:1756",
+    "I4025:1756;4025:1748",
+    "I4025:1756;4025:1752",
+    "4025:1772",
+    "I4025:1772;4025:1767",
+    "4025:1628",
+    "4025:1634",
+    "4025:1640",
+    "4025:1667",
+    "I4025:1667;4025:1474",
+    "I4025:1667;4025:1477",
+    "I4025:1667;4025:1480",
+    "I4025:1667;4025:1480;4025:1469",
+    "4025:1680",
+    "I4025:1680;4025:1474",
+    "I4025:1680;4025:1477",
+    "I4025:1680;4025:1480",
+    "I4025:1680;4025:1480;4025:1469",
+    "4025:1693",
+    "I4025:1693;4025:1474",
+    "I4025:1693;4025:1477",
+    "I4025:1693;4025:1480",
+    "I4025:1693;4025:1480;4025:1469",
+    "4025:1748",
+    "4025:1752",
+    "4025:1767",
+    "4025:1870",
+    "4025:1875",
+    "4025:1880",
+    "I4025:1880;4025:1512",
+    "I4025:1880;4025:1514",
+    "4025:1863",
+    "4025:1780",
+    "I4025:1780;4025:1621",
+    "I4025:1780;4025:1646",
+    "I4025:1780;4025:1646;4025:1628",
+    "I4025:1780;4025:1646;4025:1634",
+    "I4025:1780;4025:1646;4025:1640",
+    "I4025:1780;4025:1706",
+    "I4025:1780;4025:1706;4025:1667",
+    "I4025:1780;4025:1706;4025:1667;4025:1474",
+    "I4025:1780;4025:1706;4025:1667;4025:1477",
+    "I4025:1780;4025:1706;4025:1667;4025:1480",
+    "I4025:1780;4025:1706;4025:1667;4025:1480;4025:1469",
+    "I4025:1780;4025:1706;4025:1680",
+    "I4025:1780;4025:1706;4025:1680;4025:1474",
+    "I4025:1780;4025:1706;4025:1680;4025:1477",
+    "I4025:1780;4025:1706;4025:1680;4025:1480",
+    "I4025:1780;4025:1706;4025:1680;4025:1480;4025:1469",
+    "I4025:1780;4025:1706;4025:1693",
+    "I4025:1780;4025:1706;4025:1693;4025:1474",
+    "I4025:1780;4025:1706;4025:1693;4025:1477",
+    "I4025:1780;4025:1706;4025:1693;4025:1480",
+    "I4025:1780;4025:1706;4025:1693;4025:1480;4025:1469",
+    "I4025:1780;4025:1756",
+    "I4025:1780;4025:1756;4025:1748",
+    "I4025:1780;4025:1756;4025:1752",
+    "I4025:1780;4025:1772",
+    "I4025:1780;4025:1772;4025:1767",
+    "4025:1887",
+    "I4025:1887;4025:1870",
+    "I4025:1887;4025:1875",
+    "I4025:1887;4025:1880",
+    "I4025:1887;4025:1880;4025:1512",
+    "I4025:1887;4025:1880;4025:1514",
+    "4025:1518",
+    "4025:1519",
+    "4025:1530",
+    "4025:1531",
+    "4025:1542",
+    "4025:1543",
+    "4025:1554",
+    "4025:1555",
+    "4025:1566",
+    "4025:1567",
+    "4025:1578",
+    "4025:1579",
+    "4025:1590",
+    "4025:1591",
+    "4025:1602",
+    "4025:1603"
+  ],
+  "removedNodeIds": [],
+  "renderedInstances": [
+    {
+      "id": "4019:3158",
+      "name": "Navigation / Dashboard"
+    },
+    {
+      "id": "4019:3159",
+      "name": "Navigation / Findings"
+    },
+    {
+      "id": "4019:3160",
+      "name": "Navigation / Cases"
+    },
+    {
+      "id": "4019:3161",
+      "name": "Navigation / Accounts"
+    },
+    {
+      "id": "4019:3162",
+      "name": "Navigation / Actors"
+    },
+    {
+      "id": "4019:3163",
+      "name": "Navigation / Automations"
+    },
+    {
+      "id": "4025:1863",
+      "name": "Button / Back to dashboard"
+    },
+    {
+      "id": "4019:3215",
+      "name": "Bubble / secondary"
+    },
+    {
+      "id": "4025:1780",
+      "name": "MessageContent / Payment-chain answer"
+    },
+    {
+      "id": "I4025:1780;4025:1621",
+      "name": "Bubble / ghost / Direct answer"
+    },
+    {
+      "id": "I4025:1780;4025:1646",
+      "name": "Linked actors and accounts"
+    },
+    {
+      "id": "I4025:1780;4025:1646;4025:1628",
+      "name": "Card / D. Marek"
+    },
+    {
+      "id": "I4025:1780;4025:1646;4025:1634",
+      "name": "Card / Critical accounts"
+    },
+    {
+      "id": "I4025:1780;4025:1646;4025:1640",
+      "name": "Card / Personal beneficiary"
+    },
+    {
+      "id": "I4025:1780;4025:1706",
+      "name": "Recorded event chain"
+    },
+    {
+      "id": "I4025:1780;4025:1706;4025:1667",
+      "name": "Card / Access event"
+    },
+    {
+      "id": "I4025:1780;4025:1706;4025:1667;4025:1474",
+      "name": "CardHeader"
+    },
+    {
+      "id": "I4025:1780;4025:1706;4025:1667;4025:1477",
+      "name": "CardContent"
+    },
+    {
+      "id": "I4025:1780;4025:1706;4025:1667;4025:1480",
+      "name": "CardFooter"
+    },
+    {
+      "id": "I4025:1780;4025:1706;4025:1667;4025:1480;4025:1469",
+      "name": "Button / View access event"
+    },
+    {
+      "id": "I4025:1780;4025:1706;4025:1680",
+      "name": "Card / Transfer event"
+    },
+    {
+      "id": "I4025:1780;4025:1706;4025:1680;4025:1474",
+      "name": "CardHeader"
+    },
+    {
+      "id": "I4025:1780;4025:1706;4025:1680;4025:1477",
+      "name": "CardContent"
+    },
+    {
+      "id": "I4025:1780;4025:1706;4025:1680;4025:1480",
+      "name": "CardFooter"
+    },
+    {
+      "id": "I4025:1780;4025:1706;4025:1680;4025:1480;4025:1469",
+      "name": "Button / View transfer event"
+    },
+    {
+      "id": "I4025:1780;4025:1706;4025:1693",
+      "name": "Card / Withdrawal event"
+    },
+    {
+      "id": "I4025:1780;4025:1706;4025:1693;4025:1474",
+      "name": "CardHeader"
+    },
+    {
+      "id": "I4025:1780;4025:1706;4025:1693;4025:1477",
+      "name": "CardContent"
+    },
+    {
+      "id": "I4025:1780;4025:1706;4025:1693;4025:1480",
+      "name": "CardFooter"
+    },
+    {
+      "id": "I4025:1780;4025:1706;4025:1693;4025:1480;4025:1469",
+      "name": "Button / View withdrawal event"
+    },
+    {
+      "id": "I4025:1780;4025:1756",
+      "name": "Interpretation and uncertainty"
+    },
+    {
+      "id": "I4025:1780;4025:1756;4025:1748",
+      "name": "Card / Dusk interpretation"
+    },
+    {
+      "id": "I4025:1780;4025:1756;4025:1752",
+      "name": "Card / Attribution uncertainty"
+    },
+    {
+      "id": "I4025:1780;4025:1772",
+      "name": "Suggested safeguard"
+    },
+    {
+      "id": "I4025:1780;4025:1772;4025:1767",
+      "name": "Button / Review access scope"
+    },
+    {
+      "id": "4025:1887",
+      "name": "Composer / Blank with suggested questions"
+    },
+    {
+      "id": "I4025:1887;4025:1870",
+      "name": "Button / Which accounts were touched?"
+    },
+    {
+      "id": "I4025:1887;4025:1875",
+      "name": "Button / What remains unverified?"
+    },
+    {
+      "id": "I4025:1887;4025:1880",
+      "name": "InputGroup / Empty composer"
+    },
+    {
+      "id": "I4025:1887;4025:1880;4025:1512",
+      "name": "Textarea"
+    },
+    {
+      "id": "I4025:1887;4025:1880;4025:1514",
+      "name": "InputGroupAddon / inline-end / Send disabled"
+    }
+  ],
+  "textBounds": [
+    {
+      "id": "I4019:3158;4007:98",
+      "name": "Navigation / Dashboard / Label",
+      "text": "Dashboard",
+      "bounds": {
+        "x": 1789,
+        "y": 212,
+        "width": 62,
+        "height": 16
+      },
+      "font": {
+        "family": "Geist",
+        "style": "Medium",
+        "variationSettings": {
+          "wght": 500
+        }
+      },
+      "size": 12
+    },
+    {
+      "id": "I4019:3159;4007:112",
+      "name": "Navigation / Findings / Label",
+      "text": "Findings",
+      "bounds": {
+        "x": 1796,
+        "y": 284,
+        "width": 48,
+        "height": 16
+      },
+      "font": {
+        "family": "Geist",
+        "style": "Medium",
+        "variationSettings": {
+          "wght": 500
+        }
+      },
+      "size": 12
+    },
+    {
+      "id": "I4019:3160;4007:125",
+      "name": "Navigation / Cases / Label",
+      "text": "Cases",
+      "bounds": {
+        "x": 1802.5,
+        "y": 356,
+        "width": 35,
+        "height": 16
+      },
+      "font": {
+        "family": "Geist",
+        "style": "Medium",
+        "variationSettings": {
+          "wght": 500
+        }
+      },
+      "size": 12
+    },
+    {
+      "id": "I4019:3161;4007:141",
+      "name": "Navigation / Accounts / Label",
+      "text": "Accounts",
+      "bounds": {
+        "x": 1793,
+        "y": 428,
+        "width": 54,
+        "height": 16
+      },
+      "font": {
+        "family": "Geist",
+        "style": "Medium",
+        "variationSettings": {
+          "wght": 500
+        }
+      },
+      "size": 12
+    },
+    {
+      "id": "I4019:3162;4007:158",
+      "name": "Navigation / Actors / Label",
+      "text": "Actors",
+      "bounds": {
+        "x": 1801.5,
+        "y": 500,
+        "width": 37,
+        "height": 16
+      },
+      "font": {
+        "family": "Geist",
+        "style": "Medium",
+        "variationSettings": {
+          "wght": 500
+        }
+      },
+      "size": 12
+    },
+    {
+      "id": "I4019:3163;4007:175",
+      "name": "Navigation / Automations / Label",
+      "text": "Automations",
+      "bounds": {
+        "x": 1784,
+        "y": 572,
+        "width": 72,
+        "height": 16
+      },
+      "font": {
+        "family": "Geist",
+        "style": "Medium",
+        "variationSettings": {
+          "wght": 500
+        }
+      },
+      "size": 12
+    },
+    {
+      "id": "4019:3171",
+      "name": "Navigation / Settings / Label",
+      "text": "Settings",
+      "bounds": {
+        "x": 1796,
+        "y": 1004,
+        "width": 48,
+        "height": 16
+      },
+      "font": {
+        "family": "Geist",
+        "style": "Medium",
+        "variationSettings": {
+          "wght": 500
+        }
+      },
+      "size": 12
+    },
+    {
+      "id": "4019:3174",
+      "name": "Account / Profile / Label",
+      "text": "Carla",
+      "bounds": {
+        "x": 1805,
+        "y": 1082,
+        "width": 30,
+        "height": 16
+      },
+      "font": {
+        "family": "Geist",
+        "style": "Medium",
+        "variationSettings": {
+          "wght": 500
+        }
+      },
+      "size": 12
+    },
+    {
+      "id": "I4025:1863;4025:1862",
+      "name": "Label",
+      "text": "Back to dashboard",
+      "bounds": {
+        "x": 1916,
+        "y": 110,
+        "width": 128,
+        "height": 20
+      },
+      "font": {
+        "family": "Geist",
+        "style": "Medium",
+        "variationSettings": {
+          "wght": 500
+        }
+      },
+      "size": 14
+    },
+    {
+      "id": "I4019:3215;4019:2920",
+      "name": "Question",
+      "text": "What happened in the D. Marek payment chain?",
+      "bounds": {
+        "x": 2724,
+        "y": 160,
+        "width": 356,
+        "height": 20
+      },
+      "font": {
+        "family": "Geist",
+        "style": "Regular",
+        "variationSettings": {
+          "wght": 400
+        }
+      },
+      "size": 14
+    },
+    {
+      "id": "I4025:1780;4025:1621;4025:1619",
+      "name": "Name",
+      "text": "Dusk",
+      "bounds": {
+        "x": 2000,
+        "y": 212,
+        "width": 64,
+        "height": 20
+      },
+      "font": {
+        "family": "Geist",
+        "style": "Medium",
+        "variationSettings": {
+          "wght": 500
+        }
+      },
+      "size": 14
+    },
+    {
+      "id": "I4025:1780;4025:1621;4025:1620",
+      "name": "Answer",
+      "text": "Dormant approval access was used to reach payroll accounts, route two transfers to an unregistered personal account, and withdraw the funds later that day.",
+      "bounds": {
+        "x": 1972,
+        "y": 240,
+        "width": 1120,
+        "height": 64
+      },
+      "font": {
+        "family": "Geist",
+        "style": "Medium",
+        "variationSettings": {
+          "wght": 500
+        }
+      },
+      "size": 24
+    },
+    {
+      "id": "I4025:1780;4025:1646;4025:1628;4025:1486",
+      "name": "Title",
+      "text": "D. Marek",
+      "bounds": {
+        "x": 1989,
+        "y": 345,
+        "width": 330.66668701171875,
+        "height": 20
+      },
+      "font": {
+        "family": "Geist",
+        "style": "Medium",
+        "variationSettings": {
+          "wght": 500
+        }
+      },
+      "size": 14
+    },
+    {
+      "id": "I4025:1780;4025:1646;4025:1628;4025:1487",
+      "name": "Description",
+      "text": "Finance analyst · Day 9 of 30-day notice",
+      "bounds": {
+        "x": 1989,
+        "y": 369,
+        "width": 330.66668701171875,
+        "height": 16
+      },
+      "font": {
+        "family": "Geist",
+        "style": "Regular",
+        "variationSettings": {
+          "wght": 400
+        }
+      },
+      "size": 12
+    },
+    {
+      "id": "I4025:1780;4025:1646;4025:1634;4025:1486",
+      "name": "Title",
+      "text": "14 Critical finance accounts",
+      "bounds": {
+        "x": 2367.666748046875,
+        "y": 345,
+        "width": 330.66668701171875,
+        "height": 20
+      },
+      "font": {
+        "family": "Geist",
+        "style": "Medium",
+        "variationSettings": {
+          "wght": 500
+        }
+      },
+      "size": 14
+    },
+    {
+      "id": "I4025:1780;4025:1646;4025:1634;4025:1487",
+      "name": "Description",
+      "text": "Payroll access outside normal activity",
+      "bounds": {
+        "x": 2367.666748046875,
+        "y": 369,
+        "width": 330.66668701171875,
+        "height": 16
+      },
+      "font": {
+        "family": "Geist",
+        "style": "Regular",
+        "variationSettings": {
+          "wght": 400
+        }
+      },
+      "size": 12
+    },
+    {
+      "id": "I4025:1780;4025:1646;4025:1640;4025:1486",
+      "name": "Title",
+      "text": "Personal beneficiary",
+      "bounds": {
+        "x": 2746.33349609375,
+        "y": 345,
+        "width": 330.66668701171875,
+        "height": 20
+      },
+      "font": {
+        "family": "Geist",
+        "style": "Medium",
+        "variationSettings": {
+          "wght": 500
+        }
+      },
+      "size": 14
+    },
+    {
+      "id": "I4025:1780;4025:1646;4025:1640;4025:1487",
+      "name": "Description",
+      "text": "Not registered in the payee master",
+      "bounds": {
+        "x": 2746.33349609375,
+        "y": 369,
+        "width": 330.66668701171875,
+        "height": 16
+      },
+      "font": {
+        "family": "Geist",
+        "style": "Regular",
+        "variationSettings": {
+          "wght": 400
+        }
+      },
+      "size": 12
+    },
+    {
+      "id": "I4025:1780;4025:1706;4025:1664",
+      "name": "Title",
+      "text": "Recorded events",
+      "bounds": {
+        "x": 1972,
+        "y": 426,
+        "width": 880,
+        "height": 24
+      },
+      "font": {
+        "family": "Geist",
+        "style": "Medium",
+        "variationSettings": {
+          "wght": 500
+        }
+      },
+      "size": 16
+    },
+    {
+      "id": "I4025:1780;4025:1706;4025:1665",
+      "name": "Date",
+      "text": "Tuesday · 3 linked events",
+      "bounds": {
+        "x": 2868,
+        "y": 426,
+        "width": 224,
+        "height": 16
+      },
+      "font": {
+        "family": "Geist",
+        "style": "Regular",
+        "variationSettings": {
+          "wght": 400
+        }
+      },
+      "size": 12
+    },
+    {
+      "id": "I4025:1780;4025:1706;4025:1667;4025:1474;4025:1463",
+      "name": "Time",
+      "text": "09:12  ·  Access",
+      "bounds": {
+        "x": 1989,
+        "y": 479,
+        "width": 330.66668701171875,
+        "height": 16
+      },
+      "font": {
+        "family": "Geist",
+        "style": "Medium",
+        "variationSettings": {
+          "wght": 500
+        }
+      },
+      "size": 12
+    },
+    {
+      "id": "I4025:1780;4025:1706;4025:1667;4025:1474;4025:1464",
+      "name": "Title",
+      "text": "Dormant authority used",
+      "bounds": {
+        "x": 1989,
+        "y": 503,
+        "width": 330.66668701171875,
+        "height": 24
+      },
+      "font": {
+        "family": "Geist",
+        "style": "Medium",
+        "variationSettings": {
+          "wght": 500
+        }
+      },
+      "size": 16
+    },
+    {
+      "id": "I4025:1780;4025:1706;4025:1667;4025:1477;4025:1466",
+      "name": "Entity",
+      "text": "D. Marek → 14 Critical accounts",
+      "bounds": {
+        "x": 1989,
+        "y": 543,
+        "width": 330.66668701171875,
+        "height": 16
+      },
+      "font": {
+        "family": "Geist",
+        "style": "Medium",
+        "variationSettings": {
+          "wght": 500
+        }
+      },
+      "size": 12
+    },
+    {
+      "id": "I4025:1780;4025:1706;4025:1667;4025:1477;4025:1467",
+      "name": "Fact",
+      "text": "Dormant approvals accessed 14 finance accounts in 20 minutes, at 12× normal activity.",
+      "bounds": {
+        "x": 1989,
+        "y": 567,
+        "width": 330.66668701171875,
+        "height": 40
+      },
+      "font": {
+        "family": "Geist",
+        "style": "Regular",
+        "variationSettings": {
+          "wght": 400
+        }
+      },
+      "size": 14
+    },
+    {
+      "id": "I4025:1780;4025:1706;4025:1667;4025:1480;4025:1469;4025:1459",
+      "name": "Label",
+      "text": "View access event",
+      "bounds": {
+        "x": 2081.333251953125,
+        "y": 641,
+        "width": 122,
+        "height": 20
+      },
+      "font": {
+        "family": "Geist",
+        "style": "Medium",
+        "variationSettings": {
+          "wght": 500
+        }
+      },
+      "size": 14
+    },
+    {
+      "id": "I4025:1780;4025:1706;4025:1680;4025:1474;4025:1463",
+      "name": "Time",
+      "text": "09:40  ·  Transfer",
+      "bounds": {
+        "x": 2367.666748046875,
+        "y": 479,
+        "width": 330.66668701171875,
+        "height": 16
+      },
+      "font": {
+        "family": "Geist",
+        "style": "Medium",
+        "variationSettings": {
+          "wght": 500
+        }
+      },
+      "size": 12
+    },
+    {
+      "id": "I4025:1780;4025:1706;4025:1680;4025:1474;4025:1464",
+      "name": "Title",
+      "text": "Two personal transfers",
+      "bounds": {
+        "x": 2367.666748046875,
+        "y": 503,
+        "width": 330.66668701171875,
+        "height": 24
+      },
+      "font": {
+        "family": "Geist",
+        "style": "Medium",
+        "variationSettings": {
+          "wght": 500
+        }
+      },
+      "size": 16
+    },
+    {
+      "id": "I4025:1780;4025:1706;4025:1680;4025:1477;4025:1466",
+      "name": "Entity",
+      "text": "Payroll → unregistered beneficiary",
+      "bounds": {
+        "x": 2367.666748046875,
+        "y": 543,
+        "width": 330.66668701171875,
+        "height": 16
+      },
+      "font": {
+        "family": "Geist",
+        "style": "Medium",
+        "variationSettings": {
+          "wght": 500
+        }
+      },
+      "size": 12
+    },
+    {
+      "id": "I4025:1780;4025:1706;4025:1680;4025:1477;4025:1467",
+      "name": "Fact",
+      "text": "Two transfers reached a personal account that was absent from the payee master.",
+      "bounds": {
+        "x": 2367.666748046875,
+        "y": 567,
+        "width": 330.66668701171875,
+        "height": 40
+      },
+      "font": {
+        "family": "Geist",
+        "style": "Regular",
+        "variationSettings": {
+          "wght": 400
+        }
+      },
+      "size": 14
+    },
+    {
+      "id": "I4025:1780;4025:1706;4025:1680;4025:1480;4025:1469;4025:1459",
+      "name": "Label",
+      "text": "View transfer event",
+      "bounds": {
+        "x": 2457,
+        "y": 641,
+        "width": 128,
+        "height": 20
+      },
+      "font": {
+        "family": "Geist",
+        "style": "Medium",
+        "variationSettings": {
+          "wght": 500
+        }
+      },
+      "size": 14
+    },
+    {
+      "id": "I4025:1780;4025:1706;4025:1693;4025:1474;4025:1463",
+      "name": "Time",
+      "text": "22:07  ·  Withdrawal",
+      "bounds": {
+        "x": 2746.33349609375,
+        "y": 479,
+        "width": 330.66668701171875,
+        "height": 16
+      },
+      "font": {
+        "family": "Geist",
+        "style": "Medium",
+        "variationSettings": {
+          "wght": 500
+        }
+      },
+      "size": 12
+    },
+    {
+      "id": "I4025:1780;4025:1706;4025:1693;4025:1474;4025:1464",
+      "name": "Title",
+      "text": "Transferred funds withdrawn",
+      "bounds": {
+        "x": 2746.33349609375,
+        "y": 503,
+        "width": 330.66668701171875,
+        "height": 24
+      },
+      "font": {
+        "family": "Geist",
+        "style": "Medium",
+        "variationSettings": {
+          "wght": 500
+        }
+      },
+      "size": 16
+    },
+    {
+      "id": "I4025:1780;4025:1706;4025:1693;4025:1477;4025:1466",
+      "name": "Entity",
+      "text": "Personal beneficiary → withdrawal",
+      "bounds": {
+        "x": 2746.33349609375,
+        "y": 543,
+        "width": 330.66668701171875,
+        "height": 16
+      },
+      "font": {
+        "family": "Geist",
+        "style": "Medium",
+        "variationSettings": {
+          "wght": 500
+        }
+      },
+      "size": 12
+    },
+    {
+      "id": "I4025:1780;4025:1706;4025:1693;4025:1477;4025:1467",
+      "name": "Fact",
+      "text": "The funds were withdrawn using an unrecognized device in a new geography.",
+      "bounds": {
+        "x": 2746.33349609375,
+        "y": 567,
+        "width": 330.66668701171875,
+        "height": 40
+      },
+      "font": {
+        "family": "Geist",
+        "style": "Regular",
+        "variationSettings": {
+          "wght": 400
+        }
+      },
+      "size": 14
+    },
+    {
+      "id": "I4025:1780;4025:1706;4025:1693;4025:1480;4025:1469;4025:1459",
+      "name": "Label",
+      "text": "View withdrawal event",
+      "bounds": {
+        "x": 2825.666748046875,
+        "y": 641,
+        "width": 148,
+        "height": 20
+      },
+      "font": {
+        "family": "Geist",
+        "style": "Medium",
+        "variationSettings": {
+          "wght": 500
+        }
+      },
+      "size": 14
+    },
+    {
+      "id": "I4025:1780;4025:1756;4025:1748;4025:1491",
+      "name": "Title",
+      "text": "Dusk assessment · Fraudulent · 91% confidence",
+      "bounds": {
+        "x": 1989,
+        "y": 721,
+        "width": 520,
+        "height": 20
+      },
+      "font": {
+        "family": "Geist",
+        "style": "Medium",
+        "variationSettings": {
+          "wght": 500
+        }
+      },
+      "size": 14
+    },
+    {
+      "id": "I4025:1780;4025:1756;4025:1748;4025:1492",
+      "name": "Description",
+      "text": "The dormant access, unregistered beneficiary and same-day withdrawal support a payment diversion finding.",
+      "bounds": {
+        "x": 1989,
+        "y": 749,
+        "width": 520,
+        "height": 40
+      },
+      "font": {
+        "family": "Geist",
+        "style": "Regular",
+        "variationSettings": {
+          "wght": 400
+        }
+      },
+      "size": 14
+    },
+    {
+      "id": "I4025:1780;4025:1756;4025:1752;4025:1491",
+      "name": "Title",
+      "text": "What remains unverified",
+      "bounds": {
+        "x": 2557,
+        "y": 721,
+        "width": 520,
+        "height": 20
+      },
+      "font": {
+        "family": "Geist",
+        "style": "Medium",
+        "variationSettings": {
+          "wght": 500
+        }
+      },
+      "size": 14
+    },
+    {
+      "id": "I4025:1780;4025:1756;4025:1752;4025:1492",
+      "name": "Description",
+      "text": "The person behind the sessions and the beneficiary’s relationship to Marek are not established.",
+      "bounds": {
+        "x": 2557,
+        "y": 749,
+        "width": 520,
+        "height": 40
+      },
+      "font": {
+        "family": "Geist",
+        "style": "Regular",
+        "variationSettings": {
+          "wght": 400
+        }
+      },
+      "size": 14
+    },
+    {
+      "id": "I4025:1780;4025:1772;4025:1765",
+      "name": "Title",
+      "text": "Suggested safeguard",
+      "bounds": {
+        "x": 1989,
+        "y": 847,
+        "width": 856,
+        "height": 20
+      },
+      "font": {
+        "family": "Geist",
+        "style": "Medium",
+        "variationSettings": {
+          "wght": 500
+        }
+      },
+      "size": 14
+    },
+    {
+      "id": "I4025:1780;4025:1772;4025:1766",
+      "name": "Description",
+      "text": "Review the reactivated payroll approval scope for temporary suspension while ownership is verified.",
+      "bounds": {
+        "x": 1989,
+        "y": 871,
+        "width": 856,
+        "height": 20
+      },
+      "font": {
+        "family": "Geist",
+        "style": "Regular",
+        "variationSettings": {
+          "wght": 400
+        }
+      },
+      "size": 14
+    },
+    {
+      "id": "I4025:1780;4025:1772;4025:1767;4025:1455",
+      "name": "Label",
+      "text": "Review access scope",
+      "bounds": {
+        "x": 2890.5,
+        "y": 859,
+        "width": 141,
+        "height": 20
+      },
+      "font": {
+        "family": "Geist",
+        "style": "Medium",
+        "variationSettings": {
+          "wght": 500
+        }
+      },
+      "size": 14
+    },
+    {
+      "id": "I4025:1887;4025:1870;4025:1455",
+      "name": "Label",
+      "text": "Which accounts were touched?",
+      "bounds": {
+        "x": 1989,
+        "y": 982,
+        "width": 206,
+        "height": 20
+      },
+      "font": {
+        "family": "Geist",
+        "style": "Medium",
+        "variationSettings": {
+          "wght": 500
+        }
+      },
+      "size": 14
+    },
+    {
+      "id": "I4025:1887;4025:1875;4025:1455",
+      "name": "Label",
+      "text": "What remains unverified?",
+      "bounds": {
+        "x": 2266.5,
+        "y": 982,
+        "width": 167,
+        "height": 20
+      },
+      "font": {
+        "family": "Geist",
+        "style": "Medium",
+        "variationSettings": {
+          "wght": 500
+        }
+      },
+      "size": 14
+    },
+    {
+      "id": "I4025:1887;4025:1880;4025:1512;4025:1506",
+      "name": "Placeholder",
+      "text": "Ask a follow-up…",
+      "bounds": {
+        "x": 1989,
+        "y": 1037,
+        "width": 1028,
+        "height": 20
+      },
+      "font": {
+        "family": "Geist",
+        "style": "Regular",
+        "variationSettings": {
+          "wght": 400
+        }
+      },
+      "size": 14
+    }
+  ]
+}
