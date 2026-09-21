@@ -1,11 +1,13 @@
-import { useState, type CSSProperties, type ReactNode } from "react";
+import { useEffect, useState, type CSSProperties, type ReactNode } from "react";
 import { Badge } from "@astryxdesign/core/Badge";
 import { Button } from "@astryxdesign/core/Button";
 import { IconButton } from "@astryxdesign/core/IconButton";
 import { Kbd } from "@astryxdesign/core/Kbd";
 import { SegmentedControl, SegmentedControlItem } from "@astryxdesign/core/SegmentedControl";
-import { ArrowRight, ArrowUp, ArrowUpRight, CalendarDays, ChevronRight, MoreVertical } from "lucide-react";
+import { ChatComposer } from "@astryxdesign/core/Chat";
+import { ArrowRight, ArrowUp, ArrowUpRight, CalendarDays, ChevronRight, Mic, MoreVertical, X } from "lucide-react";
 import askDuskSparkles from "./assets/ask-dusk-sparkles.svg";
+import duskIcon from "./assets/dusk-icon.svg";
 import riskPostureGauge from "./assets/risk-posture-gauge.svg";
 import accountDonutCritical from "./assets/account-donut-critical.svg";
 import accountDonutHigh from "./assets/account-donut-high.svg";
@@ -23,6 +25,12 @@ type BadgeTone = "fraudulent" | "suspicious" | "legitimate" | "neutral";
 type TableCell = { primary?: string; secondary?: string; badge?: string; tone?: BadgeTone };
 type TableRow = { cells: TableCell[]; onClick?: () => void };
 type DashboardTableWidgetProps = { title: string; columns: string[]; template: string; rows: TableRow[]; footerSummary: string; footerAction: string; className?: string };
+
+const askDuskExamples = [
+  { label: "Fraudulent", tone: "fraudulent", variant: "error" as const, text: "Transfers to an unregistered personal account" },
+  { label: "Suspicious", tone: "suspicious", variant: "warning" as const, text: "Treasury activity outside its baseline" },
+  { label: "Suspicious", tone: "suspicious", variant: "warning" as const, text: "Settlement credential used beyond scope" },
+];
 
 const findings: TableRow[] = [
   { cells: [{ primary: "Transfers to an unregistered personal account", secondary: "FND-1042 · 3 linked events · Tue 09:12" }, { primary: "D. Marek", secondary: "Employee · Finance" }, { badge: "Fraudulent", tone: "fraudulent" }, { primary: "91%" }, {}] },
@@ -84,10 +92,21 @@ function formatCount(value: number, unit: "event" | "account") { return `${value
 export function Dashboard({ onOpenFinding }: DashboardProps) {
   const [query, setQuery] = useState("");
   const [accountMetric, setAccountMetric] = useState("activity");
+  const [isAskDuskOpen, setIsAskDuskOpen] = useState(false);
   const showsAccounts = accountMetric === "accounts";
   const findingRows = findings.map((row, index) => index === 0 ? { ...row, onClick: onOpenFinding } : row);
+
+  useEffect(() => {
+    if (!isAskDuskOpen) return;
+    const handleKeyDown = (event: KeyboardEvent) => {
+      if (event.key === "Escape") setIsAskDuskOpen(false);
+    };
+    document.addEventListener("keydown", handleKeyDown);
+    return () => document.removeEventListener("keydown", handleKeyDown);
+  }, [isAskDuskOpen]);
+
   return <section className="dashboard-workspace" aria-label="Payment intelligence dashboard">
-    <div className="dashboard-actions" aria-label="Dashboard actions"><h1 className="dashboard-title">Dashboard</h1><StarBorder as="div" className="ask-dusk-star-border" color="var(--dusk-lime)" speed="5s"><form className="ask-dusk-prompt" onSubmit={(event) => event.preventDefault()}><img className="ask-dusk-icon" src={askDuskSparkles} alt="" /><input aria-label="Ask Dusk" value={query} onChange={(event) => setQuery(event.target.value)} placeholder="Ask Dusk to investigate findings, accounts, or activity…" /><div className="ask-dusk-end"><Kbd keys="mod+k" /><IconButton label="Send" type="submit" variant="primary" size="sm" icon={<ArrowUp size={16} />} width={28} /></div></form></StarBorder><Button label="Last 7 days" variant="secondary" size="lg" icon={<CalendarDays size={16} />} /></div>
+    <div className="dashboard-actions" aria-label="Dashboard actions"><h1 className="dashboard-title">Dashboard</h1><StarBorder as="div" className="ask-dusk-star-border" color="var(--dusk-lime)" speed="5s"><form className="ask-dusk-prompt" onSubmit={(event) => event.preventDefault()}><img className="ask-dusk-icon" src={askDuskSparkles} alt="" /><input aria-label="Ask Dusk" value={query} onChange={(event) => setQuery(event.target.value)} onClick={() => setIsAskDuskOpen(true)} placeholder="Ask Dusk to investigate findings, accounts, or activity…" /><div className="ask-dusk-end"><Kbd keys="mod+k" /><IconButton label="Send" type="submit" variant="primary" size="sm" icon={<ArrowUp size={16} />} width={28} /></div></form></StarBorder><Button label="Last 7 days" variant="secondary" size="lg" icon={<CalendarDays size={16} />} /></div>
     <div className="dashboard-content">
       <div className="dashboard-priority-row"><DashboardWidget title="Risk posture" className="risk-widget" contentClassName="risk-widget-body"><div className="risk-visualization"><img src={riskPostureGauge} alt="" className="risk-gauge" /><div className="risk-score"><strong>82</strong><span>Risk score</span></div></div><div className="risk-status"><Badge variant="error" label="High risk" /><span>+8</span><ArrowUpRight size={16} aria-hidden="true" /></div><div className="risk-divider" /><div className="risk-metrics"><div><strong>4</strong><span>Findings to review</span></div><div><strong>3</strong><span>Critical accounts</span></div></div></DashboardWidget><DashboardTableWidget title="Findings" className="findings-widget" columns={["Finding", "Actor", "Verdict", "Confidence", ""]} template="minmax(300px, 3fr) minmax(132px, 1.3fr) minmax(112px, .95fr) minmax(70px, .7fr) 24px" rows={findingRows} footerSummary="4 require review · 1 cleared" footerAction="View all findings" /></div>
       <div className="dashboard-exposure-row"><DashboardWidget title="Account value" className="account-widget" contentClassName="account-widget-body"><SegmentedControl label="Account value metric" value={accountMetric} onChange={setAccountMetric} layout="fill" size="sm" className="account-segmented-control"><SegmentedControlItem value="activity" label="Activity" /><SegmentedControlItem value="accounts" label="Accounts" /></SegmentedControl><div className="account-distribution" role="img" aria-label={showsAccounts ? "7 accounts across account-value tiers: 3 critical, 2 high value, 1 elevated, and 1 routine" : "7 events across account-value tiers: 5 critical and 2 high value"}>{showsAccounts ? <div className="account-donut-accounts" aria-hidden="true" /> : <><img className="donut-critical" src={accountDonutCritical} alt="" /><img className="donut-high" src={accountDonutHigh} alt="" /><img className="donut-routine" src={accountDonutRoutine} alt="" /></>}<div className="account-total"><strong>7</strong><span>{showsAccounts ? "accounts" : "events"}</span></div></div><div className="account-tiers">{accountTiers.map((tier) => <div className="account-tier" key={tier.label}><img src={tier.legend} alt="" /><span>{tier.label}</span><small>{formatCount(showsAccounts ? tier.accounts : tier.events, showsAccounts ? "account" : "event")}</small><small>{showsAccounts ? tier.share : formatCount(tier.accounts, "account")}</small></div>)}</div></DashboardWidget><DashboardTableWidget title="Accounts at risk" className="accounts-widget" columns={["Account", "Value", "Access exposure", "Risk score", ""]} template="minmax(260px, 2.7fr) 120px minmax(190px, 2fr) 112px 24px" rows={accountsAtRisk} footerSummary="Showing 5 of 7 accounts · Highest risk first" footerAction="View all accounts" /></div>
@@ -95,6 +114,7 @@ export function Dashboard({ onOpenFinding }: DashboardProps) {
       <div className="dashboard-paired-row"><DashboardTableWidget title="Actors to review" className="actors-widget" columns={["Actor", "Risk signal", "Risk", ""]} template="minmax(154px, 1fr) minmax(188px, 1.25fr) 96px 24px" rows={actorsToReview} footerSummary="5 actors require review" footerAction="View all actors" /><AutomationExposure /></div>
       <div className="dashboard-paired-row dashboard-final-row"><DashboardTableWidget title="Latest signals" className="signals-widget" columns={["Detected", "Signal", "Update", ""]} template="72px minmax(230px, 1.8fr) 116px 24px" rows={latestSignals} footerSummary="Latest 5 updates" footerAction="View all signals" /><DashboardTableWidget title="Investigations" className="investigations-widget" columns={["Investigation", "Owner", "Status", ""]} template="minmax(220px, 1.7fr) 112px 128px 24px" rows={investigations} footerSummary="4 active · 1 closed" footerAction="View all cases" /></div>
     </div>
+    {isAskDuskOpen && <div className="ask-dusk-overlay" role="presentation" onMouseDown={() => setIsAskDuskOpen(false)}><section className="ask-dusk-window" role="dialog" aria-modal="true" aria-label="Ask Dusk investigation window" onMouseDown={(event) => event.stopPropagation()}><IconButton className="ask-dusk-window-close" label="Close Ask Dusk window" variant="ghost" size="sm" icon={<X size={16} />} onClick={() => setIsAskDuskOpen(false)} /><div className="ask-dusk-design"><div className="ask-dusk-intro"><img src={duskIcon} alt="" /><h2>What should we investigate?</h2></div><div className="ask-dusk-dialog-composer-shell"><StarBorder as="div" className="ask-dusk-star-border ask-dusk-dialog-star-border" color="var(--dusk-lime)" speed="5s"><ChatComposer className="ask-dusk-dialog-composer" style={{ width: "100%", maxWidth: "none" }} value={query} onChange={setQuery} onSubmit={() => undefined} placeholder="Ask anything..." density="compact" elevation="none" sendActions={<IconButton label="Dictate" variant="ghost" size="sm" icon={<Mic size={16} />} width={28} />} /></StarBorder></div><div className="ask-dusk-examples">{askDuskExamples.map((example) => <button className="ask-dusk-example-row" key={example.text} type="button" onClick={() => setQuery(example.text)}><span className={`dashboard-cell-badge tone-${example.tone}`}><Badge variant={example.variant} label={example.label} /></span><p>{example.text}</p></button>)}</div></div></section></div>}
   </section>;
 }
 
