@@ -1,7 +1,8 @@
 import { Badge } from "@astryxdesign/core/Badge";
 import { Button } from "@astryxdesign/core/Button";
-import { ArrowRight, ExternalLink, KeyRound, Landmark, ReceiptText, UserRound } from "lucide-react";
+import { ArrowRight } from "lucide-react";
 import type { FindingMasterItemData } from "./FindingMasterItem";
+import { PaymentChain } from "./PaymentChain";
 
 type FindingDetailProps = {
   item: FindingMasterItemData;
@@ -73,19 +74,7 @@ export function FindingDetail({ item }: FindingDetailProps) {
         <p>Verify the two transfers and approval scope before restricting further payments. Beneficiary ownership and session control remain unverified.</p>
       </section>
 
-      <section className="finding-payment-chain" aria-labelledby="payment-chain-title">
-        <div className="finding-section-heading">
-          <h3 id="payment-chain-title">Payment chain</h3>
-          <Button label="Explore" variant="ghost" size="sm" endContent={<ArrowRight size={16} />} />
-        </div>
-        <div className="finding-chain-flow" aria-label="D. Marek accessed Payroll Master EU and transferred funds to an external beneficiary">
-          <ChainEntity icon={<UserRound size={20} />} title="D. Marek" meta="Employee · Day 9 of 30-day notice" foot="Dormant rights reactivated" />
-          <ChainAction icon={<KeyRound size={18} />} label="Access" />
-          <ChainEntity icon={<Landmark size={20} />} title="Payroll Master — EU" meta="Payroll accounts · FY24 Comp & Equity" foot="14 accessed · 12× activity" />
-          <ChainAction icon={<ReceiptText size={18} />} label="Transfer (2)" />
-          <ChainEntity tone="danger" icon={<ExternalLink size={20} />} title="j.doe.personal@gmail" meta="External beneficiary" foot="Funds withdrawn @ Tue 22:07" />
-        </div>
-      </section>
+      <PaymentChain />
 
       <section className="finding-evidence" aria-labelledby="evidence-title">
         <h3 id="evidence-title">Evidence timeline</h3>
@@ -114,12 +103,4 @@ export function FindingDetail({ item }: FindingDetailProps) {
       </section>
     </article>
   );
-}
-
-function ChainEntity({ icon, title, meta, foot, tone = "signal" }: { icon: React.ReactNode; title: string; meta: string; foot: string; tone?: "signal" | "danger" }) {
-  return <div className={`finding-chain-entity tone-${tone}`}><div className="finding-chain-title">{icon}<strong>{title}</strong></div><span>{meta}</span><div className="finding-chain-divider" /><p>{foot}</p></div>;
-}
-
-function ChainAction({ icon, label }: { icon: React.ReactNode; label: string }) {
-  return <div className="finding-chain-action" aria-hidden="true"><div>{icon}</div><span>{label}</span></div>;
 }

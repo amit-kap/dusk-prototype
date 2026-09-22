@@ -5,6 +5,7 @@ import { neutralTheme } from "@astryxdesign/theme-neutral/built";
 import "@astryxdesign/core/reset.css";
 import "@astryxdesign/core/astryx.css";
 import "@astryxdesign/theme-neutral/theme.css";
+import "@xyflow/react/dist/base.css";
 import "./dusk.css";
 import App from "./App";
 

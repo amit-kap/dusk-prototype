@@ -63,10 +63,14 @@
   .finding-recommendation h3, .finding-recommendation p { margin: 0; font-size: 14px; line-height: 20px; }
   .finding-recommendation h3 { color: var(--dusk-lime); font-weight: 500; }
   .finding-recommendation p { color: var(--dusk-text); }
-  .finding-payment-chain { display: grid; gap: 24px; padding: 16px; border: 1px solid var(--dusk-border); border-radius: 8px; background-color: var(--dusk-inset); background-image: radial-gradient(rgba(113,128,120,.22) .75px, transparent .75px); background-size: 16px 16px; }
+  .finding-payment-chain { display: grid; gap: 24px; padding: 16px; border: 1px solid var(--dusk-border); border-radius: 8px; background: var(--dusk-inset); }
   .finding-section-heading { display: flex; align-items: center; justify-content: space-between; }
   .finding-section-heading h3, .finding-evidence > h3, .finding-assessment h3 { margin: 0; color: var(--dusk-text); font-size: 16px; font-weight: 500; line-height: 24px; }
   .finding-section-heading .astryx-button, .finding-timeline-actions .astryx-button { color: var(--dusk-lime); }
+  .payment-chain-heading-actions, .payment-chain-header-controls { display: flex; align-items: center; gap: 4px; }
+  .payment-chain-heading-actions { gap: 8px; }
+  .payment-chain-header-controls { padding-right: 8px; border-right: 1px solid var(--dusk-border); }
+  .payment-chain-header-controls .astryx-button { width: 28px !important; min-width: 28px; height: 28px; min-height: 28px; padding: 0; border-radius: 8px; color: var(--dusk-muted); }
   .finding-chain-flow { display: grid; grid-template-columns: minmax(170px, 1fr) 72px minmax(170px, 1fr) 72px minmax(170px, 1fr); gap: 8px; align-items: center; }
   .finding-chain-entity { min-width: 0; padding: 16px; overflow: hidden; border: 1px solid var(--dusk-lime); border-radius: 8px; background: var(--dusk-bg); box-shadow: inset 0 0 32px rgba(183,247,107,.1); }
   .finding-chain-entity.tone-danger { border-color: var(--dusk-red); box-shadow: inset 0 0 32px rgba(255,139,135,.14); }
@@ -82,6 +86,62 @@
   .finding-chain-action::before { left: 0; }.finding-chain-action::after { right: 0; }
   .finding-chain-action > div { z-index: 1; display: grid; width: 42px; height: 42px; place-items: center; border: 1px solid var(--dusk-muted); border-radius: 999px; background: var(--dusk-bg); }
   .finding-chain-action > span { font-size: 10px; line-height: 14px; text-transform: uppercase; }
+  .payment-chain-canvas { position: relative; width: 100%; min-width: 0; overflow: hidden; }
+  .payment-chain-canvas.is-compact { height: 131px; }
+  .payment-chain-canvas.is-expanded { height: 100%; min-height: 420px; }
+  .payment-chain-canvas .react-flow { background: transparent; }
+  .payment-chain-canvas .react-flow__attribution { padding: 1px 3px; background: rgba(14,18,16,.72); color: var(--dusk-muted); font-size: 8px; opacity: .55; }
+  .payment-chain-canvas .react-flow__attribution a { color: inherit; }
+  .payment-chain-canvas .react-flow__pane { cursor: grab; }
+  .payment-chain-canvas .react-flow__pane:active { cursor: grabbing; }
+  .payment-chain-canvas .react-flow__node { cursor: pointer; }
+  .payment-chain-canvas .react-flow__node:focus-visible { outline: none; }
+  .payment-chain-canvas .react-flow__node:focus-visible .finding-chain-entity,
+  .payment-chain-canvas .react-flow__node:focus-visible .finding-chain-action > div { box-shadow: 0 0 0 2px var(--dusk-inset), 0 0 0 3px var(--dusk-lime); }
+  .payment-chain-canvas .react-flow__handle { width: 1px; height: 1px; min-width: 1px; min-height: 1px; border: 0; opacity: 0; pointer-events: none; }
+  .payment-chain-canvas .finding-chain-entity { box-sizing: border-box; width: 100%; height: 100%; transition: border-color 160ms ease, box-shadow 160ms ease, background-color 160ms ease; }
+  button.finding-chain-entity { padding: 16px; color: inherit; font: inherit; text-align: left; cursor: pointer; }
+  button.finding-chain-entity:focus-visible { outline: none; box-shadow: inset 0 0 32px rgba(183,247,107,.16), 0 0 0 2px var(--dusk-inset), 0 0 0 3px var(--dusk-lime); }
+  .payment-chain-canvas .finding-chain-entity:hover { background: #111612; box-shadow: inset 0 0 32px rgba(183,247,107,.15); }
+  .payment-chain-canvas .finding-chain-entity.is-selected { border-color: var(--dusk-text); box-shadow: inset 0 0 32px rgba(183,247,107,.16), 0 0 0 1px rgba(183,247,107,.45); }
+  .payment-chain-canvas .finding-chain-entity.tone-danger.is-selected { box-shadow: inset 0 0 32px rgba(255,139,135,.18), 0 0 0 1px rgba(255,139,135,.55); }
+  .payment-chain-action-node { width: 100%; height: 100%; padding: 0; border: 0; background: transparent; font: inherit; cursor: pointer; }
+  .payment-chain-action-node:focus-visible { outline: none; }
+  .payment-chain-action-node:focus-visible > div { border-color: var(--dusk-lime); color: var(--dusk-lime); box-shadow: 0 0 0 2px var(--dusk-inset), 0 0 0 3px var(--dusk-lime); }
+  .payment-chain-action-node::before, .payment-chain-action-node::after { display: none; }
+  .payment-chain-action-node > div { transition: border-color 160ms ease, color 160ms ease, box-shadow 160ms ease; }
+  .payment-chain-action-node:hover > div, .payment-chain-action-node.is-selected > div { border-color: var(--dusk-lime); color: var(--dusk-lime); box-shadow: 0 0 0 1px rgba(183,247,107,.24); }
+  .payment-chain-edge.react-flow__edge-path { stroke: var(--dusk-muted); stroke-width: 1; }
+  .payment-chain-edge.is-selected.react-flow__edge-path { stroke: var(--dusk-lime); }
+  .payment-chain-edge-signal { fill: none; stroke: var(--dusk-lime); stroke-width: 2; stroke-linecap: round; stroke-dasharray: 2 16; opacity: .78; pointer-events: none; animation: payment-chain-flow 2.4s linear infinite; animation-delay: var(--edge-delay); }
+  .payment-chain-edge-signal.is-selected { stroke-width: 2.5; opacity: 1; }
+  @keyframes payment-chain-flow { to { stroke-dashoffset: -36; } }
+  .payment-chain-controls { display: flex; gap: 4px; padding: 4px; border: 1px solid var(--dusk-border); border-radius: 8px; background: rgba(14,18,16,.92); box-shadow: 0 8px 28px rgba(0,0,0,.28); }
+  .payment-chain-controls .astryx-button { width: 28px !important; min-width: 28px; height: 28px; min-height: 28px; padding: 0; border-radius: 6px; }
+  .payment-chain-inline-details { animation: payment-chain-details-in 220ms cubic-bezier(.22,1,.36,1); }
+  @keyframes payment-chain-details-in { from { transform: translateY(6px); opacity: 0; } }
+  .payment-chain-node-details { display: grid; align-content: start; gap: 16px; min-width: 0; }
+  .payment-chain-node-details.is-compact { padding: 16px; border: 1px solid var(--dusk-border); border-radius: 8px; background: var(--dusk-bg); }
+  .payment-chain-node-details-heading { display: flex; align-items: flex-start; justify-content: space-between; gap: 16px; }
+  .payment-chain-node-details-heading > div { display: flex; min-width: 0; align-items: center; gap: 8px; }
+  .payment-chain-node-details-heading h3 { min-width: 0; margin: 0; overflow: hidden; color: var(--dusk-text); font-size: 14px; font-weight: 500; line-height: 20px; text-overflow: ellipsis; white-space: nowrap; }
+  .payment-chain-node-details-heading .astryx-button { flex: 0 0 28px; width: 28px !important; min-width: 28px; height: 28px; min-height: 28px; padding: 0; border-radius: 8px; }
+  .payment-chain-node-details > p { margin: 0; color: var(--dusk-text); font-size: 12px; line-height: 18px; }
+  .payment-chain-node-details > span { color: var(--dusk-muted); font-size: 11px; line-height: 16px; }
+  .payment-chain-overlay { position: fixed; inset: 0; z-index: 1200; display: grid; place-items: center; padding: 16px; background: rgba(7,10,9,.82); backdrop-filter: blur(4px); }
+  .payment-chain-explorer { display: grid; grid-template-rows: 72px minmax(0,1fr); width: 100%; height: 100%; overflow: hidden; border: 1px solid var(--dashboard-card-border, #525252); border-radius: 12px; background: var(--dusk-surface); box-shadow: 0 24px 80px rgba(0,0,0,.55); animation: payment-chain-explorer-in 240ms cubic-bezier(.22,1,.36,1); }
+  @keyframes payment-chain-explorer-in { from { transform: scale(.985); opacity: 0; } }
+  .payment-chain-explorer-header { display: flex; align-items: center; justify-content: space-between; gap: 24px; padding: 16px 20px; border-bottom: 1px solid var(--dusk-border); }
+  .payment-chain-explorer-header h2 { margin: 0; color: var(--dusk-text); font-size: 18px; font-weight: 500; line-height: 24px; }
+  .payment-chain-explorer-header p { margin: 2px 0 0; color: var(--dusk-muted); font-size: 12px; line-height: 16px; }
+  .payment-chain-explorer-header > .astryx-button { width: 32px !important; min-width: 32px; height: 32px; min-height: 32px; padding: 0; border-radius: 10px; }
+  .payment-chain-explorer-body { display: grid; grid-template-columns: minmax(0,1fr) 320px; min-height: 0; }
+  .payment-chain-explorer .payment-chain-canvas { border-right: 1px solid var(--dusk-border); background: var(--dusk-inset); }
+  .payment-chain-inspector { min-width: 0; padding: 20px; background: var(--dusk-surface); }
+  .payment-chain-inspector-empty { display: grid; place-content: center; gap: 6px; height: 100%; color: var(--dusk-muted); text-align: center; }
+  .payment-chain-inspector-empty p { margin: 0; color: var(--dusk-text); font-size: 14px; font-weight: 500; }
+  .payment-chain-inspector-empty span { max-width: 240px; font-size: 12px; line-height: 18px; }
+  @media (prefers-reduced-motion: reduce) { .payment-chain-edge-signal { animation: none; stroke-dasharray: none; opacity: .55; }.payment-chain-inline-details,.payment-chain-explorer { animation: none; }.payment-chain-canvas .finding-chain-entity,.payment-chain-action-node > div { transition: none; } }
   .finding-evidence { display: grid; gap: 16px; }
   .finding-timeline { display: grid; }
   .finding-timeline-item { display: grid; grid-template-columns: 16px minmax(0, 1fr); gap: 24px; }
