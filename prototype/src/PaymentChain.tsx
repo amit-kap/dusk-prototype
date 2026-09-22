@@ -139,8 +139,11 @@ export function PaymentChain() {
   const [selectedId, setSelectedId] = useState<string | null>(null);
   const [isExplorerOpen, setIsExplorerOpen] = useState(false);
   const [compactFlow, setCompactFlow] = useState<ReactFlowInstance<ChainGraphNode, ChainGraphEdge> | null>(null);
-  const selectedNode = chainNodes.find((node) => node.id === selectedId) ?? null;
   const closeExplorer = useCallback(() => setIsExplorerOpen(false), []);
+  const openExplorer = useCallback(() => {
+    setSelectedId(chainNodes[0].id);
+    setIsExplorerOpen(true);
+  }, []);
 
   return (
     <>
@@ -149,11 +152,10 @@ export function PaymentChain() {
           <h3 id="payment-chain-title">Payment chain</h3>
           <div className="payment-chain-heading-actions">
             <HeaderGraphControls instance={compactFlow} />
-            <Button label="Explore" variant="ghost" size="sm" endContent={<ExternalLink size={16} />} onClick={() => setIsExplorerOpen(true)} />
+            <Button label="Explore" variant="ghost" size="sm" endContent={<ExternalLink size={16} />} onClick={openExplorer} />
           </div>
         </div>
         <PaymentChainGraph selectedId={selectedId} onSelect={setSelectedId} mode="compact" onInit={setCompactFlow} />
-        {selectedNode && <InlineInspector node={selectedNode} onClose={() => setSelectedId(null)} />}
       </section>
       {isExplorerOpen && (
         <PaymentChainExplorer
@@ -195,7 +197,7 @@ function PaymentChainGraph({ selectedId, onSelect, mode, onInit }: { selectedId:
           fitViewOptions={{ padding: mode === "compact" ? 0.01 : 0.16, maxZoom: mode === "compact" ? 1 : 1.2 }}
           colorMode="dark"
         >
-          <Background color="rgba(113, 128, 120, .32)" gap={16} size={1} />
+          {mode === "expanded" && <Background color="rgba(113, 128, 120, .32)" gap={16} size={1} />}
           {mode === "expanded" && <GraphControls />}
         </ReactFlow>
       </ReactFlowProvider>
@@ -258,17 +260,15 @@ function FlowEdge({ id, sourceX, sourceY, targetX, targetY, selected, data }: Ed
         className={`payment-chain-edge-signal${selected ? " is-selected" : ""}`}
         style={{ "--edge-delay": `${(data?.order ?? 0) * 240}ms` } as CSSProperties}
       />
+      <circle className={`payment-chain-flow-dot${selected ? " is-selected" : ""}`} r="3.5">
+        <animateMotion
+          path={edgePath}
+          dur="1.6s"
+          begin={`${(data?.order ?? 0) * 0.18}s`}
+          repeatCount="indefinite"
+        />
+      </circle>
     </>
-  );
-}
-
-function InlineInspector({ node, onClose }: { node: ChainGraphNode | null; onClose: () => void }) {
-  return (
-    <div className="payment-chain-inline-details" data-open={node ? "true" : "false"} aria-live="polite">
-      <div>
-        {node && <NodeDetails node={node} onClose={onClose} compact />}
-      </div>
-    </div>
   );
 }
 
@@ -316,7 +316,7 @@ function PaymentChainExplorer({ selectedId, onSelect, onClose }: { selectedId: s
         <div className="payment-chain-explorer-body">
           <PaymentChainGraph selectedId={selectedId} onSelect={onSelect} mode="expanded" />
           <aside className="payment-chain-inspector" aria-label="Selected payment chain node details">
-            {selectedNode ? <NodeDetails node={selectedNode} onClose={() => onSelect(null)} /> : <div className="payment-chain-inspector-empty"><p>Select a node</p><span>Choose an actor, account, event, or beneficiary to inspect its evidence.</span></div>}
+            {selectedNode ? <NodeDetails node={selectedNode} /> : <div className="payment-chain-inspector-empty"><p>Select a node</p><span>Choose an actor, account, event, or beneficiary to inspect its evidence.</span></div>}
           </aside>
         </div>
       </section>
@@ -324,15 +324,14 @@ function PaymentChainExplorer({ selectedId, onSelect, onClose }: { selectedId: s
   );
 }
 
-function NodeDetails({ node, onClose, compact = false }: { node: ChainGraphNode; onClose: () => void; compact?: boolean }) {
+function NodeDetails({ node }: { node: ChainGraphNode }) {
   return (
-    <div className={`payment-chain-node-details${compact ? " is-compact" : ""}`}>
+    <div className="payment-chain-node-details">
       <div className="payment-chain-node-details-heading">
         <div>
           <Badge variant={node.data.tone === "danger" ? "error" : "neutral"} label={node.data.kind === "action" ? "Event" : "Entity"} />
           <h3>{node.data.title}</h3>
         </div>
-        <IconButton label="Close node details" variant="ghost" size="sm" icon={<X size={14} />} onClick={onClose} />
       </div>
       <p>{node.data.detail}</p>
       <span>{node.data.source}</span>
