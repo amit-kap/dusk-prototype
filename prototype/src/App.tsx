@@ -1,7 +1,9 @@
 import { useMemo, useState } from "react";
 import { Avatar } from "@astryxdesign/core/Avatar";
+import { Button } from "@astryxdesign/core/Button";
 import { ToggleButton } from "@astryxdesign/core/ToggleButton";
 import { Dashboard } from "./Dashboard";
+import { FindingDetail } from "./FindingDetail";
 import { FindingMasterItem, type FindingMasterItemData } from "./FindingMasterItem";
 import duskIcon from "./assets/dusk-icon.svg";
 import navDashboardIcon from "./assets/nav-dashboard.svg";
@@ -63,7 +65,15 @@ function NavItem({ icon, label, active, count, onClick }: { icon: React.ReactNod
 
 function Finding() {
   const [filter, setFilter] = useState<"All" | "Open" | "Cleared">("All");
+  const [selectedId, setSelectedId] = useState("F-204");
   const visibleItems = useMemo(() => filter === "All" ? findingItems : findingItems.filter((item) => item.status === filter), [filter]);
+  const selectedItem = findingItems.find((item) => item.id === selectedId) ?? findingItems[0];
+
+  const applyFilter = (nextFilter: "All" | "Open" | "Cleared") => {
+    setFilter(nextFilter);
+    const nextItems = nextFilter === "All" ? findingItems : findingItems.filter((item) => item.status === nextFilter);
+    if (!nextItems.some((item) => item.id === selectedId)) setSelectedId(nextItems[0]?.id ?? findingItems[0].id);
+  };
 
   return <section className="finding-page">
     <header className="findings-page-header">
@@ -71,22 +81,22 @@ function Finding() {
         <h1>Findings</h1>
         <p>4 require review · 1 cleared</p>
       </div>
-      <button className="findings-range-button" type="button"><CalendarDays size={14} /> Last 7 days</button>
+      <Button className="findings-range-button" label="Last 7 days" variant="secondary" size="md" icon={<CalendarDays size={14} />} />
     </header>
     <div className="findings-master-detail" aria-label="Findings master-detail workspace">
       <div className="findings-pane findings-inbox" aria-label="Findings inbox">
         <div className="findings-filters">
           <div className="findings-filters-control" role="group" aria-label="Finding status filters">
-            <ToggleButton label="All · 5" size="sm" isPressed={filter === "All"} onPressedChange={() => setFilter("All")} />
-            <ToggleButton label="Open · 4" size="sm" isPressed={filter === "Open"} onPressedChange={() => setFilter("Open")} />
-            <ToggleButton label="Cleared · 1" size="sm" isPressed={filter === "Cleared"} onPressedChange={() => setFilter("Cleared")} />
+            <ToggleButton label="All · 5" size="sm" isPressed={filter === "All"} onPressedChange={() => applyFilter("All")} />
+            <ToggleButton label="Open · 4" size="sm" isPressed={filter === "Open"} onPressedChange={() => applyFilter("Open")} />
+            <ToggleButton label="Cleared · 1" size="sm" isPressed={filter === "Cleared"} onPressedChange={() => applyFilter("Cleared")} />
           </div>
         </div>
         <div className="finding-master-list" role="tabpanel" aria-label={`${filter} findings`}>
-          {visibleItems.map((item) => <FindingMasterItem key={item.id} {...item} selected={item.id === "F-204"} />)}
+          {visibleItems.map((item) => <FindingMasterItem key={item.id} {...item} selected={item.id === selectedId} onSelect={() => setSelectedId(item.id)} />)}
         </div>
       </div>
-      <div className="findings-pane" aria-label="Finding detail" />
+      <div className="findings-pane findings-detail-pane" aria-label="Finding detail"><FindingDetail item={selectedItem} /></div>
     </div>
   </section>;
 }

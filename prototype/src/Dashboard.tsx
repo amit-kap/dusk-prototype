@@ -3,9 +3,11 @@ import { Badge } from "@astryxdesign/core/Badge";
 import { Button } from "@astryxdesign/core/Button";
 import { IconButton } from "@astryxdesign/core/IconButton";
 import { Kbd } from "@astryxdesign/core/Kbd";
+import { List, ListItem } from "@astryxdesign/core/List";
 import { SegmentedControl, SegmentedControlItem } from "@astryxdesign/core/SegmentedControl";
 import { ChatComposer } from "@astryxdesign/core/Chat";
-import { ArrowRight, ArrowUp, ArrowUpRight, CalendarDays, ChevronRight, Mic, MoreVertical, X } from "lucide-react";
+import { TextInput } from "@astryxdesign/core/TextInput";
+import { ArrowRight, ArrowUp, ArrowUpRight, CalendarDays, ChevronRight, Maximize2, Mic, Minimize2, MoreHorizontal, MoreVertical, Plus, Search, X } from "lucide-react";
 import askDuskSparkles from "./assets/ask-dusk-sparkles.svg";
 import duskIcon from "./assets/dusk-icon.svg";
 import riskPostureGauge from "./assets/risk-posture-gauge.svg";
@@ -27,9 +29,15 @@ type TableRow = { cells: TableCell[]; onClick?: () => void };
 type DashboardTableWidgetProps = { title: string; columns: string[]; template: string; rows: TableRow[]; footerSummary: string; footerAction: string; className?: string };
 
 const askDuskExamples = [
-  { label: "Fraudulent", tone: "fraudulent", variant: "error" as const, text: "Transfers to an unregistered personal account" },
-  { label: "Suspicious", tone: "suspicious", variant: "warning" as const, text: "Treasury activity outside its baseline" },
-  { label: "Suspicious", tone: "suspicious", variant: "warning" as const, text: "Settlement credential used beyond scope" },
+  { label: "Fraudulent", tone: "fraudulent", variant: "error" as const, text: "Transfers to an unregistered personal account", time: "Tue 09:12" },
+  { label: "Suspicious", tone: "suspicious", variant: "warning" as const, text: "Treasury activity outside its baseline", time: "Tue 09:12" },
+  { label: "Suspicious", tone: "suspicious", variant: "warning" as const, text: "Settlement credential used beyond scope", time: "Tue 09:12" },
+];
+
+const askDuskSessions = [
+  { name: "Quarter-end payroll export", description: "Sep 8 · Closed investigation" },
+  { name: "Former contractor access review", description: "Sep 3 · Access revoked" },
+  { name: "Duplicate vendor invoice cluster", description: "Aug 27 · False positive" },
 ];
 
 const findings: TableRow[] = [
@@ -93,13 +101,19 @@ export function Dashboard({ onOpenFinding }: DashboardProps) {
   const [query, setQuery] = useState("");
   const [accountMetric, setAccountMetric] = useState("activity");
   const [isAskDuskOpen, setIsAskDuskOpen] = useState(false);
+  const [isAskDuskExpanded, setIsAskDuskExpanded] = useState(false);
+  const [sessionSearch, setSessionSearch] = useState("");
   const showsAccounts = accountMetric === "accounts";
   const findingRows = findings.map((row, index) => index === 0 ? { ...row, onClick: onOpenFinding } : row);
+  const visibleSessions = askDuskSessions.filter((session) => session.name.toLowerCase().includes(sessionSearch.trim().toLowerCase()));
 
   useEffect(() => {
     if (!isAskDuskOpen) return;
     const handleKeyDown = (event: KeyboardEvent) => {
-      if (event.key === "Escape") setIsAskDuskOpen(false);
+      if (event.key === "Escape") {
+        setIsAskDuskOpen(false);
+        setIsAskDuskExpanded(false);
+      }
     };
     document.addEventListener("keydown", handleKeyDown);
     return () => document.removeEventListener("keydown", handleKeyDown);
@@ -114,7 +128,44 @@ export function Dashboard({ onOpenFinding }: DashboardProps) {
       <div className="dashboard-paired-row"><DashboardTableWidget title="Actors to review" className="actors-widget" columns={["Actor", "Risk signal", "Risk", ""]} template="minmax(154px, 1fr) minmax(188px, 1.25fr) 96px 24px" rows={actorsToReview} footerSummary="5 actors require review" footerAction="View all actors" /><AutomationExposure /></div>
       <div className="dashboard-paired-row dashboard-final-row"><DashboardTableWidget title="Latest signals" className="signals-widget" columns={["Detected", "Signal", "Update", ""]} template="72px minmax(230px, 1.8fr) 116px 24px" rows={latestSignals} footerSummary="Latest 5 updates" footerAction="View all signals" /><DashboardTableWidget title="Investigations" className="investigations-widget" columns={["Investigation", "Owner", "Status", ""]} template="minmax(220px, 1.7fr) 112px 128px 24px" rows={investigations} footerSummary="4 active · 1 closed" footerAction="View all cases" /></div>
     </div>
-    {isAskDuskOpen && <div className="ask-dusk-overlay" role="presentation" onMouseDown={() => setIsAskDuskOpen(false)}><section className="ask-dusk-window" role="dialog" aria-modal="true" aria-label="Ask Dusk investigation window" onMouseDown={(event) => event.stopPropagation()}><IconButton className="ask-dusk-window-close" label="Close Ask Dusk window" variant="ghost" size="sm" icon={<X size={16} />} onClick={() => setIsAskDuskOpen(false)} /><div className="ask-dusk-design"><div className="ask-dusk-intro"><img src={duskIcon} alt="" /><h2>What should we investigate?</h2></div><div className="ask-dusk-dialog-composer-shell"><StarBorder as="div" className="ask-dusk-star-border ask-dusk-dialog-star-border" color="var(--dusk-lime)" speed="5s"><ChatComposer className="ask-dusk-dialog-composer" style={{ width: "100%", maxWidth: "none" }} value={query} onChange={setQuery} onSubmit={() => undefined} placeholder="Ask anything..." density="compact" elevation="none" sendActions={<IconButton label="Dictate" variant="ghost" size="sm" icon={<Mic size={16} />} width={28} />} /></StarBorder></div><div className="ask-dusk-examples">{askDuskExamples.map((example) => <button className="ask-dusk-example-row" key={example.text} type="button" onClick={() => setQuery(example.text)}><span className={`dashboard-cell-badge tone-${example.tone}`}><Badge variant={example.variant} label={example.label} /></span><p>{example.text}</p></button>)}</div></div></section></div>}
+    {isAskDuskOpen && (
+      <div className={`ask-dusk-overlay${isAskDuskExpanded ? " is-expanded" : ""}`} role="presentation" onMouseDown={() => { setIsAskDuskOpen(false); setIsAskDuskExpanded(false); }}>
+        <section className={`ask-dusk-window t-resize${isAskDuskExpanded ? " is-expanded" : ""}`} role="dialog" aria-modal="true" aria-label="Ask Dusk investigation window" onMouseDown={(event) => event.stopPropagation()}>
+          <div className="ask-dusk-window-actions">
+            <IconButton className="ask-dusk-window-expand" label={isAskDuskExpanded ? "Restore Ask Dusk window" : "Expand Ask Dusk window"} variant="ghost" size="sm" icon={isAskDuskExpanded ? <Minimize2 size={16} /> : <Maximize2 size={16} />} onClick={() => setIsAskDuskExpanded((expanded) => !expanded)} />
+            <IconButton className="ask-dusk-window-close" label="Close Ask Dusk window" variant="ghost" size="sm" icon={<X size={16} />} onClick={() => { setIsAskDuskOpen(false); setIsAskDuskExpanded(false); }} />
+          </div>
+          <aside className="ask-dusk-sessions" aria-label="Past Ask Dusk sessions" aria-hidden={!isAskDuskExpanded}>
+            <div className="ask-dusk-sessions-content t-panel-slide" data-open={isAskDuskExpanded ? "true" : "false"}>
+              <TextInput className="ask-dusk-session-search" label="Search sessions" isLabelHidden placeholder="Search" value={sessionSearch} onChange={setSessionSearch} startIcon={<Search size={16} />} size="md" width="100%" isDisabled={!isAskDuskExpanded} />
+              <div className="ask-dusk-sessions-header">
+                <span>Sessions ({askDuskSessions.length})</span>
+                <div className="ask-dusk-session-actions">
+                  <IconButton label="New session" variant="ghost" size="sm" icon={<Plus size={16} />} isDisabled={!isAskDuskExpanded} />
+                  <IconButton label="Session options" variant="ghost" size="sm" icon={<MoreHorizontal size={16} />} isDisabled={!isAskDuskExpanded} />
+                </div>
+              </div>
+              {visibleSessions.length > 0 ? (
+                <List className="ask-dusk-session-list" density="compact">
+                  {visibleSessions.map((session) => <ListItem key={session.name} label={session.name} description={session.description} onClick={() => setQuery(session.name)} />)}
+                </List>
+              ) : <p className="ask-dusk-session-empty">No sessions found</p>}
+            </div>
+          </aside>
+          <div className="ask-dusk-design">
+            <div className="ask-dusk-intro"><img src={duskIcon} alt="" /><h2>What should we investigate?</h2></div>
+            <div className="ask-dusk-dialog-composer-shell">
+              <StarBorder as="div" className="ask-dusk-star-border ask-dusk-dialog-star-border" color="var(--dusk-lime)" speed="5s">
+                <ChatComposer className="ask-dusk-dialog-composer" style={{ width: "100%", maxWidth: "none" }} value={query} onChange={setQuery} onSubmit={() => undefined} placeholder="Ask anything..." density="compact" elevation="none" sendActions={<IconButton label="Dictate" variant="ghost" size="sm" icon={<Mic size={16} />} width={28} />} />
+              </StarBorder>
+            </div>
+            <div className="ask-dusk-examples">
+              {askDuskExamples.map((example) => <button className={`ask-dusk-example-row tone-${example.tone}`} key={example.text} type="button" onClick={() => setQuery(example.text)}><span className={`dashboard-cell-badge tone-${example.tone}`}><Badge variant={example.variant} label={example.label} /></span><p>{example.text}</p><span className="ask-dusk-example-time">{example.time}</span></button>)}
+            </div>
+          </div>
+        </section>
+      </div>
+    )}
   </section>;
 }
 
