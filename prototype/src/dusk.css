@@ -19,7 +19,7 @@
 }
 
 @layer dusk {
-  .finding-page { width: 100%; max-width: none; min-width: 1316px; min-height: 100vh; padding-right: 16px; overflow: hidden; }
+  .finding-page { width: 100%; max-width: none; min-width: 0; min-height: 100vh; padding-right: 16px; overflow: hidden; }
   .findings-page-header { display: flex; align-items: center; justify-content: space-between; width: 100%; height: 80px; }
   .findings-page-header > div { display: flex; align-items: baseline; gap: 16px; }
   .findings-page-header h1 { margin: 0; color: var(--dusk-text); font: 560 22px/28px Geist, Inter, sans-serif; letter-spacing: -.04em; }
@@ -47,11 +47,11 @@
   .finding-master-footer > .astryx-badge { flex: 0 0 auto; }
   .finding-badge.astryx-badge { height: 20px; max-width: 100%; padding: 0 8px; overflow: hidden; border-radius: 9999px; font-size: 12px; line-height: 20px; text-overflow: ellipsis; white-space: nowrap; }
   .finding-badge.tone-fraudulent { background: #331c1a; color: var(--dusk-red); }.finding-badge.tone-suspicious { background: #332914; color: var(--dusk-amber); }.finding-badge.tone-legitimate { background: #143024; color: #74cda9; }
-  .finding-confidence { color: var(--dusk-quiet); }.finding-status { margin-left: auto; }.finding-status-open { color: var(--dusk-muted); }.finding-status-cleared { color: #74cda9; }
+  .finding-confidence { color: var(--dusk-muted); }.finding-status { margin-left: auto; }.finding-status-open { color: var(--dusk-muted); }.finding-status-cleared { color: #74cda9; }
   .findings-detail-pane { overflow: hidden; }
   .finding-detail-content { display: flex; flex-direction: column; gap: 24px; width: 100%; height: 100%; min-height: 0; padding: 24px; overflow-y: auto; overscroll-behavior: contain; scrollbar-gutter: stable; }
   .finding-detail-header { display: flex; flex-direction: column; gap: 8px; }
-  .finding-detail-status { display: flex; min-width: 0; align-items: center; gap: 8px; color: var(--dusk-muted); font-size: 12px; line-height: 16px; }
+  .finding-detail-status { display: flex; flex-wrap: wrap; min-width: 0; align-items: center; gap: 8px; color: var(--dusk-muted); font-size: 12px; line-height: 16px; }
   .finding-detail-open { flex: 1 1 auto; }
   .finding-detail-actions { display: flex; flex: 0 0 auto; gap: 8px; }
   .finding-detail-actions .astryx-button:first-child { width: 204px; }
@@ -151,7 +151,7 @@
   @keyframes finding-timeline-pulse { from { transform: scale(.5); opacity: 0; } 15% { opacity: 1; } to { transform: scale(1); opacity: 0; } }
   @media (prefers-reduced-motion: reduce) { .finding-timeline-track > span.is-active::after { animation: none; display: none; } }
   .finding-timeline-copy { display: grid; gap: 8px; padding-bottom: 32px; }
-  .finding-timeline-meta { display: flex; gap: 8px; color: var(--dusk-muted); font-size: 12px; line-height: 16px; }
+  .finding-timeline-meta { display: flex; flex-wrap: wrap; gap: 8px; color: var(--dusk-muted); font-size: 12px; line-height: 16px; }
   .finding-timeline-copy h4 { margin: 0; color: var(--dusk-text); font-size: 16px; font-weight: 600; line-height: 24px; }
   .finding-timeline-copy p { margin: -4px 0 0; color: var(--dusk-muted); font-size: 14px; line-height: 20px; }
   .finding-timeline-actions { display: flex; flex-wrap: wrap; gap: 0 8px; }
@@ -161,8 +161,40 @@
   .finding-detail-empty { display: grid; width: min(520px, calc(100% - 48px)); margin: auto; justify-items: center; gap: 10px; color: var(--dusk-muted); text-align: center; }
   .finding-detail-empty h2 { margin: 6px 0 0; color: var(--dusk-text); font-size: 20px; font-weight: 500; }
   .finding-detail-empty p, .finding-detail-empty span { margin: 0; font-size: 13px; line-height: 20px; }
-  @media (max-width: 680px) {
-    .findings-master-detail { grid-template-columns: 1fr; }
-    .findings-pane { min-height: 360px; }
+
+
+  .nav-item:focus-visible { outline: 2px solid var(--dusk-lime); outline-offset: -2px; }
+  .findings-filters-control .astryx-button { flex: 1 1 0; min-width: 0; padding-inline: 8px; }
+  .finding-detail-empty { padding-block: 24px; }
+  @media (max-width: 1350px) {
+    .findings-master-detail { grid-template-columns: 320px minmax(0, 1fr); }
+    .finding-detail-actions { flex-basis: 100%; }
+    .finding-master-item, .finding-master-item.is-selected { flex-basis: 136px; height: 136px; min-height: 136px; }
+    .finding-master-title { display: -webkit-box; -webkit-box-orient: vertical; -webkit-line-clamp: 2; white-space: normal; }
+    .finding-master-footer { flex-wrap: wrap; height: auto; row-gap: 4px; }
+    .finding-status { margin-left: 0; }
+  }
+  @media (max-width: 1100px) {
+    .finding-page { height: 100vh; display: flex; flex-direction: column; }
+    .findings-page-header { flex: 0 0 80px; gap: 16px; }
+    .findings-page-header > div { flex-wrap: wrap; gap: 4px 16px; }
+    .findings-master-detail { flex: 1 1 auto; grid-template-columns: 1fr; grid-template-rows: 240px max-content; align-content: start; height: auto; overflow-y: auto; }
+    .findings-pane { min-width: 0; }
+    .findings-detail-pane { height: auto; overflow: visible; }
+    .finding-detail-content { height: auto; overflow: visible; }
+    .payment-chain-explorer-body { grid-template-columns: minmax(0, 1fr) 260px; }
+  }
+  @media (max-width: 600px) {
+    .dusk-app { gap: 8px; }
+    .dusk-rail { width: 76px; padding-inline: 4px; overflow-y: auto; }
+    .dusk-mark, .dusk-nav, .dusk-rail-bottom, .dusk-avatar-slot, .nav-item { width: 68px; }
+    .finding-detail-content { padding: 16px; }
+    .finding-detail-actions { flex-wrap: wrap; }
+    .finding-detail-actions .astryx-button:first-child { width: auto; }
+    .findings-page-header { flex-wrap: wrap; height: auto; flex-basis: 112px; gap: 4px; padding-block: 12px; }
+    .finding-timeline-item { gap: 16px; }
+    .payment-chain-explorer-body { grid-template-columns: 1fr; grid-template-rows: minmax(180px, 1fr) auto; overflow-y: auto; }
+    .payment-chain-explorer .payment-chain-canvas { min-height: 180px; border-right: 0; border-bottom: 1px solid var(--dusk-border); }
+    .payment-chain-inspector { max-height: 220px; overflow-y: auto; }
   }
 }

@@ -10,10 +10,10 @@ type FindingDetailProps = {
 
 const evidence = [
   {
-    time: "Tuesday · 22:07",
+    time: "Tuesday · 22:07 · Latest event",
     source: "Personal beneficiary",
     title: "Funds were withdrawn",
-    description: "The beneficiary withdrew the funds from an unrecognized device in a new geography.",
+    description: "The funds were withdrawn from an unrecognized device in a new geography. Control of the withdrawal session remains unverified.",
     actions: ["Open withdrawal event"],
     active: true,
   },
@@ -21,27 +21,27 @@ const evidence = [
     time: "Tuesday · 09:40",
     source: "Payroll Master — EU",
     title: "Two external transfers",
-    description: "Payments were queued at 12× normal volume and reached 14 finance accounts.",
+    description: "Two payments were routed to a personal account not listed in the payee master.",
     actions: ["Open transfer event", "Open beneficiary"],
   },
   {
     time: "Tuesday · 09:12",
     source: "FY24 Comp & Equity Payroll",
-    title: "Dormant authority accessed payroll",
-    description: "Approval rights that had been dormant were used to initiate the payment sequence.",
+    title: "Dormant approval rights used to access payroll",
+    description: "14 Critical finance accounts were accessed and payments queued within 20 minutes, at 12× normal volume.",
     actions: ["Open access event", "Open affected accounts"],
   },
   {
-    time: "Monday · 10/10/2026",
+    time: "Six months earlier",
     source: "Quarter-close project",
     title: "Approval authority stayed active",
-    description: "Broad rights granted for quarter close were never revoked. Marek is on day 9 of a 30-day notice period.",
+    description: "Broad approval rights were granted for quarter close and were never revoked after the project ended.",
     actions: ["Open authority record"],
   },
 ];
 
 export function FindingDetail({ item }: FindingDetailProps) {
-  if (item.id !== "F-204") {
+  if (item.id !== "FND-1042") {
     return (
       <section className="finding-detail-empty" aria-live="polite">
         <Badge className={`finding-badge tone-${item.verdict.toLowerCase()}`} variant={item.verdict === "Legitimate" ? "success" : "warning"} label={item.verdict} />
@@ -64,9 +64,9 @@ export function FindingDetail({ item }: FindingDetailProps) {
             <Button label="Assign" variant="secondary" size="md" />
           </div>
         </div>
-        <h2 id="finding-detail-title">Payroll transfers to an unregistered personal beneficiary</h2>
+        <h2 id="finding-detail-title">{item.title}</h2>
         <p className="finding-detail-meta">FND-1042 · D. Marek · 3 linked events · Tuesday, 09:12–22:07</p>
-        <p className="finding-detail-summary">Dormant approval rights accessed payroll and routed two transfers to an unregistered personal beneficiary. The funds were withdrawn the same day.</p>
+        <p className="finding-detail-summary">Previously dormant approval rights were used to access payroll and route two payments to an unregistered personal beneficiary. The funds were withdrawn that evening.</p>
       </header>
 
       <section className="finding-recommendation" aria-labelledby="recommendation-title">

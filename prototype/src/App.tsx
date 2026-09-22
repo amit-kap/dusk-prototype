@@ -4,7 +4,8 @@ import { Button } from "@astryxdesign/core/Button";
 import { ToggleButton } from "@astryxdesign/core/ToggleButton";
 import { Dashboard } from "./Dashboard";
 import { FindingDetail } from "./FindingDetail";
-import { FindingMasterItem, type FindingMasterItemData } from "./FindingMasterItem";
+import { FindingMasterItem } from "./FindingMasterItem";
+import { findingItems } from "./findingData";
 import duskIcon from "./assets/dusk-icon.svg";
 import navDashboardIcon from "./assets/nav-dashboard.svg";
 import navFindingsIcon from "./assets/nav-findings.svg";
@@ -17,16 +18,9 @@ import { CalendarDays } from "lucide-react";
 
 type View = "overview" | "finding";
 
-const findingItems: FindingMasterItemData[] = [
-  { id: "F-204", entity: "D. Marek", timestamp: "Tue 09:12", title: "Payroll transfers to an unregistered personal beneficiary", verdict: "Fraudulent", confidence: "91% confidence", status: "Open" },
-  { id: "F-203", entity: "agent-treasury", timestamp: "Wed 03:20", title: "Treasury activity outside its baseline", verdict: "Suspicious", confidence: "Not scored", status: "Open" },
-  { id: "F-202", entity: "svc-settle-03", timestamp: "Mon 21:14", title: "Settlement credential used beyond scope", verdict: "Suspicious", confidence: "88% confidence", status: "Open" },
-  { id: "F-201", entity: "L. Chen", timestamp: "Mon 11:36", title: "Vendor bank details changed before payout", verdict: "Suspicious", confidence: "84% confidence", status: "Open" },
-  { id: "F-200", entity: "C. Rivas", timestamp: "Mon 14:02", title: "Payroll approval matches established activity", verdict: "Legitimate", confidence: "98% confidence", status: "Cleared" },
-];
-
 function App() {
   const [view, setView] = useState<View>("overview");
+  const [initialFindingId, setInitialFindingId] = useState(findingItems[0].id);
 
   return (
     <div className="dusk-app">
@@ -50,9 +44,9 @@ function App() {
 
       <main className={`dusk-main ${view === "overview" ? "dusk-main-dashboard" : ""}`}>
         {view === "overview" ? (
-          <Dashboard onOpenFinding={() => setView("finding")} />
+          <Dashboard onOpenFinding={(id = findingItems[0].id) => { setInitialFindingId(id); setView("finding"); }} />
         ) : (
-          <Finding />
+          <Finding initialFindingId={initialFindingId} />
         )}
       </main>
     </div>
@@ -63,9 +57,9 @@ function NavItem({ icon, label, active, count, onClick }: { icon: React.ReactNod
   return <button className={`nav-item ${active ? "is-active" : ""}`} onClick={onClick} aria-current={active ? "page" : undefined}><span className="nav-icon-container">{icon}</span><span>{label}</span>{count && <small>{count}</small>}</button>;
 }
 
-function Finding() {
+function Finding({ initialFindingId }: { initialFindingId: string }) {
   const [filter, setFilter] = useState<"All" | "Open" | "Cleared">("All");
-  const [selectedId, setSelectedId] = useState("F-204");
+  const [selectedId, setSelectedId] = useState(initialFindingId);
   const visibleItems = useMemo(() => filter === "All" ? findingItems : findingItems.filter((item) => item.status === filter), [filter]);
   const selectedItem = findingItems.find((item) => item.id === selectedId) ?? findingItems[0];
 
@@ -92,7 +86,7 @@ function Finding() {
             <ToggleButton label="Cleared · 1" size="sm" isPressed={filter === "Cleared"} onPressedChange={() => applyFilter("Cleared")} />
           </div>
         </div>
-        <div className="finding-master-list" role="tabpanel" aria-label={`${filter} findings`}>
+        <div className="finding-master-list" role="group" aria-label={`${filter} findings`}>
           {visibleItems.map((item) => <FindingMasterItem key={item.id} {...item} selected={item.id === selectedId} onSelect={() => setSelectedId(item.id)} />)}
         </div>
       </div>
