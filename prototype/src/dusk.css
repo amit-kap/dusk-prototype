@@ -90,7 +90,8 @@
   .payment-chain-canvas { position: relative; width: 100%; min-width: 0; overflow: hidden; }
   .payment-chain-canvas.is-compact { height: 100%; min-height: 0; }
   .payment-chain-canvas.is-expanded { height: 100%; min-height: 420px; }
-  .payment-chain-canvas .react-flow { background: transparent; }
+  .payment-chain-canvas .react-flow { --xy-edge-stroke: var(--dusk-muted); --xy-edge-stroke-selected: var(--dusk-lime); --xy-edge-stroke-width: 1.25; }
+  .payment-chain-canvas.is-compact .react-flow { --xy-background-color: transparent; }
   .payment-chain-canvas .react-flow__attribution { padding: 1px 3px; background: rgba(14,18,16,.72); color: var(--dusk-muted); font-size: 8px; opacity: .55; }
   .payment-chain-canvas .react-flow__attribution a { color: inherit; }
   .payment-chain-canvas .react-flow__pane { cursor: grab; }
@@ -106,19 +107,15 @@
   .payment-chain-canvas .finding-chain-entity:hover { background: #111612; box-shadow: inset 0 0 32px rgba(183,247,107,.15); }
   .payment-chain-canvas .finding-chain-entity.is-selected { border-color: var(--dusk-text); box-shadow: inset 0 0 32px rgba(183,247,107,.16), 0 0 0 1px rgba(183,247,107,.45); }
   .payment-chain-canvas .finding-chain-entity.tone-danger.is-selected { box-shadow: inset 0 0 32px rgba(255,139,135,.18), 0 0 0 1px rgba(255,139,135,.55); }
-  .payment-chain-action-node { width: 100%; height: 100%; padding: 0; border: 0; background: transparent; font: inherit; cursor: pointer; }
+  .payment-chain-action-node { width: 100%; height: 100%; grid-template-rows: 42px 14px; align-content: start; padding: 0; border: 0; background: transparent; font: inherit; cursor: pointer; }
+  .payment-chain-action-icon { position: relative; }
   .payment-chain-action-node:focus-visible { outline: none; }
   .payment-chain-action-node:focus-visible > div { border-color: var(--dusk-lime); color: var(--dusk-lime); box-shadow: 0 0 0 2px var(--dusk-inset), 0 0 0 3px var(--dusk-lime); }
   .payment-chain-action-node::before, .payment-chain-action-node::after { display: none; }
   .payment-chain-action-node > div { transition: border-color 160ms ease, color 160ms ease, box-shadow 160ms ease; }
   .payment-chain-action-node:hover > div, .payment-chain-action-node.is-selected > div { border-color: var(--dusk-lime); color: var(--dusk-lime); box-shadow: 0 0 0 1px rgba(183,247,107,.24); }
-  .payment-chain-edge.react-flow__edge-path { stroke: var(--dusk-muted); stroke-width: 1; }
-  .payment-chain-edge.is-selected.react-flow__edge-path { stroke: var(--dusk-lime); }
-  .payment-chain-edge-signal { fill: none; stroke: var(--dusk-lime); stroke-width: 2.5; stroke-linecap: round; stroke-dasharray: 16 12; opacity: .9; filter: drop-shadow(0 0 3px rgba(183,247,107,.58)); pointer-events: none; animation: payment-chain-flow 1.25s linear infinite; animation-delay: var(--edge-delay); }
-  .payment-chain-edge-signal.is-selected { stroke-width: 3; opacity: 1; filter: drop-shadow(0 0 5px rgba(183,247,107,.82)); }
-  .payment-chain-flow-dot { fill: var(--dusk-lime); filter: drop-shadow(0 0 4px rgba(183,247,107,.9)); pointer-events: none; }
-  .payment-chain-flow-dot.is-selected { fill: var(--dusk-text); filter: drop-shadow(0 0 6px rgba(183,247,107,1)); }
-  @keyframes payment-chain-flow { to { stroke-dashoffset: -56; } }
+  .payment-chain-flow-arrow { color: var(--dusk-lime); pointer-events: none; transform: var(--flow-rest); animation: payment-chain-arrow-flow linear infinite; }
+  @keyframes payment-chain-arrow-flow { from { transform: var(--flow-start); opacity: 0; } 10%, 90% { opacity: 1; } to { transform: var(--flow-end); opacity: 0; } }
   .payment-chain-controls { display: flex; gap: 4px; padding: 4px; border: 1px solid var(--dusk-border); border-radius: 8px; background: rgba(14,18,16,.92); box-shadow: 0 8px 28px rgba(0,0,0,.28); }
   .payment-chain-controls .astryx-button { width: 28px !important; min-width: 28px; height: 28px; min-height: 28px; padding: 0; border-radius: 6px; }
   .payment-chain-node-details { display: grid; align-content: start; gap: 16px; min-width: 0; }
@@ -140,15 +137,19 @@
   .payment-chain-inspector-empty { display: grid; place-content: center; gap: 6px; height: 100%; color: var(--dusk-muted); text-align: center; }
   .payment-chain-inspector-empty p { margin: 0; color: var(--dusk-text); font-size: 14px; font-weight: 500; }
   .payment-chain-inspector-empty span { max-width: 240px; font-size: 12px; line-height: 18px; }
-  @media (prefers-reduced-motion: reduce) { .payment-chain-edge-signal { animation: none; stroke-dasharray: none; opacity: .55; }.payment-chain-flow-dot { display: none; }.payment-chain-explorer { animation: none; }.payment-chain-canvas .finding-chain-entity,.payment-chain-action-node > div { transition: none; } }
+  @media (prefers-reduced-motion: reduce) { .payment-chain-flow-arrow { animation-name: none; opacity: 1; }.payment-chain-explorer { animation: none; }.payment-chain-canvas .finding-chain-entity,.payment-chain-action-node > div { transition: none; } }
   .finding-evidence { display: grid; gap: 16px; }
   .finding-timeline { display: grid; }
   .finding-timeline-item { display: grid; grid-template-columns: 16px minmax(0, 1fr); gap: 24px; }
   .finding-timeline-track { position: relative; display: flex; justify-content: center; }
-  .finding-timeline-track::after { position: absolute; top: 16px; bottom: 0; width: 1px; background: var(--dusk-border); content: ""; }
+  .finding-timeline-track::after { position: absolute; top: 20px; bottom: 4px; width: 1px; background: var(--dusk-border); content: ""; }
   .finding-timeline-item:last-child .finding-timeline-track::after { display: none; }
-  .finding-timeline-track > span { z-index: 1; width: 8px; height: 8px; margin-top: 4px; border: 2px solid var(--dusk-surface); border-radius: 50%; background: var(--dusk-text); box-shadow: 0 0 0 1px var(--dusk-border); }
-  .finding-timeline-track > span.is-active { background: var(--dusk-lime); box-shadow: 0 0 0 1px rgba(183,247,107,.35); }
+  .finding-timeline-track > span { position: relative; z-index: 1; flex: 0 0 16px; width: 16px; height: 16px; border: 1px solid var(--dusk-border); border-radius: 50%; background: var(--dusk-surface); }
+  .finding-timeline-track > span::before { position: absolute; top: 3px; left: 3px; width: 8px; height: 8px; border-radius: inherit; background: var(--dusk-text); content: ""; }
+  .finding-timeline-track > span.is-active::before { background: var(--dusk-lime); }
+  .finding-timeline-track > span.is-active::after { position: absolute; inset: -5px; border: 1px solid var(--dusk-lime); border-radius: inherit; pointer-events: none; content: ""; animation: finding-timeline-pulse 1.8s ease-in-out infinite; }
+  @keyframes finding-timeline-pulse { from { transform: scale(.5); opacity: 0; } 15% { opacity: 1; } to { transform: scale(1); opacity: 0; } }
+  @media (prefers-reduced-motion: reduce) { .finding-timeline-track > span.is-active::after { animation: none; display: none; } }
   .finding-timeline-copy { display: grid; gap: 8px; padding-bottom: 32px; }
   .finding-timeline-meta { display: flex; gap: 8px; color: var(--dusk-muted); font-size: 12px; line-height: 16px; }
   .finding-timeline-copy h4 { margin: 0; color: var(--dusk-text); font-size: 16px; font-weight: 600; line-height: 24px; }

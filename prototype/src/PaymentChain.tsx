@@ -16,9 +16,8 @@ import {
   type EdgeProps,
   type Node,
   type NodeProps,
-  type ReactFlowInstance,
 } from "@xyflow/react";
-import { ExternalLink, KeyRound, Landmark, LocateFixed, Minus, Plus, ReceiptText, UserRound, X } from "lucide-react";
+import { ChevronRight, ExternalLink, KeyRound, Landmark, LocateFixed, Minus, Plus, ReceiptText, UserRound, X } from "lucide-react";
 
 type ChainTone = "signal" | "danger";
 type ChainNodeData = {
@@ -57,8 +56,8 @@ const chainNodes: ChainGraphNode[] = [
   {
     id: "access",
     type: "chain",
-    position: { x: 226, y: 30 },
-    style: { width: 72, height: 72 },
+    position: { x: 226, y: 44.5 },
+    style: { width: 100, height: 72 },
     draggable: false,
     ariaLabel: "Access event",
     data: {
@@ -74,7 +73,7 @@ const chainNodes: ChainGraphNode[] = [
   {
     id: "payroll",
     type: "chain",
-    position: { x: 306, y: 0 },
+    position: { x: 334, y: 0 },
     style: { width: 218, height: 131 },
     draggable: false,
     ariaLabel: "Payroll Master EU, 14 accounts accessed at twelve times normal activity",
@@ -91,8 +90,8 @@ const chainNodes: ChainGraphNode[] = [
   {
     id: "transfer",
     type: "chain",
-    position: { x: 532, y: 30 },
-    style: { width: 72, height: 72 },
+    position: { x: 560, y: 44.5 },
+    style: { width: 100, height: 72 },
     draggable: false,
     ariaLabel: "Two transfer events",
     data: {
@@ -108,7 +107,7 @@ const chainNodes: ChainGraphNode[] = [
   {
     id: "beneficiary",
     type: "chain",
-    position: { x: 612, y: 0 },
+    position: { x: 668, y: 0 },
     style: { width: 218, height: 131 },
     draggable: false,
     ariaLabel: "External beneficiary j.doe.personal@gmail, funds withdrawn Tuesday at 22:07",
@@ -134,11 +133,13 @@ const chainEdges: ChainGraphEdge[] = [
 
 const nodeTypes = { chain: ChainNode };
 const edgeTypes = { flow: FlowEdge };
+const chainHandleStyle = { width: 1, height: 1, minWidth: 1, minHeight: 1 };
+const flowCycleMilliseconds = 600;
+const flowStaggerMilliseconds = 100;
 
 export function PaymentChain() {
   const [selectedId, setSelectedId] = useState<string | null>(null);
   const [isExplorerOpen, setIsExplorerOpen] = useState(false);
-  const [compactFlow, setCompactFlow] = useState<ReactFlowInstance<ChainGraphNode, ChainGraphEdge> | null>(null);
   const closeExplorer = useCallback(() => setIsExplorerOpen(false), []);
   const openExplorer = useCallback(() => {
     setSelectedId(chainNodes[0].id);
@@ -151,11 +152,10 @@ export function PaymentChain() {
         <div className="finding-section-heading">
           <h3 id="payment-chain-title">Payment chain</h3>
           <div className="payment-chain-heading-actions">
-            <HeaderGraphControls instance={compactFlow} />
             <Button label="Explore" variant="ghost" size="sm" endContent={<ExternalLink size={16} />} onClick={openExplorer} />
           </div>
         </div>
-        <PaymentChainGraph selectedId={selectedId} onSelect={setSelectedId} mode="compact" onInit={setCompactFlow} />
+        <PaymentChainGraph selectedId={selectedId} onSelect={setSelectedId} mode="compact" />
       </section>
       {isExplorerOpen && (
         <PaymentChainExplorer
@@ -168,10 +168,14 @@ export function PaymentChain() {
   );
 }
 
-function PaymentChainGraph({ selectedId, onSelect, mode, onInit }: { selectedId: string | null; onSelect: (id: string | null) => void; mode: "compact" | "expanded"; onInit?: (instance: ReactFlowInstance<ChainGraphNode, ChainGraphEdge>) => void }) {
+function PaymentChainGraph({ selectedId, onSelect, mode }: { selectedId: string | null; onSelect: (id: string | null) => void; mode: "compact" | "expanded" }) {
+  const isExpanded = mode === "expanded";
   const nodes = useMemo<ChainGraphNode[]>(() => chainNodes.map((node) => ({ ...node, selected: node.id === selectedId, data: { ...node.data, onSelect: () => onSelect(node.id) } })), [onSelect, selectedId]);
   const connectedEdgeIds = useMemo(() => new Set(chainEdges.filter((edge) => edge.source === selectedId || edge.target === selectedId).map((edge) => edge.id)), [selectedId]);
-  const edges = useMemo<ChainGraphEdge[]>(() => chainEdges.map((edge) => ({ ...edge, selected: connectedEdgeIds.has(edge.id) })), [connectedEdgeIds]);
+  const edges = useMemo<ChainGraphEdge[]>(() => chainEdges.map((edge) => ({
+    ...edge,
+    selected: connectedEdgeIds.has(edge.id),
+  })), [connectedEdgeIds]);
 
   return (
     <div className={`payment-chain-canvas is-${mode}`} aria-label="Interactive payment chain graph">
@@ -187,12 +191,12 @@ function PaymentChainGraph({ selectedId, onSelect, mode, onInit }: { selectedId:
           elementsSelectable
           panOnDrag
           panOnScroll={false}
-          zoomOnScroll
-          zoomOnPinch
+          zoomOnScroll={isExpanded}
+          zoomOnPinch={isExpanded}
+          zoomActivationKeyCode={isExpanded ? undefined : null}
           zoomOnDoubleClick={false}
           minZoom={0.55}
           maxZoom={1.8}
-          onInit={onInit}
           fitView
           fitViewOptions={{ padding: mode === "compact" ? 0.01 : 0.16, maxZoom: mode === "compact" ? 1 : 1.2 }}
           colorMode="dark"
@@ -201,16 +205,6 @@ function PaymentChainGraph({ selectedId, onSelect, mode, onInit }: { selectedId:
           {mode === "expanded" && <GraphControls />}
         </ReactFlow>
       </ReactFlowProvider>
-    </div>
-  );
-}
-
-function HeaderGraphControls({ instance }: { instance: ReactFlowInstance<ChainGraphNode, ChainGraphEdge> | null }) {
-  return (
-    <div className="payment-chain-header-controls" aria-label="Payment chain zoom controls">
-      <IconButton label="Zoom out" variant="ghost" size="sm" icon={<Minus size={14} />} isDisabled={!instance} onClick={() => instance?.zoomOut({ duration: 180 })} />
-      <IconButton label="Zoom in" variant="ghost" size="sm" icon={<Plus size={14} />} isDisabled={!instance} onClick={() => instance?.zoomIn({ duration: 180 })} />
-      <IconButton label="Fit payment chain" variant="ghost" size="sm" icon={<LocateFixed size={14} />} isDisabled={!instance} onClick={() => instance?.fitView({ padding: 0.01, duration: 220, maxZoom: 1 })} />
     </div>
   );
 }
@@ -231,43 +225,42 @@ function ChainNode({ data, selected }: NodeProps<ChainGraphNode>) {
   if (data.kind === "action") {
     return (
       <button type="button" className={`finding-chain-action payment-chain-action-node${selected ? " is-selected" : ""}`} aria-label={data.title} onClick={data.onSelect}>
-        <Handle type="target" position={Position.Left} />
-        <div>{icon}</div>
+        <div className="payment-chain-action-icon">
+          <Handle type="target" position={Position.Left} style={chainHandleStyle} />
+          {icon}
+          <Handle type="source" position={Position.Right} style={chainHandleStyle} />
+        </div>
         <span>{data.title}</span>
-        <Handle type="source" position={Position.Right} />
       </button>
     );
   }
   return (
     <button type="button" className={`finding-chain-entity tone-${data.tone ?? "signal"}${selected ? " is-selected" : ""}`} aria-label={`${data.title}. ${data.meta}. ${data.foot}`} onClick={data.onSelect}>
-      <Handle type="target" position={Position.Left} />
+      <Handle type="target" position={Position.Left} style={chainHandleStyle} />
       <div className="finding-chain-title">{icon}<strong>{data.title}</strong></div>
       <span>{data.meta}</span>
       <div className="finding-chain-divider" />
       <p>{data.foot}</p>
-      <Handle type="source" position={Position.Right} />
+      <Handle type="source" position={Position.Right} style={chainHandleStyle} />
     </button>
   );
 }
 
-function FlowEdge({ id, sourceX, sourceY, targetX, targetY, selected, data }: EdgeProps<ChainGraphEdge>) {
+function FlowEdge({ id, sourceX, sourceY, targetX, targetY, data }: EdgeProps<ChainGraphEdge>) {
   const [edgePath] = getStraightPath({ sourceX, sourceY, targetX, targetY });
+  const arrowStyle = {
+    "--flow-start": `translate(${sourceX}px, ${sourceY}px)`,
+    "--flow-end": `translate(${targetX}px, ${targetY}px)`,
+    "--flow-rest": `translate(${(sourceX + targetX) / 2}px, ${(sourceY + targetY) / 2}px)`,
+    animationDuration: `${flowCycleMilliseconds}ms`,
+    animationDelay: `${(data?.order ?? 0) * flowStaggerMilliseconds - flowCycleMilliseconds}ms`,
+  } as CSSProperties;
   return (
     <>
-      <BaseEdge id={id} path={edgePath} className={`payment-chain-edge${selected ? " is-selected" : ""}`} />
-      <path
-        d={edgePath}
-        className={`payment-chain-edge-signal${selected ? " is-selected" : ""}`}
-        style={{ "--edge-delay": `${(data?.order ?? 0) * 240}ms` } as CSSProperties}
-      />
-      <circle className={`payment-chain-flow-dot${selected ? " is-selected" : ""}`} r="3.5">
-        <animateMotion
-          path={edgePath}
-          dur="1.6s"
-          begin={`${(data?.order ?? 0) * 0.18}s`}
-          repeatCount="indefinite"
-        />
-      </circle>
+      <BaseEdge id={id} path={edgePath} className="payment-chain-edge" />
+      <g className="payment-chain-flow-arrow" style={arrowStyle} aria-hidden="true">
+        <ChevronRight x={-6} y={-6} size={12} strokeWidth={2} />
+      </g>
     </>
   );
 }

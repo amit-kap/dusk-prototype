@@ -27,3 +27,6 @@
 - Inspect relevant files and Git status before implementation. This directory was not a Git checkout at the latest inspection; verify rather than assume.
 - For three or more meaningful steps, state a short plan before edits. Preserve unrelated work.
 - Record recurring user corrections here. Do not edit global memory unless explicitly requested.
+- Payment-chain motion must use one small chevron per connection, with no shaft on the moving glyph, over a visible thin connecting line. Keep a continuous left-to-right flow at a 600ms loop. Avoid combined dot-and-trail effects, duplicate arrowheads, and long idle gaps; preserve the existing node styling and dotted compact widget.
+- Payment-chain zoom is available only in the full-screen explorer. Compact mode has no zoom controls, wheel/pinch zoom, or zoom activation shortcut; preserve its node clicks, Explore action, and initial fit.
+- Timeline pulse: keep the green center steady and animate the 24px halo from 50% to 100% scale over 1.8 seconds. Start and end at zero opacity, with a brief fade-in before fading out, so the loop resets invisibly.
