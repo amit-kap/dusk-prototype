@@ -59,6 +59,10 @@
   .finding-detail-header h2 { margin: 0; color: var(--dusk-text); font: 500 24px/32px Geist, Inter, sans-serif; letter-spacing: -.025em; }
   .finding-detail-meta { margin: 0; color: var(--dusk-muted); font-size: 12px; line-height: 16px; }
   .finding-detail-summary { max-width: 870px; margin: 0; color: var(--dusk-text); font-size: 14px; line-height: 20px; }
+  .finding-detail-reasoning { display: grid; gap: 4px; }
+  .finding-detail-reasoning h3 { margin: 0; color: var(--dusk-text); font-size: 14px; font-weight: 500; line-height: 20px; }
+  .finding-detail-reasoning p { margin: 0; color: var(--dusk-muted); font-size: 14px; line-height: 20px; }
+  .finding-evidence-provenance { margin: 0; color: var(--dusk-muted); font-size: 12px; line-height: 16px; }
   .finding-recommendation { display: grid; gap: 8px; padding: 16px; border: 1px solid var(--dusk-border); border-radius: 8px; background: var(--dusk-inset); }
   .finding-recommendation h3, .finding-recommendation p { margin: 0; font-size: 14px; line-height: 20px; }
   .finding-recommendation h3 { color: var(--dusk-lime); font-weight: 500; }
