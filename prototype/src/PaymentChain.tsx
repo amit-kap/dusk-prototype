@@ -12,12 +12,13 @@ import {
   ReactFlowProvider,
   getStraightPath,
   useReactFlow,
+  useStore,
   type Edge,
   type EdgeProps,
   type Node,
   type NodeProps,
 } from "@xyflow/react";
-import { ChevronRight, ExternalLink, KeyRound, Landmark, LocateFixed, Minus, Plus, ReceiptText, UserRound, X } from "lucide-react";
+import { ExternalLink, KeyRound, Landmark, LocateFixed, Minus, Plus, ReceiptText, UserRound, X } from "lucide-react";
 
 type ChainTone = "signal" | "danger";
 type ChainNodeData = {
@@ -134,8 +135,8 @@ const chainEdges: ChainGraphEdge[] = [
 const nodeTypes = { chain: ChainNode };
 const edgeTypes = { flow: FlowEdge };
 const chainHandleStyle = { width: 1, height: 1, minWidth: 1, minHeight: 1 };
-const flowCycleMilliseconds = 600;
-const flowStaggerMilliseconds = 100;
+const flowCycleMilliseconds = 750;
+const flowStaggerMilliseconds = 125;
 
 export function PaymentChain() {
   const [selectedId, setSelectedId] = useState<string | null>(null);
@@ -203,10 +204,23 @@ function PaymentChainGraph({ selectedId, onSelect, mode }: { selectedId: string 
         >
           {mode === "expanded" && <Background color="rgba(113, 128, 120, .32)" gap={16} size={1} />}
           {mode === "expanded" && <GraphControls />}
+          {!isExpanded && <CompactAutoFit />}
         </ReactFlow>
       </ReactFlowProvider>
     </div>
   );
+}
+
+function CompactAutoFit() {
+  const width = useStore((state) => state.width);
+  const height = useStore((state) => state.height);
+  const { fitView } = useReactFlow();
+  useEffect(() => {
+    if (!width || !height) return;
+    const frame = requestAnimationFrame(() => { void fitView({ padding: 0.01, maxZoom: 1, duration: 0 }); });
+    return () => cancelAnimationFrame(frame);
+  }, [width, height, fitView]);
+  return null;
 }
 
 function GraphControls() {
@@ -248,21 +262,11 @@ function ChainNode({ data, selected }: NodeProps<ChainGraphNode>) {
 
 function FlowEdge({ id, sourceX, sourceY, targetX, targetY, data }: EdgeProps<ChainGraphEdge>) {
   const [edgePath] = getStraightPath({ sourceX, sourceY, targetX, targetY });
-  const arrowStyle = {
-    "--flow-start": `translate(${sourceX}px, ${sourceY}px)`,
-    "--flow-end": `translate(${targetX}px, ${targetY}px)`,
-    "--flow-rest": `translate(${(sourceX + targetX) / 2}px, ${(sourceY + targetY) / 2}px)`,
+  const dashStyle = {
     animationDuration: `${flowCycleMilliseconds}ms`,
     animationDelay: `${(data?.order ?? 0) * flowStaggerMilliseconds - flowCycleMilliseconds}ms`,
   } as CSSProperties;
-  return (
-    <>
-      <BaseEdge id={id} path={edgePath} className="payment-chain-edge" />
-      <g className="payment-chain-flow-arrow" style={arrowStyle} aria-hidden="true">
-        <ChevronRight x={-6} y={-6} size={12} strokeWidth={2} />
-      </g>
-    </>
-  );
+  return <BaseEdge id={id} path={edgePath} className="payment-chain-edge payment-chain-flow-dashes" style={dashStyle} />;
 }
 
 function PaymentChainExplorer({ selectedId, onSelect, onClose }: { selectedId: string | null; onSelect: (id: string | null) => void; onClose: () => void }) {

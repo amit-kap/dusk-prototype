@@ -1,4 +1,5 @@
-import { useMemo, useState } from "react";
+import { useEffect, useMemo, useState } from "react";
+import { IconButton } from "@astryxdesign/core/IconButton";
 import { Avatar } from "@astryxdesign/core/Avatar";
 import { Button } from "@astryxdesign/core/Button";
 import { ToggleButton } from "@astryxdesign/core/ToggleButton";
@@ -6,6 +7,7 @@ import { Dashboard } from "./Dashboard";
 import { FindingDetail } from "./FindingDetail";
 import { FindingMasterItem } from "./FindingMasterItem";
 import { findingItems } from "./findingData";
+import { CaseProvider } from "./Cases";
 import duskIcon from "./assets/dusk-icon.svg";
 import navDashboardIcon from "./assets/nav-dashboard.svg";
 import navFindingsIcon from "./assets/nav-findings.svg";
@@ -14,7 +16,7 @@ import navAccountsIcon from "./assets/nav-accounts.svg";
 import navActorsIcon from "./assets/nav-actors.svg";
 import navAutomationsIcon from "./assets/nav-automations.svg";
 import navSettingsIcon from "./assets/nav-settings.svg";
-import { CalendarDays } from "lucide-react";
+import { CalendarDays, PanelLeftClose, PanelLeftOpen } from "lucide-react";
 
 type View = "overview" | "finding";
 
@@ -22,8 +24,11 @@ function App() {
   const [view, setView] = useState<View>("overview");
   const [initialFindingId, setInitialFindingId] = useState(findingItems[0].id);
 
+  const openFinding = (id: string = findingItems[0].id) => { setInitialFindingId(id); setView("finding"); };
+
   return (
     <div className="dusk-app">
+      <CaseProvider>
       <aside className="dusk-rail" aria-label="Primary navigation">
         <div className="dusk-mark" aria-label="Dusk home"><img src={duskIcon} alt="" /></div>
         <nav className="dusk-nav">
@@ -44,11 +49,12 @@ function App() {
 
       <main className={`dusk-main ${view === "overview" ? "dusk-main-dashboard" : ""}`}>
         {view === "overview" ? (
-          <Dashboard onOpenFinding={(id = findingItems[0].id) => { setInitialFindingId(id); setView("finding"); }} />
+          <Dashboard onOpenFinding={openFinding} />
         ) : (
-          <Finding initialFindingId={initialFindingId} />
+          <Finding selectedId={initialFindingId} setSelectedId={setInitialFindingId} />
         )}
       </main>
+      </CaseProvider>
     </div>
   );
 }
@@ -57,11 +63,14 @@ function NavItem({ icon, label, active, count, onClick }: { icon: React.ReactNod
   return <button className={`nav-item ${active ? "is-active" : ""}`} onClick={onClick} aria-current={active ? "page" : undefined}><span className="nav-icon-container">{icon}</span><span>{label}</span>{count && <small>{count}</small>}</button>;
 }
 
-function Finding({ initialFindingId }: { initialFindingId: string }) {
+function Finding({ selectedId, setSelectedId }: { selectedId: string; setSelectedId: (id: string) => void }) {
+  const [listCollapsed, setListCollapsed] = useState(false);
   const [filter, setFilter] = useState<"All" | "Open" | "Cleared">("All");
-  const [selectedId, setSelectedId] = useState(initialFindingId);
   const visibleItems = useMemo(() => filter === "All" ? findingItems : findingItems.filter((item) => item.status === filter), [filter]);
   const selectedItem = findingItems.find((item) => item.id === selectedId) ?? findingItems[0];
+  useEffect(() => {
+    if (filter !== "All" && selectedItem.status !== filter) setFilter("All");
+  }, [filter, selectedItem.status]);
 
   const applyFilter = (nextFilter: "All" | "Open" | "Cleared") => {
     setFilter(nextFilter);
@@ -72,13 +81,14 @@ function Finding({ initialFindingId }: { initialFindingId: string }) {
   return <section className="finding-page">
     <header className="findings-page-header">
       <div>
+        <IconButton label={listCollapsed ? "Expand findings list" : "Collapse findings list"} variant="ghost" size="md" icon={listCollapsed ? <PanelLeftOpen size={20} /> : <PanelLeftClose size={20} />} aria-expanded={!listCollapsed} aria-controls="findings-list-pane" onClick={() => setListCollapsed((collapsed) => !collapsed)} />
         <h1>Findings</h1>
         <p>4 require review · 1 cleared</p>
       </div>
       <Button className="findings-range-button" label="Last 7 days" variant="secondary" size="md" icon={<CalendarDays size={14} />} />
     </header>
-    <div className="findings-master-detail" aria-label="Findings master-detail workspace">
-      <div className="findings-pane findings-inbox" aria-label="Findings inbox">
+    <div className={`findings-master-detail${listCollapsed ? " is-list-collapsed" : ""}`} aria-label="Findings master-detail workspace">
+      <div id="findings-list-pane" hidden={listCollapsed} className="findings-pane findings-inbox" aria-label="Findings inbox">
         <div className="findings-filters">
           <div className="findings-filters-control" role="group" aria-label="Finding status filters">
             <ToggleButton label="All · 5" size="sm" isPressed={filter === "All"} onPressedChange={() => applyFilter("All")} />

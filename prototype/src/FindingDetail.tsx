@@ -5,6 +5,7 @@ import { ArrowRight } from "lucide-react";
 import type { FindingMasterItemData } from "./FindingMasterItem";
 import { FindingLinkedAccounts } from "./FindingLinkedAccounts";
 import type { EvidenceTarget, LinkedAccountId } from "./findingLinkedAccountsData";
+import { FindingCaseAction, useCases } from "./Cases";
 import { PaymentChain } from "./PaymentChain";
 
 type FindingDetailProps = {
@@ -74,6 +75,8 @@ const evidence: Evidence[] = [
 ];
 
 export function FindingDetail({ item }: FindingDetailProps) {
+  const { cases } = useCases();
+  const underInvestigation = cases.some((record) => record.status !== "Closed" && record.findingIds.includes(item.id));
   const [linkedAccountFocus, setLinkedAccountFocus] = useState<{ accountId: LinkedAccountId; serial: number } | null>(null);
 
   const focusEvidence = (target: EvidenceTarget) => {
@@ -93,6 +96,7 @@ export function FindingDetail({ item }: FindingDetailProps) {
         <h2>{item.title}</h2>
         <p>{item.entity} · {item.timestamp}</p>
         <span>Detailed evidence is not included in this prototype yet.</span>
+        <FindingCaseAction findingId={item.id} />
       </section>
     );
   }
@@ -103,10 +107,9 @@ export function FindingDetail({ item }: FindingDetailProps) {
         <div className="finding-detail-status">
           <Badge className="finding-badge tone-fraudulent" variant="error" label="Fraudulent" />
           <span>91% confidence</span>
-          <span className="finding-detail-open">Open</span>
+          <span className="finding-detail-open" aria-live="polite"><span className="finding-primary-status">Open</span>{underInvestigation && <span className="finding-sub-status"> · Under Investigation</span>}</span>
           <div className="finding-detail-actions">
-            <Button label="Open investigation" variant="primary" size="md" />
-            <Button label="Assign" variant="secondary" size="md" />
+            <FindingCaseAction findingId={item.id} />
           </div>
         </div>
         <h2 id="finding-detail-title">{item.title}</h2>

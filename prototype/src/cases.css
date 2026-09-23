@@ -1,0 +1,27 @@
+@layer dusk {
+  .case-dialog.astryx-dialog { color: var(--dusk-text); background: var(--dusk-surface); border: 1px solid var(--dusk-border); border-radius: 16px; max-height: calc(100dvh - 32px); overflow: hidden; font: 400 14px/20px Geist, sans-serif; }
+  .case-dialog form { display: flex; flex: 1; flex-direction: column; min-height: 0; overflow: hidden; }
+  .case-modal-header { flex-shrink: 0; display: flex; justify-content: space-between; align-items: flex-start; gap: 16px; padding: 24px 24px 16px; }
+  .case-modal-header h2 { margin: 8px 0 0; font-size: 24px; line-height: 32px; font-weight: 500; overflow-wrap: anywhere; }
+  .case-eyebrow, .case-dialog small, .case-help { color: var(--dusk-muted); font-size: 12px; line-height: 16px; }
+  .case-modal-body { min-height: 0; overflow-y: auto; display: flex; flex-direction: column; gap: 24px; padding: 8px 24px 24px; }
+  .case-modal-body p { margin: 8px 0 0; color: var(--dusk-muted); }
+  .case-modal-body h3 { margin: 0; font-size: 14px; line-height: 20px; font-weight: 600; }
+  .case-finding-context { display: flex; align-items: flex-start; gap: 12px; background: var(--dusk-inset); border: 1px solid var(--dusk-border); padding: 16px; border-radius: 8px; }
+  .case-finding-context svg { flex-shrink: 0; color: var(--dusk-lime); }
+  .case-finding-context strong, .case-finding-context small { display: block; }
+  .case-finding-context strong { margin-top: 4px; font-weight: 500; }
+  .case-field { display: grid; gap: 8px; font-weight: 500; }
+  .case-field input, .case-field textarea, .case-field select { width: 100%; min-width: 0; padding: 12px; border: 1px solid var(--dusk-border); border-radius: 8px; background: var(--dusk-inset); color: var(--dusk-text); font: 400 14px/20px Geist, sans-serif; color-scheme: dark; }
+  .case-field textarea { resize: vertical; min-height: 96px; }
+  .case-dialog :is(input, textarea, select, button):focus-visible { outline: 2px solid var(--dusk-lime); outline-offset: 2px; }
+  .case-modal-footer { flex-shrink: 0; display: flex; align-items: center; justify-content: space-between; gap: 16px; padding: 16px 24px 24px; }
+  .case-modal-footer > span { color: var(--dusk-muted); font-size: 12px; line-height: 16px; }
+  .case-confirmation { position: fixed; bottom: 24px; left: 50%; transform: translateX(-50%); z-index: 50; display: flex; align-items: center; gap: 12px; width: max-content; max-width: calc(100vw - 32px); padding: 12px 16px; background: var(--dusk-surface-2); border: 1px solid var(--dusk-border); border-radius: 12px; box-shadow: 0 8px 32px #0006; font-size: 14px; }
+  .case-confirmation > svg { color: var(--dusk-lime); flex-shrink: 0; }
+  .case-confirmation > span { overflow-wrap: anywhere; min-width: 0; }
+  .case-modal-header p { margin: 8px 0 0; color: var(--dusk-muted); }
+  .case-modal-body .case-error { color: var(--dusk-red); }
+  .finding-detail-actions .astryx-button:only-child { width: auto; min-width: 180px; }
+  @media (max-width: 600px) { .case-modal-header, .case-modal-body, .case-modal-footer { padding-inline: 16px; } .case-modal-footer { flex-wrap: wrap; } }
+}

@@ -53,6 +53,8 @@
   .finding-detail-header { display: flex; flex-direction: column; gap: 8px; }
   .finding-detail-status { display: flex; flex-wrap: wrap; min-width: 0; align-items: center; gap: 8px; color: var(--dusk-muted); font-size: 12px; line-height: 16px; }
   .finding-detail-open { flex: 1 1 auto; }
+  .finding-primary-status { color: var(--dusk-text); font-weight: 500; }
+  .finding-sub-status { color: var(--dusk-muted); font-weight: 400; }
   .finding-detail-actions { display: flex; flex: 0 0 auto; gap: 8px; }
   .finding-detail-actions .astryx-button:first-child { width: 204px; }
   .finding-detail-actions .astryx-button:last-child { width: 88px; }
@@ -118,8 +120,8 @@
   .payment-chain-action-node::before, .payment-chain-action-node::after { display: none; }
   .payment-chain-action-node > div { transition: border-color 160ms ease, color 160ms ease, box-shadow 160ms ease; }
   .payment-chain-action-node:hover > div, .payment-chain-action-node.is-selected > div { border-color: var(--dusk-lime); color: var(--dusk-lime); box-shadow: 0 0 0 1px rgba(183,247,107,.24); }
-  .payment-chain-flow-arrow { color: var(--dusk-lime); pointer-events: none; transform: var(--flow-rest); animation: payment-chain-arrow-flow linear infinite; }
-  @keyframes payment-chain-arrow-flow { from { transform: var(--flow-start); opacity: 0; } 10%, 90% { opacity: 1; } to { transform: var(--flow-end); opacity: 0; } }
+  .payment-chain-canvas .react-flow__edge-path.payment-chain-flow-dashes { stroke: var(--dusk-lime); stroke-width: 1; stroke-dasharray: 6 6; animation: payment-chain-dash-flow 750ms linear infinite; }
+  @keyframes payment-chain-dash-flow { from { stroke-dashoffset: 0; } to { stroke-dashoffset: -12; } }
   .payment-chain-controls { display: flex; gap: 4px; padding: 4px; border: 1px solid var(--dusk-border); border-radius: 8px; background: rgba(14,18,16,.92); box-shadow: 0 8px 28px rgba(0,0,0,.28); }
   .payment-chain-controls .astryx-button { width: 28px !important; min-width: 28px; height: 28px; min-height: 28px; padding: 0; border-radius: 6px; }
   .payment-chain-node-details { display: grid; align-content: start; gap: 16px; min-width: 0; }
@@ -141,7 +143,7 @@
   .payment-chain-inspector-empty { display: grid; place-content: center; gap: 6px; height: 100%; color: var(--dusk-muted); text-align: center; }
   .payment-chain-inspector-empty p { margin: 0; color: var(--dusk-text); font-size: 14px; font-weight: 500; }
   .payment-chain-inspector-empty span { max-width: 240px; font-size: 12px; line-height: 18px; }
-  @media (prefers-reduced-motion: reduce) { .payment-chain-flow-arrow { animation-name: none; opacity: 1; }.payment-chain-explorer { animation: none; }.payment-chain-canvas .finding-chain-entity,.payment-chain-action-node > div { transition: none; } }
+  @media (prefers-reduced-motion: reduce) { .payment-chain-canvas .react-flow__edge-path.payment-chain-flow-dashes { animation: none; }.payment-chain-explorer { animation: none; }.payment-chain-canvas .finding-chain-entity,.payment-chain-action-node > div { transition: none; } }
   .finding-evidence { display: grid; gap: 16px; }
   .finding-timeline { display: grid; }
   .finding-timeline-item { display: grid; grid-template-columns: 16px minmax(0, 1fr); gap: 24px; }
@@ -200,5 +202,14 @@
     .payment-chain-explorer-body { grid-template-columns: 1fr; grid-template-rows: minmax(180px, 1fr) auto; overflow-y: auto; }
     .payment-chain-explorer .payment-chain-canvas { min-height: 180px; border-right: 0; border-bottom: 1px solid var(--dusk-border); }
     .payment-chain-inspector { max-height: 220px; overflow-y: auto; }
+  }
+}
+
+@layer dusk {
+  .findings-inbox[hidden] { display: none; }
+  .findings-master-detail.is-list-collapsed { grid-template-columns: minmax(0, 1fr); grid-template-rows: minmax(0, 1fr); }
+  .findings-page-header > div > .astryx-button { flex-shrink: 0; }
+  @media (max-width: 1100px) {
+    .findings-master-detail.is-list-collapsed { grid-template-rows: max-content; }
   }
 }

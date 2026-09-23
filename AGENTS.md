@@ -27,6 +27,10 @@
 - Inspect relevant files and Git status before implementation. This directory was not a Git checkout at the latest inspection; verify rather than assume.
 - For three or more meaningful steps, state a short plan before edits. Preserve unrelated work.
 - Record recurring user corrections here. Do not edit global memory unless explicitly requested.
-- Payment-chain motion must use one small chevron per connection, with no shaft on the moving glyph, over a visible thin connecting line. Keep a continuous left-to-right flow at a 600ms loop. Avoid combined dot-and-trail effects, duplicate arrowheads, and long idle gaps; preserve the existing node styling and dotted compact widget.
+- Payment-chain motion uses a thin animated dashed line flowing left to right, with a 750ms loop (80% of the previous speed). No moving chevrons or arrowheads. Preserve existing node styling, dotted compact widget, and reduced-motion support.
 - Payment-chain zoom is available only in the full-screen explorer. Compact mode has no zoom controls, wheel/pinch zoom, or zoom activation shortcut; preserve its node clicks, Explore action, and initial fit.
 - Timeline pulse: keep the green center steady and animate the 24px halo from 50% to 100% scale over 1.8 seconds. Start and end at zero opacity, with a brief fade-in before fading out, so the loop resets invisibly.
+
+- Demo workflows must model real user-driven transitions with shared state during the current page session. Refreshing the page resets demo cases and returns FND-1042 to Start investigation; do not persist cases in browser storage. FND-1042 starts without a case; its single action is Start investigation, which opens Create case. Do not pre-link it, add state-showcase buttons, or build a case picker, preview drawer, or investigation page without explicit scope approval.
+
+- After case creation, replace Start investigation with a View case button in the same position; do not replace it with an Investigation started label or checkmark. View case retains normal active primary-button styling, not disabled styling. The investigation page remains out of scope.

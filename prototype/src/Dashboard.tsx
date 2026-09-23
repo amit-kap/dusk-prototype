@@ -19,13 +19,14 @@ import legendRoutine from "./assets/account-legend-routine.svg";
 import StarBorder from "./StarBorder";
 import { findingItems } from "./findingData";
 import "./dashboard.css";
+import { useCases } from "./Cases";
 
 type DashboardProps = { onOpenFinding: (id?: string) => void };
 type DashboardWidgetProps = { title: string; className?: string; children: ReactNode; contentClassName?: string };
 type BadgeTone = "fraudulent" | "suspicious" | "legitimate" | "neutral";
 type TableCell = { primary?: string; secondary?: string; badge?: string; tone?: BadgeTone };
 type TableRow = { cells: TableCell[]; onClick?: () => void };
-type DashboardTableWidgetProps = { title: string; columns: string[]; template: string; rows: TableRow[]; footerSummary: string; footerAction: string; onFooterClick?: () => void; className?: string };
+type DashboardTableWidgetProps = { title: string; columns: string[]; template: string; rows: TableRow[]; footerSummary: string; footerAction?: string; onFooterClick?: () => void; className?: string };
 
 const askDuskExamples = findingItems.slice(0, 3).map((item) => ({
   label: item.verdict, tone: item.verdict.toLowerCase(),
@@ -78,13 +79,6 @@ const latestSignals: TableRow[] = [
   { cells: [{ primary: "Mon", secondary: "21:14" }, { primary: "Settlement scope drift detected", secondary: "FND-1041 · svc-settle-03" }, { badge: "New finding", tone: "suspicious" }, {}] },
 ];
 
-const investigations: TableRow[] = [
-  { cells: [{ primary: "Marek payment chain", secondary: "INV-204 · 4 events · Critical" }, { primary: "Carla Rivas", secondary: "Updated 22:12" }, { badge: "Investigating", tone: "suspicious" }, {}] },
-  { cells: [{ primary: "Treasury counterparty review", secondary: "INV-205 · 1 event · High" }, { primary: "Noam Levi", secondary: "Updated 03:34" }, { badge: "Triage", tone: "neutral" }, {}] },
-  { cells: [{ primary: "Settlement credential exposure", secondary: "INV-203 · 1 event · High" }, { primary: "Carla Rivas", secondary: "Updated Mon" }, { badge: "Investigating", tone: "suspicious" }, {}] },
-  { cells: [{ primary: "Vendor beneficiary change", secondary: "INV-202 · 1 event · High" }, { primary: "Maya Cohen", secondary: "Updated Mon" }, { badge: "In review", tone: "neutral" }, {}] },
-  { cells: [{ primary: "Payroll approval verification", secondary: "INV-201 · 1 event · Normal" }, { primary: "Noam Levi", secondary: "Closed Mon" }, { badge: "Closed", tone: "legitimate" }, {}] },
-];
 
 const accountTiers = [
   { label: "Critical", events: 6, accounts: 3, color: "var(--dusk-lime)", legend: legendCritical },
@@ -111,6 +105,10 @@ function containModalFocus(event: ReactKeyboardEvent<HTMLDialogElement>) {
 }
 
 export function Dashboard({ onOpenFinding }: DashboardProps) {
+  const { cases } = useCases();
+  const investigations: TableRow[] = cases.map((item) => ({
+    cells: [{ primary: item.name, secondary: `${item.id} · ${item.findingIds.length} ${item.findingIds.length === 1 ? "finding" : "findings"} · ${item.priority}` }, { primary: item.owner, secondary: `Updated ${item.updated}` }, { badge: item.status, tone: item.status === "Closed" ? "legitimate" : item.status === "Investigating" ? "suspicious" : "neutral" }, {}],
+  }));
   const [query, setQuery] = useState("");
   const [accountMetric, setAccountMetric] = useState("activity");
   const [isAskDuskOpen, setIsAskDuskOpen] = useState(false);
@@ -153,7 +151,7 @@ export function Dashboard({ onOpenFinding }: DashboardProps) {
       <div className="dashboard-exposure-row"><DashboardWidget title="Exposure by account tier" className="account-widget" contentClassName="account-widget-body"><SegmentedControl label="Exposure metric" value={accountMetric} onChange={setAccountMetric} layout="fill" size="sm" className="account-segmented-control"><SegmentedControlItem value="activity" label="Events" /><SegmentedControlItem value="accounts" label="Accounts" /></SegmentedControl><div className="account-distribution" role="img" aria-label={distributionLabel}><div className="account-donut-accounts" style={{ background: `conic-gradient(${donutSegments.join(", ")})` }} aria-hidden="true" /><div className="account-total"><strong>{metricTotal}</strong><span>{metric}</span></div></div><div className="account-tiers">{accountTiers.map((tier) => <div className="account-tier" key={tier.label}><img src={tier.legend} alt="" /><span>{tier.label}</span><small>{formatCount(showsAccounts ? tier.accounts : tier.events, showsAccounts ? "account" : "event")}</small><small>{showsAccounts ? `${Math.round(tier.accounts / accountTotal * 100)}%` : formatCount(tier.accounts, "account")}</small></div>)}</div></DashboardWidget><DashboardTableWidget title="Accounts at risk" className="accounts-widget" columns={["Account", "Value", "Access exposure", "Risk score", ""]} template="minmax(190px, 2.7fr) 96px minmax(150px, 2fr) 112px 20px" rows={accountsAtRisk} footerSummary="Showing 5 of 7 accounts · Highest risk first" footerAction="View all accounts" /></div>
       <DashboardTableWidget title="Activity paths" className="activity-widget" columns={["Actor group", "Account category", "Observed activity", "Event verdicts", ""]} template="minmax(180px, 1.15fr) minmax(240px, 1.5fr) minmax(220px, 1.5fr) minmax(150px, 1.15fr) 24px" rows={activityPaths} footerSummary="8 events across 5 paths" footerAction="Explore activity" />
       <div className="dashboard-paired-row"><DashboardTableWidget title="Actors to review" className="actors-widget" columns={["Actor", "Risk signal", "Risk", ""]} template="minmax(154px, 1fr) minmax(188px, 1.25fr) 96px 24px" rows={actorsToReview} footerSummary="5 actors require review" footerAction="View all actors" /><AutomationExposure /></div>
-      <div className="dashboard-paired-row dashboard-final-row"><DashboardTableWidget title="Latest signals" className="signals-widget" columns={["Detected", "Signal", "Update", ""]} template="72px minmax(230px, 1.8fr) 116px 24px" rows={latestSignals} footerSummary="Latest 5 updates" footerAction="View all signals" /><DashboardTableWidget title="Cases" className="investigations-widget" columns={["Case", "Owner", "Status", ""]} template="minmax(180px, 1.7fr) 100px 104px 20px" rows={investigations} footerSummary="4 active · 1 closed" footerAction="View all cases" /></div>
+      <div className="dashboard-paired-row dashboard-final-row"><DashboardTableWidget title="Latest signals" className="signals-widget" columns={["Detected", "Signal", "Update", ""]} template="72px minmax(230px, 1.8fr) 116px 24px" rows={latestSignals} footerSummary="Latest 5 updates" footerAction="View all signals" /><DashboardTableWidget title="Cases" className="investigations-widget" columns={["Case", "Owner", "Status", ""]} template="minmax(180px, 1.7fr) 100px 104px 20px" rows={investigations} footerSummary={`${cases.filter((item) => item.status !== "Closed").length} active · ${cases.filter((item) => item.status === "Closed").length} closed`}  /></div>
     </div>
     <Dialog className="ask-dusk-modal" isOpen={isAskDuskOpen} onOpenChange={(open) => { if (!open) closeAskDusk(); }} onKeyDown={containModalFocus} variant="fullscreen" padding={0} aria-label="Ask Dusk investigation window">
     {isAskDuskOpen && (
@@ -202,13 +200,14 @@ export function DashboardWidget({ title, className = "", children, contentClassN
 
 function DashboardTableWidget({ title, columns, template, rows, footerSummary, footerAction, onFooterClick, className = "" }: DashboardTableWidgetProps) {
   const tableStyle = { "--table-columns": template } as CSSProperties;
-  return <DashboardWidget title={title} className={`dashboard-table-widget ${className}`.trim()} contentClassName="dashboard-table-widget-body"><div className="dashboard-table-scroll" tabIndex={0} role="region" aria-label={`${title} table`}><div className="dashboard-table-columns" style={tableStyle} aria-hidden="true">{columns.map((column, index) => <span key={`${column}-${index}`}>{column}</span>)}</div><div className="dashboard-table-list" style={tableStyle}>{rows.map((row, index) => <DashboardTableRow key={`${title}-${index}`} row={row} columns={columns} />)}</div></div><footer className="dashboard-table-footer"><span>{footerSummary}</span><Button className="dashboard-table-footer-button" label={footerAction} onClick={onFooterClick} variant="ghost" size="sm" endContent={<ArrowRight size={16} />} /></footer></DashboardWidget>;
+  return <DashboardWidget title={title} className={`dashboard-table-widget ${className}`.trim()} contentClassName="dashboard-table-widget-body"><div className="dashboard-table-scroll" tabIndex={0} role="region" aria-label={`${title} table`}><div className="dashboard-table-columns" style={tableStyle} aria-hidden="true">{columns.map((column, index) => <span key={`${column}-${index}`}>{column}</span>)}</div><div className="dashboard-table-list" style={tableStyle}>{rows.map((row, index) => <DashboardTableRow key={`${title}-${index}`} row={row} columns={columns} />)}</div></div><footer className="dashboard-table-footer"><span>{footerSummary}</span>{footerAction && <Button className="dashboard-table-footer-button" label={footerAction} onClick={onFooterClick} variant="ghost" size="sm" endContent={<ArrowRight size={16} />} />}</footer></DashboardWidget>;
 }
 
-function DashboardTableRow({ row, columns }: { row: TableRow; columns: string[] }) { const cells = row.cells.map((cell, index) => <DashboardTableCell cell={cell} label={columns[index]} isAction={index === row.cells.length - 1} key={index} />); return row.onClick ? <button className="dashboard-table-row" type="button" onClick={row.onClick}>{cells}</button> : <div className="dashboard-table-row">{cells}</div>; }
+function DashboardTableRow({ row, columns }: { row: TableRow; columns: string[] }) { const cells = row.cells.map((cell, index) => <DashboardTableCell cell={cell} label={columns[index]} isAction={index === row.cells.length - 1 && columns[0] !== "Case"} key={index} />); return row.onClick ? <button className="dashboard-table-row" type="button" onClick={row.onClick}>{cells}</button> : <div className="dashboard-table-row">{cells}</div>; }
 
 function DashboardTableCell({ cell, label, isAction }: { cell: TableCell; label: string; isAction: boolean }) {
   if (isAction) return <span className="dashboard-table-open" aria-hidden="true"><ChevronRight size={16} /></span>;
+  if (!cell.primary && !cell.secondary && !cell.badge) return <span aria-hidden="true" />;
   if (cell.badge) { const variant = cell.tone === "fraudulent" ? "error" : cell.tone === "suspicious" ? "warning" : cell.tone === "legitimate" ? "success" : "neutral"; return <span className="dashboard-table-cell dashboard-table-badge"><span className="sr-only">{label}: </span><span className={`dashboard-cell-badge tone-${cell.tone ?? "neutral"}`}><Badge variant={variant} label={cell.badge} /></span>{cell.secondary && <small>{cell.secondary}</small>}</span>; }
   return <span className="dashboard-table-cell"><span className="sr-only">{label}: </span><strong title={cell.primary}>{cell.primary}</strong>{cell.secondary && <small title={cell.secondary}>{cell.secondary}</small>}</span>;
 }
