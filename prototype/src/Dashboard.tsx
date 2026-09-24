@@ -11,7 +11,6 @@ import { Dialog } from "@astryxdesign/core/Dialog";
 import { ArrowDownRight, ArrowRight, ArrowUp, ArrowUpRight, CalendarDays, ChevronRight, Maximize2, Mic, Minimize2, MoreHorizontal, MoreVertical, Plus, Search, X } from "lucide-react";
 import askDuskSparkles from "./assets/ask-dusk-sparkles.svg";
 import duskIcon from "./assets/dusk-icon.svg";
-import riskPostureGauge from "./assets/risk-posture-gauge.svg";
 import legendCritical from "./assets/account-legend-critical.svg";
 import legendHigh from "./assets/account-legend-high.svg";
 import legendElevated from "./assets/account-legend-elevated.svg";
@@ -190,8 +189,25 @@ export function Dashboard({ onOpenFinding }: DashboardProps) {
 }
 
 export function RiskPostureWidget({ score = 82, statusLabel = "High risk", trendDelta = 8, findingsCount = 4, criticalAccountsCount = 3 }: RiskPostureWidgetProps) {
+  const displayScore = Number.isFinite(score) ? Math.max(0, Math.min(100, score)) : 0;
   const trend = `${trendDelta > 0 ? "+" : ""}${trendDelta}`;
-  return <DashboardWidget title="Risk posture" className="risk-widget" contentClassName="risk-widget-body"><div className="risk-visualization"><img src={riskPostureGauge} alt="" className="risk-gauge" /><div className="risk-score"><strong>{score}</strong><span>Risk score</span></div></div><div className="risk-status"><Badge variant="error" label={statusLabel} /><span>{trend}</span>{trendDelta >= 0 ? <ArrowUpRight size={16} aria-hidden="true" /> : <ArrowDownRight size={16} aria-hidden="true" />}</div><div className="risk-divider" /><div className="risk-metrics"><div><strong>{findingsCount}</strong><span>Findings to review</span></div><div><strong>{criticalAccountsCount}</strong><span>Critical accounts</span></div></div></DashboardWidget>;
+  return <DashboardWidget title="Risk posture" className="risk-widget" contentClassName="risk-widget-body"><div className="risk-visualization"><RiskPostureMeter score={displayScore} /><div className="risk-score"><strong>{displayScore}</strong><span>Risk score</span></div></div><div className="risk-status"><Badge variant="error" label={statusLabel} /><span>{trend}</span>{trendDelta >= 0 ? <ArrowUpRight size={16} aria-hidden="true" /> : <ArrowDownRight size={16} aria-hidden="true" />}</div><div className="risk-divider" /><div className="risk-metrics"><div><strong>{findingsCount}</strong><span>Findings to review</span></div><div><strong>{criticalAccountsCount}</strong><span>Critical accounts</span></div></div></DashboardWidget>;
+}
+
+function RiskPostureMeter({ score }: { score: number }) {
+  const segmentCount = 46;
+  const litCount = Math.round(score / 100 * segmentCount);
+  const point = (radius: number, angle: number) => {
+    const radians = angle * Math.PI / 180;
+    return `${(136 + radius * Math.cos(radians)).toFixed(3)} ${(119.283 + radius * Math.sin(radians)).toFixed(3)}`;
+  };
+  return <svg className="risk-gauge" viewBox="0 0 272 196" aria-hidden="true">
+    {Array.from({ length: segmentCount }, (_, index) => {
+      const angle = 140 + index * 260 / (segmentCount - 1);
+      const color = index >= litCount ? "#2C3831" : index < 23 ? "#74CDA9" : index < 34 ? "#E9BB73" : "#FF8B87";
+      return <path key={index} d={`M${point(100.5, angle)}L${point(85.5, angle)}`} stroke={color} strokeWidth="3" strokeLinecap="round" />;
+    })}
+  </svg>;
 }
 
 export function AccountTierWidget({ tiers = accountTiers, initialMetric = "activity", onMetricChange }: AccountTierWidgetProps) {
