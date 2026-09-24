@@ -3,21 +3,25 @@ import { Badge } from "@astryxdesign/core/Badge";
 import { Button } from "@astryxdesign/core/Button";
 import { Collapsible, CollapsibleGroup } from "@astryxdesign/core/Collapsible";
 import { ArrowRight } from "lucide-react";
-import { linkedAccounts, type EvidenceTarget, type LinkedAccountId } from "./findingLinkedAccountsData";
+import { linkedAccounts, type EvidenceTarget, type LinkedAccount, type LinkedAccountId } from "./findingLinkedAccountsData";
 import "./findingLinkedAccounts.css";
 
-type LinkedAccountFocusRequest = {
+export type LinkedAccountFocusRequest = {
   accountId: LinkedAccountId;
   serial: number;
 };
 
-type FindingLinkedAccountsProps = {
+export type FindingLinkedAccountsProps = {
   focusRequest: LinkedAccountFocusRequest | null;
   onNavigateEvidence: (target: EvidenceTarget) => void;
+  accounts?: LinkedAccount[];
+  initialOpenAccountId?: LinkedAccountId | "";
+  coverageSummary?: string;
+  coverageNote?: string;
 };
 
-export function FindingLinkedAccounts({ focusRequest, onNavigateEvidence }: FindingLinkedAccountsProps) {
-  const [openAccount, setOpenAccount] = useState("");
+export function FindingLinkedAccounts({ focusRequest, onNavigateEvidence, accounts = linkedAccounts, initialOpenAccountId = "", coverageSummary = "14 accounts accessed · 2 source accounts shown", coverageNote = "This prototype includes records for 2 of the 14 accessed accounts." }: FindingLinkedAccountsProps) {
+  const [openAccount, setOpenAccount] = useState<string>(initialOpenAccountId);
 
   useEffect(() => {
     if (!focusRequest) return;
@@ -52,14 +56,14 @@ export function FindingLinkedAccounts({ focusRequest, onNavigateEvidence }: Find
     <section className="finding-linked-accounts" aria-labelledby="linked-accounts-title">
       <header className="finding-linked-accounts-header">
         <h3 id="linked-accounts-title">Linked accounts</h3>
-        <p>14 accounts accessed · 2 source accounts shown</p>
+        <p>{coverageSummary}</p>
       </header>
       <div className="linked-accounts-table">
         <div className="linked-accounts-header-row" aria-hidden="true">
           <span>Account</span><span>Role</span><span>What matters</span><span />
         </div>
         <CollapsibleGroup className="linked-accounts-list" type="single" value={openAccount} onChange={(value) => setOpenAccount(typeof value === "string" ? value : "")} hasDividers density="compact">
-          {linkedAccounts.map((account) => (
+          {accounts.map((account) => (
             <Collapsible
               id={`linked-account-${account.id}`}
               key={account.id}
@@ -87,7 +91,7 @@ export function FindingLinkedAccounts({ focusRequest, onNavigateEvidence }: Find
           ))}
         </CollapsibleGroup>
       </div>
-      <footer className="linked-accounts-coverage">This prototype includes records for 2 of the 14 accessed accounts.</footer>
+      <footer className="linked-accounts-coverage">{coverageNote}</footer>
     </section>
   );
 }
