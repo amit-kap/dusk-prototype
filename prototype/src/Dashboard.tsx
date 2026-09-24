@@ -8,7 +8,7 @@ import { SegmentedControl, SegmentedControlItem } from "@astryxdesign/core/Segme
 import { ChatComposer } from "@astryxdesign/core/Chat";
 import { TextInput } from "@astryxdesign/core/TextInput";
 import { Dialog } from "@astryxdesign/core/Dialog";
-import { ArrowRight, ArrowUp, ArrowUpRight, CalendarDays, ChevronRight, Maximize2, Mic, Minimize2, MoreHorizontal, MoreVertical, Plus, Search, X } from "lucide-react";
+import { ArrowDownRight, ArrowRight, ArrowUp, ArrowUpRight, CalendarDays, ChevronRight, Maximize2, Mic, Minimize2, MoreHorizontal, MoreVertical, Plus, Search, X } from "lucide-react";
 import askDuskSparkles from "./assets/ask-dusk-sparkles.svg";
 import duskIcon from "./assets/dusk-icon.svg";
 import riskPostureGauge from "./assets/risk-posture-gauge.svg";
@@ -24,9 +24,14 @@ import { useCases } from "./Cases";
 type DashboardProps = { onOpenFinding: (id?: string) => void };
 type DashboardWidgetProps = { title: string; className?: string; children: ReactNode; contentClassName?: string };
 type BadgeTone = "fraudulent" | "suspicious" | "legitimate" | "neutral";
-type TableCell = { primary?: string; secondary?: string; badge?: string; tone?: BadgeTone };
-type TableRow = { cells: TableCell[]; onClick?: () => void };
-export type DashboardTableWidgetProps = { title: string; columns: string[]; template: string; rows: TableRow[]; footerSummary: string; footerAction?: string; onFooterClick?: () => void; className?: string };
+export type TableCell = { primary?: string; secondary?: string; badge?: string; tone?: BadgeTone };
+export type TableRow = { cells: TableCell[]; onClick?: () => void };
+export type DashboardTableWidgetProps = { title: string; columns: string[]; template: string; rows: TableRow[]; footerSummary: string; footerAction?: string; onFooterClick?: () => void; className?: string; emptyMessage?: string };
+export type RiskPostureWidgetProps = { score?: number; statusLabel?: string; trendDelta?: number; findingsCount?: number; criticalAccountsCount?: number };
+export type AccountTierDatum = { label: string; events: number; accounts: number; color: string; legend?: string };
+export type AccountTierWidgetProps = { tiers?: AccountTierDatum[]; initialMetric?: "activity" | "accounts"; onMetricChange?: (metric: "activity" | "accounts") => void };
+export type AutomationTrendPoint = { label: string; automated: number; flagged: number };
+export type AutomationExposureProps = { points?: AutomationTrendPoint[]; maxValue?: number; summary?: string; onViewAutomations?: () => void };
 
 const askDuskExamples = findingItems.slice(0, 3).map((item) => ({
   label: item.verdict, tone: item.verdict.toLowerCase(),
@@ -80,7 +85,7 @@ export const latestSignals: TableRow[] = [
 ];
 
 
-const accountTiers = [
+export const accountTiers: AccountTierDatum[] = [
   { label: "Critical", events: 6, accounts: 3, color: "var(--dusk-lime)", legend: legendCritical },
   { label: "High value", events: 2, accounts: 2, color: "#536b5e", legend: legendHigh },
   { label: "Elevated", events: 0, accounts: 1, color: "var(--dusk-quiet)", legend: legendElevated },
@@ -184,31 +189,37 @@ export function Dashboard({ onOpenFinding }: DashboardProps) {
   </section>;
 }
 
-export function RiskPostureWidget() {
-  return <DashboardWidget title="Risk posture" className="risk-widget" contentClassName="risk-widget-body"><div className="risk-visualization"><img src={riskPostureGauge} alt="" className="risk-gauge" /><div className="risk-score"><strong>82</strong><span>Risk score</span></div></div><div className="risk-status"><Badge variant="error" label="High risk" /><span>+8</span><ArrowUpRight size={16} aria-hidden="true" /></div><div className="risk-divider" /><div className="risk-metrics"><div><strong>4</strong><span>Findings to review</span></div><div><strong>3</strong><span>Critical accounts</span></div></div></DashboardWidget>;
+export function RiskPostureWidget({ score = 82, statusLabel = "High risk", trendDelta = 8, findingsCount = 4, criticalAccountsCount = 3 }: RiskPostureWidgetProps) {
+  const trend = `${trendDelta > 0 ? "+" : ""}${trendDelta}`;
+  return <DashboardWidget title="Risk posture" className="risk-widget" contentClassName="risk-widget-body"><div className="risk-visualization"><img src={riskPostureGauge} alt="" className="risk-gauge" /><div className="risk-score"><strong>{score}</strong><span>Risk score</span></div></div><div className="risk-status"><Badge variant="error" label={statusLabel} /><span>{trend}</span>{trendDelta >= 0 ? <ArrowUpRight size={16} aria-hidden="true" /> : <ArrowDownRight size={16} aria-hidden="true" />}</div><div className="risk-divider" /><div className="risk-metrics"><div><strong>{findingsCount}</strong><span>Findings to review</span></div><div><strong>{criticalAccountsCount}</strong><span>Critical accounts</span></div></div></DashboardWidget>;
 }
 
-export function AccountTierWidget({ initialMetric = "activity" }: { initialMetric?: "activity" | "accounts" }) {
+export function AccountTierWidget({ tiers = accountTiers, initialMetric = "activity", onMetricChange }: AccountTierWidgetProps) {
   const [accountMetric, setAccountMetric] = useState(initialMetric);
   const showsAccounts = accountMetric === "accounts";
   const metric = showsAccounts ? "accounts" : "events";
-  const accountTotal = accountTiers.reduce((total, tier) => total + tier.accounts, 0);
-  const metricTotal = accountTiers.reduce((total, tier) => total + tier[metric], 0);
+  const accountTotal = tiers.reduce((total, tier) => total + tier.accounts, 0);
+  const metricTotal = tiers.reduce((total, tier) => total + tier[metric], 0);
   let segmentStart = 0;
-  const donutSegments = accountTiers.filter((tier) => tier[metric] > 0).map((tier) => {
+  const donutSegments = tiers.filter((tier) => tier[metric] > 0).map((tier) => {
     const start = segmentStart;
     segmentStart += tier[metric] / metricTotal * 100;
     return `${tier.color} ${start}% ${segmentStart}%`;
   });
-  const distributionLabel = `${metricTotal} ${metric} across account-value tiers: ${accountTiers.filter((tier) => tier[metric] > 0).map((tier) => `${tier[metric]} ${tier.label.toLowerCase()}`).join(", ")}`;
-  return <DashboardWidget title="Exposure by account tier" className="account-widget" contentClassName="account-widget-body"><SegmentedControl label="Exposure metric" value={accountMetric} onChange={(value) => { if (value === "activity" || value === "accounts") setAccountMetric(value); }} layout="fill" size="sm" className="account-segmented-control"><SegmentedControlItem value="activity" label="Events" /><SegmentedControlItem value="accounts" label="Accounts" /></SegmentedControl><div className="account-distribution" role="img" aria-label={distributionLabel}><div className="account-donut-accounts" style={{ background: `conic-gradient(${donutSegments.join(", ")})` }} aria-hidden="true" /><div className="account-total"><strong>{metricTotal}</strong><span>{metric}</span></div></div><div className="account-tiers">{accountTiers.map((tier) => <div className="account-tier" key={tier.label}><img src={tier.legend} alt="" /><span>{tier.label}</span><small>{formatCount(showsAccounts ? tier.accounts : tier.events, showsAccounts ? "account" : "event")}</small><small>{showsAccounts ? `${Math.round(tier.accounts / accountTotal * 100)}%` : formatCount(tier.accounts, "account")}</small></div>)}</div></DashboardWidget>;
+  const distributionLabel = metricTotal > 0 ? `${metricTotal} ${metric} across account-value tiers: ${tiers.filter((tier) => tier[metric] > 0).map((tier) => `${tier[metric]} ${tier.label.toLowerCase()}`).join(", ")}` : `No ${metric} across account-value tiers`;
+  const changeMetric = (value: string) => {
+    if (value !== "activity" && value !== "accounts") return;
+    setAccountMetric(value);
+    onMetricChange?.(value);
+  };
+  return <DashboardWidget title="Exposure by account tier" className="account-widget" contentClassName="account-widget-body"><SegmentedControl label="Exposure metric" value={accountMetric} onChange={changeMetric} layout="fill" size="sm" className="account-segmented-control"><SegmentedControlItem value="activity" label="Events" /><SegmentedControlItem value="accounts" label="Accounts" /></SegmentedControl><div className="account-distribution" role="img" aria-label={distributionLabel}><div className="account-donut-accounts" style={{ background: metricTotal > 0 ? `conic-gradient(${donutSegments.join(", ")})` : "var(--dusk-border)" }} aria-hidden="true" /><div className="account-total"><strong>{metricTotal}</strong><span>{metric}</span></div></div>{tiers.length > 0 ? <div className="account-tiers">{tiers.map((tier) => <div className="account-tier" key={tier.label}>{tier.legend ? <img src={tier.legend} alt="" /> : <span className="account-tier-color" style={{ background: tier.color }} aria-hidden="true" />}<span>{tier.label}</span><small>{formatCount(showsAccounts ? tier.accounts : tier.events, showsAccounts ? "account" : "event")}</small><small>{showsAccounts ? `${accountTotal ? Math.round(tier.accounts / accountTotal * 100) : 0}%` : formatCount(tier.accounts, "account")}</small></div>)}</div> : <p className="dashboard-empty-state">No account tier data</p>}</DashboardWidget>;
 }
 
 export function DashboardWidget({ title, className = "", children, contentClassName = "" }: DashboardWidgetProps) { return <article className={`dashboard-widget ${className}`.trim()}><header className="dashboard-widget-header"><h2>{title}</h2><IconButton label={`More options for ${title}`} variant="ghost" size="sm" icon={<MoreVertical size={16} />} /></header><div className={`dashboard-widget-content ${contentClassName}`.trim()}>{children}</div></article>; }
 
-export function DashboardTableWidget({ title, columns, template, rows, footerSummary, footerAction, onFooterClick, className = "" }: DashboardTableWidgetProps) {
+export function DashboardTableWidget({ title, columns, template, rows, footerSummary, footerAction, onFooterClick, className = "", emptyMessage = "No records in this period" }: DashboardTableWidgetProps) {
   const tableStyle = { "--table-columns": template } as CSSProperties;
-  return <DashboardWidget title={title} className={`dashboard-table-widget ${className}`.trim()} contentClassName="dashboard-table-widget-body"><div className="dashboard-table-scroll" tabIndex={0} role="region" aria-label={`${title} table`}><div className="dashboard-table-columns" style={tableStyle} aria-hidden="true">{columns.map((column, index) => <span key={`${column}-${index}`}>{column}</span>)}</div><div className="dashboard-table-list" style={tableStyle}>{rows.map((row, index) => <DashboardTableRow key={`${title}-${index}`} row={row} columns={columns} />)}</div></div><footer className="dashboard-table-footer"><span>{footerSummary}</span>{footerAction && <Button className="dashboard-table-footer-button" label={footerAction} onClick={onFooterClick} variant="ghost" size="sm" endContent={<ArrowRight size={16} />} />}</footer></DashboardWidget>;
+  return <DashboardWidget title={title} className={`dashboard-table-widget ${className}`.trim()} contentClassName="dashboard-table-widget-body"><div className="dashboard-table-scroll" tabIndex={0} role="region" aria-label={`${title} table`}><div className="dashboard-table-columns" style={tableStyle} aria-hidden="true">{columns.map((column, index) => <span key={`${column}-${index}`}>{column}</span>)}</div><div className="dashboard-table-list" style={tableStyle}>{rows.length ? rows.slice(0, 5).map((row, index) => <DashboardTableRow key={`${title}-${index}`} row={row} columns={columns} />) : <p className="dashboard-table-empty" role="status">{emptyMessage}</p>}</div></div><footer className="dashboard-table-footer"><span>{footerSummary}</span>{footerAction && <Button className="dashboard-table-footer-button" label={footerAction} onClick={onFooterClick} variant="ghost" size="sm" endContent={<ArrowRight size={16} />} />}</footer></DashboardWidget>;
 }
 
 function DashboardTableRow({ row, columns }: { row: TableRow; columns: string[] }) { const cells = row.cells.map((cell, index) => <DashboardTableCell cell={cell} label={columns[index]} isAction={index === row.cells.length - 1 && columns[0] !== "Case"} key={index} />); return row.onClick ? <button className="dashboard-table-row" type="button" onClick={row.onClick}>{cells}</button> : <div className="dashboard-table-row">{cells}</div>; }
@@ -220,4 +231,34 @@ function DashboardTableCell({ cell, label, isAction }: { cell: TableCell; label:
   return <span className="dashboard-table-cell"><span className="sr-only">{label}: </span><strong title={cell.primary}>{cell.primary}</strong>{cell.secondary && <small title={cell.secondary}>{cell.secondary}</small>}</span>;
 }
 
-export function AutomationExposure() { return <DashboardWidget title="Automation exposure" className="automation-widget" contentClassName="automation-widget-body"><div className="automation-chart"><div className="automation-chart-legend"><span>7-week trend</span><span><i className="automation-dot automated" />Automated</span><span><i className="automation-dot flagged" />Flagged</span></div><div className="automation-plot"><svg viewBox="0 0 596 168" preserveAspectRatio="none" role="img" aria-label="Seven week automated and flagged activity trend"><path d="M40 20H572M40 84H572M40 148H572" className="automation-grid" /><path d="M40 81L126 74L212 84L298 68L384 78L470 65L556 55L556 148H40Z" className="automation-area" /><path d="M40 81L126 74L212 84L298 68L384 78L470 65L556 55" className="automation-line automated" /><path d="M40 138L126 135L212 132L298 138L384 116L470 110L556 55" className="automation-line flagged" /><circle cx="556" cy="55" r="4" className="automation-point automated" /><circle cx="556" cy="55" r="3" className="automation-point flagged" /></svg><div className="automation-y-axis"><span>40%</span><span>20%</span><span>0%</span></div></div><div className="automation-x-axis">{["Jul 30", "Aug 6", "Aug 13", "Aug 20", "Aug 27", "Sep 3", "Sep 10"].map((date) => <span key={date}>{date}</span>)}</div></div><footer className="dashboard-table-footer automation-footer"><span>1 service account · 1 AI agent</span><Button className="dashboard-table-footer-button" label="View automations" variant="ghost" size="sm" endContent={<ArrowRight size={16} />} /></footer></DashboardWidget>; }
+export const automationTrend: AutomationTrendPoint[] = [
+  { label: "Jul 30", automated: 21, flagged: 3 },
+  { label: "Aug 6", automated: 23, flagged: 4 },
+  { label: "Aug 13", automated: 20, flagged: 5 },
+  { label: "Aug 20", automated: 25, flagged: 3 },
+  { label: "Aug 27", automated: 22, flagged: 10 },
+  { label: "Sep 3", automated: 26, flagged: 12 },
+  { label: "Sep 10", automated: 29, flagged: 29 },
+];
+
+export function AutomationExposure({ points = automationTrend, maxValue = 40, summary = "1 service account · 1 AI agent", onViewAutomations }: AutomationExposureProps) {
+  const chartMax = Math.max(1, maxValue);
+  const coordinates = points.map((point, index) => ({
+    x: points.length === 1 ? 298 : 40 + index * 516 / (points.length - 1),
+    automated: 148 - Math.max(0, Math.min(chartMax, point.automated)) * 128 / chartMax,
+    flagged: 148 - Math.max(0, Math.min(chartMax, point.flagged)) * 128 / chartMax,
+  }));
+  const line = (key: "automated" | "flagged") => coordinates.map((point, index) => `${index ? "L" : "M"}${point.x.toFixed(1)} ${point[key].toFixed(1)}`).join(" ");
+  const automatedLine = line("automated");
+  const flaggedLine = line("flagged");
+  const last = coordinates.at(-1);
+  const area = coordinates.length > 1 ? `${automatedLine}L${last!.x.toFixed(1)} 148H40Z` : "";
+  return <DashboardWidget title="Automation exposure" className="automation-widget" contentClassName="automation-widget-body">
+    {points.length ? <div className="automation-chart">
+      <div className="automation-chart-legend"><span>{points.length}-week trend</span><span><i className="automation-dot automated" />Automated</span><span><i className="automation-dot flagged" />Flagged</span></div>
+      <div className="automation-plot"><svg viewBox="0 0 596 168" preserveAspectRatio="none" role="img" aria-label={`${points.length}-week automated and flagged activity trend`}><path d="M40 20H572M40 84H572M40 148H572" className="automation-grid" />{area && <path d={area} className="automation-area" />}<path d={automatedLine} className="automation-line automated" /><path d={flaggedLine} className="automation-line flagged" />{last && <><circle cx={last.x} cy={last.automated} r="4" className="automation-point automated" /><circle cx={last.x} cy={last.flagged} r="3" className="automation-point flagged" /></>}</svg><div className="automation-y-axis"><span>{chartMax}%</span><span>{chartMax / 2}%</span><span>0%</span></div></div>
+      <div className="automation-x-axis" style={{ gridTemplateColumns: `repeat(${points.length},minmax(0,1fr))` }}>{points.map((point, index) => <span key={`${point.label}-${index}`}>{point.label}</span>)}</div>
+    </div> : <p className="dashboard-empty-state automation-empty" role="status">No automation data in this period</p>}
+    <footer className="dashboard-table-footer automation-footer"><span>{summary}</span><Button className="dashboard-table-footer-button" label="View automations" variant="ghost" size="sm" endContent={<ArrowRight size={16} />} onClick={onViewAutomations} /></footer>
+  </DashboardWidget>;
+}
