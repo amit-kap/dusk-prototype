@@ -8,7 +8,7 @@
     "build": "tsc -b && vite build",
     "storybook": "storybook dev -p 6006 --no-open",
     "build-storybook": "storybook build --output-dir dist/storybook --disable-telemetry",
-    "build:site": "pnpm build && pnpm build-storybook",
+    "build:site": "tsc -b && vite build && storybook build --output-dir dist/storybook --disable-telemetry",
     "preview": "vite preview"
   },
   "dependencies": {

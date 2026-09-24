@@ -2,7 +2,7 @@ import type { Meta, StoryObj } from "@storybook/react-vite";
 import { AccountTierWidget } from "../Dashboard";
 
 const meta = {
-  title: "Dashboard/Exposure by account tier",
+  title: "Dashboard/widget-donut",
   component: AccountTierWidget,
   render: (args) => <div style={{ width: 400, height: 420 }}><AccountTierWidget {...args} /></div>,
 } satisfies Meta<typeof AccountTierWidget>;
@@ -10,5 +10,5 @@ const meta = {
 export default meta;
 type Story = StoryObj<typeof meta>;
 
-export const Events: Story = { args: { initialMetric: "activity" } };
-export const Accounts: Story = { args: { initialMetric: "accounts" } };
+export const Events: Story = { name: "widget-donut-events", args: { initialMetric: "activity" } };
+export const Accounts: Story = { name: "widget-donut-accounts", args: { initialMetric: "accounts" } };

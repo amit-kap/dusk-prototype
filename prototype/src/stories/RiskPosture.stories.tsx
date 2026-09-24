@@ -2,7 +2,7 @@ import type { Meta, StoryObj } from "@storybook/react-vite";
 import { RiskPostureWidget } from "../Dashboard";
 
 const meta = {
-  title: "Dashboard/Risk posture",
+  title: "Dashboard/widget-gauge",
   component: RiskPostureWidget,
   render: () => <div style={{ width: 400, height: 420 }}><RiskPostureWidget /></div>,
 } satisfies Meta<typeof RiskPostureWidget>;
@@ -10,4 +10,4 @@ const meta = {
 export default meta;
 type Story = StoryObj<typeof meta>;
 
-export const Default: Story = {};
+export const Default: Story = { name: "widget-gauge" };
